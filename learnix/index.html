@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>learNIX</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300&display=swap&subset=cyrillic" rel="stylesheet"> 
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            display: flex;
+            font-size: 1em;
+            font-family: 'Roboto Mono', monospace;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            line-height: 50px;
+            height: 50px;
+            color: white;
+        }
+
+        .sidebar {
+            width: 25%;
+        }
+
+        .material-title {
+            background-color: darkslateblue;
+        }
+
+        .material-item {
+            cursor: pointer;
+            line-height: 50px;
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+        }
+
+        .material-item:not(.selected):hover {
+            color: white;
+            background-color: lightcoral;
+        }
+
+        .material-item.selected {
+            color: white;
+            background-color: dodgerblue;
+            cursor: auto;
+        }
+
+        .main {
+            flex: 1;
+            box-shadow: inset 0 0 15px -10px #000;
+            
+        }
+
+        .main-title {
+            background-color: darkorange;
+        }
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .main-item {
+            display: flex;
+            font-size: .9em;
+        }
+
+        .main-item {
+            border-bottom: 10px solid whitesmoke;
+        }
+
+        .main-item:last-child {
+            border-bottom: none;
+        }
+
+        .main-info {
+            flex: 0.25;
+            padding: 12.5px;
+            background-color: bisque;
+        }
+
+        .main-info__from {
+            margin-top: 10px;
+        }
+
+        .main-info__from::before {
+            content: 'от: ';
+        }
+
+        .main-data {
+            padding: 12.5px;
+            background-color: blanchedalmond;
+            text-align: start;
+        }
+
+        .main-data__item {
+            margin-bottom: 10px;
+        }
+
+        .main-data__item:last-child {
+            margin-bottom: 0;
+        }
+
+        .data-link {
+            color: brown;
+        }
+
+        .data-link:last-child {
+            margin-bottom: 0;
+        }
+
+        .data-link::after {
+            content: attr(href);
+        }
+
+        .github-title {
+            background-color: teal;
+        }
+
+        .github-info {
+            flex: 1;
+            text-align: start;
+            overflow-y: auto;
+        }
+
+        .github-info__person {
+            padding: 12.5px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+        }
+
+        .github-info__person:hover {
+            background-color: lightcoral;
+        }
+
+        .github-info__person:hover .github-info__link {
+            color: white;
+        }
+
+        .github-info__sur-name {
+            display: block;
+            font-size: 1.1em;
+        }
+
+        .github-info__uname {
+            font-size: .9em;
+        }
+    </style>
+</head>
+<body>
+    <sidebar class="material sidebar">
+        <div class="material-title title">Меню</div>
+        <div class="material-item selected">
+            <span class="material-item__text">Основной материал</span>
+        </div>
+        <div class="material-item">
+            <span class="material-item__text">Доп. материал</span>
+        </div>
+        <div class="material-item">
+                <span class="material-item__text">Инструменты</span>
+        </div>
+    </sidebar>
+    <main class="main column">
+        <div class="main-title title">Основной материал</div>
+        <div class="main-content column">
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Четверг</span>
+                        <span class="main-date__item date-dmy">28.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/Ivanischev" target="_blank">Ivan Ivanischev</a></span>
+                </div>
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        Ребят, вам всем спасибо! Вы очень крутые и уже сильные, надеюсь моя инфа вам пригодится.<br>
+                        Держите темп, всем удачи и хороших выходных☘️
+                    </span>
+                    <a class="main-data__item data-link" href="https://docs.google.com/document/d/1kSRpixjOHEhPE_LXdZsuoqBLnktTvjNJcjKet3IjMMI/edit" target="_blank"></a>
+                    <a class="main-data__item data-link" href="https://habrahabr.ru/post/252279/" target="_blank"></a>
+                    <a class="main-data__item data-link" href="https://emailframe.work/#buttons" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Вторник</span>
+                        <span class="main-date__item date-dmy">26.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/Ivanischev" target="_blank">Ivan Ivanischev</a></span>
+                </div>
+                <div class="main-data column">
+                    <a class="main-data__item data-link" href="https://docs.google.com/document/d/17WwjikLKUGrg-pDUw2SuqscBpYxnxTTcWsIhbKlXgho/edit#" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Четверг</span>
+                        <span class="main-date__item date-dmy">21.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/Ivanischev" target="_blank">Ivan Ivanischev</a></span>
+                </div>
+                <div class="main-data column">
+                    <a class="main-data__item data-link" href="https://docs.google.com/document/d/1W8scwv2UzA_OVmpJL9oA4HSiP4BUkLV5YAk0ItQC7ig/edit?usp=sharing" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Вторник</span>
+                        <span class="main-date__item date-dmy">19.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/Ivanischev" target="_blank">Ivan Ivanischev</a></span>
+                </div>
+                <div class="main-data column">
+                    <a class="main-data__item data-link" href="https://habr.com/ru/post/418923/" target="_blank"></a>
+                    <a class="main-data__item data-link" href="https://docs.google.com/document/d/1UBc_ap-P_5uuvIyDO7X_ainJF-rO64DjYB389tD8wTM/edit" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Вторник</span>
+                        <span class="main-date__item date-dmy">12.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/Ivanischev" target="_blank">Ivan Ivanischev</a></span>
+                </div>
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        Ребят, вот ссылки на статьи, по материалу который сегодня был.<br>
+                        Кому интересно, можете пройтись и почитать.
+                    </span>
+                    <a class="main-data__item data-link" href="https://habr.com/ru/post/224187/" target="_blank"></a>
+                    <a class="main-data__item data-link" href="https://medium.com/web-standards/critical-css-39e479af038e" target="_blank"></a>
+                    <a class="main-data__item data-link" href="https://docs.google.com/document/d/1KgJAooTwHqbtK6JRI7FXm0F8gzaJnalvZP2PtVo6vBQ/edit?usp=sharing" target="_blank"></a>
+                    <a class="main-data__item data-link" href="https://code.tutsplus.com/ru/tutorials/the-30-css-selectors-you-must-memorize--net-16048" target="_blank"></a>
+                    <a class="main-data__item data-link" href="https://idg.net.ua/blog/uchebnik-css/ispolzovanie-css/otnositelnyj-i-absolyutnyj-put-k-fajlu" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <sidebar class="github sidebar column">
+        <div class="github-title title">GitHub</div>
+        <div class="github-info">
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/wellshark" target="_blank">
+                    <span class="github-info__sur-name">Дмитрий Коваленко</span>
+                    <span class="github-info__uname">@wellshark</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/Telesheva" target="_blank">
+                    <span class="github-info__sur-name">Ирина Телешева</span>
+                    <span class="github-info__uname">@Telesheva</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/kirisona" target="_blank">
+                    <span class="github-info__sur-name">Софья Кириленко</span>
+                    <span class="github-info__uname">@kirisona</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/FireWall-e" target="_blank">
+                    <span class="github-info__sur-name">Владислав Слипченко</span>
+                    <span class="github-info__uname">@FireWall-e</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/Ann0403" target="_blank">
+                    <span class="github-info__sur-name">Cтарченко Анна</span>
+                    <span class="github-info__uname">@Ann0403</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/lukachi" target="_blank">
+                    <span class="github-info__sur-name">Нго За Фат</span>
+                    <span class="github-info__uname">@lukachi</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/gaidaianastasiia" target="_blank">
+                    <span class="github-info__sur-name">Гайдай Анастасия</span>
+                    <span class="github-info__uname">@gaidaianastasiia</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/LaAlexe" target="_blank">
+                    <span class="github-info__sur-name">Слисенко Света</span>
+                    <span class="github-info__uname">@LaAlexe</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/Dimatimmo" target="_blank">
+                    <span class="github-info__sur-name">Тимошенко Дмитрий</span>
+                    <span class="github-info__uname">@Dimatimmo</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/vzablodskiy1999" target="_blank">
+                    <span class="github-info__sur-name">Заблодский Валерий</span>
+                    <span class="github-info__uname">@vzablodskiy1999</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/SchVladyslav" target="_blank">
+                    <span class="github-info__sur-name">Щетина Владислав</span>
+                    <span class="github-info__uname">@SchVladyslav</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/elmir2232" target="_blank">
+                    <span class="github-info__sur-name">Мамедов Эльмир</span>
+                    <span class="github-info__uname">@elmir2232</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/iknowyoui11ia" target="_blank">
+                    <span class="github-info__sur-name">Прытков Илья </span>
+                    <span class="github-info__uname">@iknowyoui11ia</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/csyjxtr1999" target="_blank">
+                    <span class="github-info__sur-name">Высторопский Алексей</span>
+                    <span class="github-info__uname">@csyjxtr1999</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/YoungKoder" target="_blank">
+                    <span class="github-info__sur-name">Тесленко Максим</span>
+                    <span class="github-info__uname">@YoungKoder</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/vladshestakov" target="_blank">
+                    <span class="github-info__sur-name">Шестаков Влад</span>
+                    <span class="github-info__uname">@vladshestakov</span>
+                </a>
+            </div>
+            <div class="github-info__person">
+                <a class="github-info__link" href="https://github.com/AbramovNik" target="_blank">
+                    <span class="github-info__sur-name">Абрамов Никита</span>
+                    <span class="github-info__uname">@AbramovNik</span>
+                </a>
+            </div>
+        </div>
+    </sidebar>
+</body>
+</html>
