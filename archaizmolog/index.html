@@ -558,6 +558,7 @@
 
 			const touchMove = (e) => {
 				// if (scrolling) {
+					e.preventDefault();
 					e = touchStartY - e.touches[0].clientY;
 					content.scrollTop = e > 5 ? content.scrollTop + touchStep 
  															      : e < -5 ? content.scrollTop - touchStep 
