@@ -557,29 +557,24 @@
 			};
 
 			const touchMove = (e) => {
-				if (scrolling) {
+				// if (scrolling) {
 					e = touchStartY - e.touches[0].clientY;
-					setTimeout(() => {
-content.scrollTop = e > 5 ? content.scrollTop + touchStep 
+					content.scrollTop = e > 5 ? content.scrollTop + touchStep 
  															      : e < -5 ? content.scrollTop - touchStep 
  																		   : content.scrollTop;
-					}, 10);
-					
 					updateSliderPosition();
-				}
+				// }
 			};
 
 			const touchStart = (e) => {
-				
-				scrolling = 1;
+				// scrolling = 1;
 				slider.classList.add('active');
 				touchStartY = e.touches[0].clientY;
 				console.log('touchstart', touchStartY);
 			};
 
 			const touchEnd = (e) => {
-				// console.log('touchend', e);
-				scrolling = 0;
+				// scrolling = 0;
 				slider.classList.remove('active');
 			};
 
@@ -609,7 +604,6 @@ content.scrollTop = e > 5 ? content.scrollTop + touchStep
 			};
 
 			const wheel = (e) => {
-				// console.log(e.deltaY);
  				content.scrollTop = (e = Math.sign(e.deltaY)) > 0 ? content.scrollTop + wheelStep 
  															      : e < 0 ? content.scrollTop - wheelStep 
  																		  : content.scrollTop;
