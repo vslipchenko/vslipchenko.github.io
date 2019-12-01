@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>АРХХАИЗМОЛОГ</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic" rel="stylesheet"> -->
+	<style>
+		html,
+		.body {
+			height: 100%;
+		}
+
+		button {
+			background: unset;
+			outline: none;
+			border: none;
+			padding: 0;
+			height: 100%;
+			cursor: pointer;
+		}
+
+		p {
+			margin: 0;
+			margin-bottom: 24px;
+			line-height: 1.6;
+			margin: 0 10% 4%;
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+
+		i {
+			height: 100%;
+			width: 100%;
+			display: block;
+		}
+
+		.i {
+			background-size: 100% 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.b {
+			font-weight: bold;
+		}
+
+		.body {
+			margin: 0;
+			color: #F5F5F5;
+			background-color: #000;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 0.8em;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.background {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: -2;
+			filter: brightness(15%);
+		}
+
+		.background__image {
+			display: block;
+			height: 100%;
+		}
+
+		.background__image_default {
+			background-image: url(image/background/thereasontobehere.jpg);
+			/*background-image: url(image/background/fool.jpg);*/
+		}
+
+		.main {
+			display: flex;
+			margin: 20% 0;
+			padding: 20px 0 20px 20px;
+			height: 100%;
+			box-sizing: border-box;
+			background-color: rgba(0, 0, 0, .8);
+			box-shadow: 0px 0px 5px 0px #000;
+		}
+
+		.content {
+			display: flex;
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.preview {
+			flex: 1;
+			display: flex;
+			flex-wrap: wrap;
+			align-content: baseline;
+			justify-content: space-between;
+			font-size: 0.8em;
+		}
+
+		[class*=show_article] .preview {
+	 		display: none;
+	 	}
+
+		.card {
+			cursor: pointer;
+			flex-basis: calc(50% - 10px);
+			height: calc(31.95% - 10px);
+  			box-sizing: border-box;
+  			margin-bottom: 20px;
+  			display: flex;
+  			flex-direction: column;
+			align-items: center;
+			position: relative;
+		}
+
+		.card > * {
+			pointer-events: none;
+		}
+
+		.card:hover::before {
+			content: '';
+			border-top: 2px solid #F5F5F5;
+			top: 0;
+			position: absolute;
+			width: 100%;
+		}
+
+		.card:hover .card__title {
+			color: #F5DEB3;
+		}
+
+		.card_single {
+			margin-left: 25%;
+		}
+
+		.card__image {
+			flex: 1;
+			width: 100%; 		
+	 	}
+
+	 	.card__image_archaizmolog {
+	 		background-image: url(image/preview/archaizmolog.svg);
+	 	}
+
+	 	.card__image_krepost {
+	 		background-image: url(image/preview/krepost.svg);
+	 	}
+
+	 	.card__image_podih {
+	 		background-image: url(image/preview/podih.svg);
+	 	}
+
+	 	.card__image_poslednij-got {
+	 		background-image: url(image/preview/poslednij-got.svg);
+	 	}
+
+	 	.card__image_penie-divno {
+	 		background-image: url(image/preview/penie-divno.svg);
+	 	}
+
+	 	.card__title {
+	 		/*height: 15%;*/
+	 		display: flex;
+	 		align-items: center;
+	 		text-transform: uppercase;
+	 	}
+
+	 	.articles {
+	 		position: absolute;
+	 		height: 100%;
+	 		width: 100%;
+	 		display: none;
+	 		font-size: 0.9em;
+	 	}
+
+	 	[class*=show_article] .articles {
+	 		display: block;
+	 	}
+
+	 	.article {
+	 		display: none;
+	 		flex-direction: column;
+	 		height: 100%;
+	 	}
+
+	 	.article.show {
+	 		display: flex;
+	 	}
+
+	 	.article__item {
+	 		margin-bottom: 20px;
+	 	}
+
+	 	.article__item:last-child {
+	 		margin-bottom: 0;
+	 	}
+
+	 	.article-header {
+	 		position: relative;
+	 	}
+
+	 	.article-header__button {
+	 		left: 0;
+	 		position: absolute;
+	 		width: 40px;
+	 	}
+
+	 	.article-header__button:hover {
+	 		opacity: 0.7;
+	 	}
+
+	 	.article-header__button::after {
+	 		content: '';
+	 		width: 9px;
+			display: block;
+			border-width: 0 0 2px 2px;
+			border-color: #F5F5F5;
+			border-style: solid;
+			transform: rotate(45deg);
+			height: 9px;
+			margin: auto;
+	 	}
+
+	 	.article-header__title {
+	 		color: #F5DEB3;
+	 		font-size: 1.4em;
+	 	}
+
+	 	.article-body {
+	 		flex: 1;
+	 		display: flex;
+	 		flex-direction: column;
+	 		overflow: hidden;
+	 	}
+
+	 	.article-footer {
+	 		margin-top: auto;
+	 	}
+
+	 	.article-footer__publication-date {
+	 		color: #F5DEB3;
+	 	}
+
+		.vscrollbar {
+			width: 20px;
+		}
+
+		.vscrollbar__slider {
+			margin: auto;
+			width: 4px;
+			height: 20px;
+			background-color: #F5F5F5;
+			border-radius: 3px;
+			display: none;
+			opacity: 0.7;
+			position: relative;
+		}
+
+		.vscrollbar__slider.active,
+		.vscrollbar__slider:hover {
+			opacity: 1;
+		}
+
+		.vscrollbar.active .vscrollbar__slider {
+			display: block;
+		}
+
+		/*Phone*/
+
+		@media (min-width: 480px) {
+			.card {
+				height: calc(30.99% - 10px);
+			}
+    	}
+
+    	@media (min-width: 600px) {
+			p {
+				margin: 0 15% 4%;
+			}
+
+			.main {
+				margin: 0 20%;
+			}
+    	}
+
+    	/*Tablet*/
+
+    	@media (min-width: 760px) and (orientation : portrait) {
+			p {
+				margin: 0 20% 4%;
+			}
+
+			.main {
+				margin: 15% 0;
+			}
+
+			.articles {
+				font-size: 1em;
+			}
+    	}
+
+    	/*Desktop*/
+
+    	@media (min-width: 1080px)  {
+    		p {
+				margin: 0 15% 4%;
+			}
+
+			.body {
+				font-size: 0.9em;
+			}
+
+			.main {
+				margin: 0 25%;
+			}
+
+			.preview {
+				font-size: inherit;
+			}
+
+			.card {
+				height: calc(50% - 10px);
+			}
+
+			.card__image {
+				background-size: 80% 80%;
+			}
+
+			.articles {
+				font-size: 1em;
+			}
+    	}
+	</style>
+</head>
+<body class="body">
+	<div class="background">
+		<span class="background__image background__image_default i" style=""></span>
+	</div>
+	<main class="main">
+		<div class="content">
+			<div class="preview">
+				<div class="card card_single"
+					 data-article-id="initium" 
+					 data-background-image="initium.jpg">
+					<span class="card__image card__image_archaizmolog i"></span>
+					<span class="card__title">
+						INITIUM
+					</span>
+				</div>
+				<div class="card"
+					 data-article-id="krepost">
+					<span class="card__image card__image_krepost i"></span>
+					<span class="card__title">
+						Крепость
+					</span>
+				</div>
+				<div class="card"
+					 data-article-id="podih">
+					<span class="card__image card__image_podih i"></span>
+					<span class="card__title">
+						Подих
+					</span>
+				</div>
+				<div class="card"
+					 data-article-id="poslednij-got">
+					<span class="card__image card__image_poslednij-got i"></span>
+					<span class="card__title">
+						Последний гот
+					</span>
+				</div>
+				<div class="card"
+					 data-article-id="poslednij-got">
+					<span class="card__image card__image_penie-divno i"></span>
+					<span class="card__title">
+						Пение дивно
+					</span>
+				</div>
+			</div>
+			<div class="articles">
+				<article id="initium" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Несмотря на мои попытки не выпускать меч из рук, я чувствую, как огонь, запечатленный доспехами, меркнет с каждым днем.</p>
+							<p>Жалкое существование заставляет меня день за днем разбиваться о стену материальности.</p>
+							<p>С каждым днем тиски моих страстей/желаний зажимают меня все туже, как иронично…</p>
+							<p>Вопрос: «Почему все именно так ? Зачем, зачем быть, существовать в столь темном месте, могло ли все быть/выглядеть/существовать иначе, в ином виде ? Почему мне дозволено думать об этом, рушить основание непоколебимого столба "единого" ?»</p>
+							<p>Ужас окутывает меня. И если я — подданный, о Творец, зачем ты вкладываешь эти речи в мои уста ?</p>
+							<p>Ответ предстал предо мной в виде всепоглощающей тьмы.</p>
+							<p>Неужели это и есть конечная точка бытия ?!</p>
+							<p>Мне не по себе от одной лишь мысли, что весть тот мрак, который я так усердно пытаюсь вывести из закоулков города, может вновь воцарить, погасив фонари.</p>
+							<p>Да будет так !</p>
+							<p>Беги, беги мое естество вверх по лучу, превращая гневное пламя в благое тепло, слейся с источником. Пусть не терзают тебя сомненья .</p>
+							<p>Покоящиеся, под покрывалом бездны, вновь обретут форму, дабы уподобиться тебе.</p>
+							<p>И восстрашатся они всего того, что породило их снова: едкие цвета иллюзий, яркий вкус и завораживающий звук. Берегись того, что обитает в тени.</p>
+							<p>Да стану я частью того безустального правителя, облачившись в золотое одеяние, сияние которого никогда не снисходит в отражение !</p>
+							<p class="b">Да буду я запечатлен там, где бессильно притяжение, дабы нести стражу у ворот вечности !</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">VII / IV / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+				<article id="krepost" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Это крепость вина, мистерий и таинств,<br>
+							   Мраморный тронный зал, вечный золотой кладезь,<br>
+							   Пронзающий клин, серебристый подол,<br>
+							   Черепа из изъянов украшают мой трон.</p>
+							<p>Неистовый свет отражен в бледной коже:<br>
+							   В ней слава всех предков, мощь и честь древней ложи.<br>
+							   Загадочный взор устилает статут,<br>
+							   Пусть в эссенции Вечности тонет сосуд.</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">XV / V / MMXIX</span>
+						</div>
+					</div>
+				</article>
+				<article id="podih" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Я був і буду тут завжди,<br>
+							   Як не забракло уяви.<br>
+							   За рiдним словом не стлiє а нi душа,<br>
+							   А нi справа.</p>
+							<p>Що то за люди,<br>
+							   Якiїх чужа святiсть годує.<br>
+							   Але з надiєю й вiрою<br>
+							   Поглядаю угору.</p>
+							<p>Був я такою ж людиною-<br>
+							   З вiдчуттями,турботами.<br>
+							   Я йшов тебе поруч,<br>
+							   Та не бачив лиш сходи.</p>
+							<p>Я дивився за обрiй,<br>
+							   Жив у вирiї мрiй;<br>
+							   Моє сердце страждало,<br>
+							   Був, очима любив.</p>
+							<p>Диви — дуб за плечима!<br>
+							   Вінець понад брів.<br>
+							   Розіслалась стежина,<br>
+							   Та мiй дух не змарнiв.</p>
+							<p>Йшов мій настрiй до зливи,<br>
+							   А думки до хмарин.<br>
+						       Дмухав вiтер свободи,<br>
+							   А мiй дух не змарнiв.</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">XX / X / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+				<article id="poslednij-got" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Смотрю в глаза бездне или не открыл их доселе.<br>
+							    Не веду диалог:<br>
+								Не знают кто за телом стоит,<br>
+								И намедни, выгуливаю ярость отпустив поводок.</p>
+							<p>Еда не утоляет мой голод.<br>
+								Вода живит раны — трофей полученный в знойном сезоне.<br>
+								Настала пора разгладить ладонью багровые локоны, следом<br>
+								Отдам аромат в руки ветру попутно влекущему кудри цвет пепла<br>
+								Вот я слился с природой — хамелеон, и невидим для зрячих,<br>
+								Известно: чувств гамм миллионы,<br>
+								Но душу крамсает та ветвь — худощавая кляча.</p>
+							<p>Внутри холоднО, сыро, темно и снаружи<br>
+								Прост,нелюдим готичный лорд — в душе стужа<br>
+								Мне трость, монокль с цилиндром…<br>
+								Карету, резвых коней;<br>
+								С немым ямщиком расплачусь как доеду.</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">I / X / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+		<div class="vscrollbar">
+			<span class="vscrollbar__slider"></span>
+		</div>
+	</main>
+	<script>
+		'use strict';
+
+		const VScroll = (() => {
+			let content,
+				dragStartY,
+				lastScrollHeight,
+				scrollArea,
+				scrollbar,
+				scrollStep,
+				slider,
+				sliderDragging,
+				watcher,
+				wheelStep;
+
+			const sliderDrag = (e) => {
+				if (sliderDragging) {
+					const shiftY = Math.ceil((e.pageY - content.getBoundingClientRect().top - dragStartY) * 100 / content.clientHeight);
+					const sliderHeight = slider.clientHeight * 100 / content.clientHeight;
+					const totalShiftY = shiftY + parseInt(sliderHeight);
+
+ 					if (shiftY > 0 && totalShiftY < 100) {
+ 						slider.style.top = shiftY + '%';
+ 						content.scrollTop = shiftY * content.scrollHeight / 100;
+ 					}
+ 					else if (totalShiftY >= 100) {
+ 						slider.style.top = 100 - Math.round(sliderHeight) + '%';
+ 						content.scrollTop = content.scrollHeight - content.clientHeight;
+ 					}
+ 					else if (shiftY <= 0) {
+ 						slider.style.top = '0%';
+ 						content.scrollTop = 0;
+ 					}
+				}
+			};
+
+			const sliderDragStart = (e) => {
+				sliderDragging = 1;
+				slider.classList.add('active');
+				dragStartY = e.pageY - slider.getBoundingClientRect().top;
+			};
+
+			const sliderDragEnd = (e) => {
+				sliderDragging = 0;
+				slider.classList.remove('active');
+			};
+
+			const updateSliderPosition = () => {
+				slider.style.top = parseInt(100 * content.scrollTop / content.scrollHeight) + '%';
+			};
+
+			const watch = () => {
+				cancelAnimationFrame(watcher);
+  				if (lastScrollHeight !== content.scrollHeight) {
+    				slider.style.height = Math.ceil(100 * content.clientHeight / content.scrollHeight) + '%';
+    				console.log('content', content,'content.scrollHeight ', content.scrollHeight, 'content.clientHeight ', content.clientHeight);
+    				if (scrollbar.classList.contains('active')) {
+    					if (content.scrollHeight <= content.clientHeight) {
+    						scrollbar.classList.remove('active');
+    					}
+    				}
+    				else {
+    					if (content.scrollHeight > content.clientHeight) {
+    						scrollbar.classList.add('active');
+    					}
+    				}
+  				}
+
+  				lastScrollHeight = content.scrollHeight;
+  				watcher = requestAnimationFrame(watch);
+			};
+
+			const wheel = (e) => {
+ 				content.scrollTop = (e = Math.sign(e.deltaY)) > 0 ? content.scrollTop + wheelStep 
+ 															      : e < 0 ? content.scrollTop - wheelStep 
+ 																		  : content.scrollTop;
+ 				updateSliderPosition();
+			};
+
+			const C = function (o) {
+				content = document.querySelector(o.content);
+				scrollArea = o.scrollArea ? document.querySelector(o.scrollArea) : content;
+				scrollArea.onmousemove = sliderDrag;
+				scrollArea.onmouseup = sliderDragEnd;
+				scrollArea.onwheel = wheel;
+				scrollbar = document.querySelector(o.scrollbar);
+				scrollbar.style.marginTop = '0px';
+				if (scrollbar.offsetTop !== content.offsetTop) scrollbar.style.marginTop = content.offsetTop + 'px';
+				scrollStep = o.scrollStep || 8;
+				slider = document.querySelector(o.slider);
+				slider.onmousedown = sliderDragStart;
+				watcher = requestAnimationFrame(watch);
+				wheelStep = o.wheelStep || 8;
+				o.scrollRestoration && 'scrollRestoration' in history && (history.scrollRestoration = o.scrollRestoration);
+				updateSliderPosition();
+			};
+
+			return C;
+		})();
+
+		const previewScrollOptions = {
+			content: '.content',
+			scrollArea: '.body',
+			scrollbar: '.vscrollbar',
+			scrollRestoration: 'manual',
+			slider: '.vscrollbar__slider'
+		};
+
+		const articleScrollOptions = {
+            content: '.article.show .article-body',
+            scrollArea: '.body',
+            scrollbar: '.vscrollbar',
+            scrollRestoration: 'manual',
+            slider: '.vscrollbar__slider'
+        };
+
+		new VScroll(previewScrollOptions);
+
+		const eventBindAll = (s, e, f) => {
+			const element = document.querySelectorAll(s);
+			for (s = 0; s < element.length; s++) {
+				element[s].addEventListener(e, f);
+			}
+		};
+
+		const getChildElement = (nodes, className) => {
+			for (let i = 0; i < nodes.length; i++) {
+				if (nodes[i].classList && nodes[i].classList.contains(className)) return nodes[i];
+			}
+		};
+
+		eventBindAll('.card', 'click', (e) => {
+			e = e.target;
+			if (e.dataset.backgroundImage) document.querySelector('.background__image_default').style.backgroundImage = 'url(image/background/' + e.dataset.backgroundImage + ')';
+			document.querySelector('.content').classList.add('show_article_' + e.dataset.articleId);
+			document.querySelector('#' + e.dataset.articleId).classList.add('show');
+			document.querySelector('#' + e.dataset.articleId + ' .article-header__title').textContent = '— ' + getChildElement(e.childNodes, 'card__title').textContent + ' —';
+
+			new VScroll(articleScrollOptions);
+		});
+
+		eventBindAll('.article-header__button_type_back', 'click', (e) => {
+			document.querySelector('.background__image_default').style = '';
+			document.querySelector('.article.show').classList.remove('show');
+			const content = document.querySelector('.content');
+			content.className = content.className.replace(/\s+show[^\s]*/, ''); 
+
+			new VScroll(previewScrollOptions);
+		});
+	</script>
+</body>
+</html>
