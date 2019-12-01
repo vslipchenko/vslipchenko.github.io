@@ -520,6 +520,7 @@
 				slider,
 				scrolling,
 				touchStartY,
+				touchStep,
 				watcher,
 				wheelStep;
 
@@ -557,16 +558,22 @@
 
 			const touchMove = (e) => {
 				if (scrolling) {
-				const touchY = touchStartY - e.touches[0].clientY;
-				console.log('event',e,'touchY', touchY);
-				if (touchY > 0) { //scrolling down
-					content.scrollTop += 5;
-				}
-				else if (touchY < 0) { //scrolling up
-					content.scrollTop -= 5;
-				}
+					e = touchStartY - e.touches[0].clientY;
+					content.scrollTop = e > 0 ? content.scrollTop + touchStep 
+ 															      : e < 0 ? content.scrollTop - touchStep 
+ 																		  : content.scrollTop;
+				// console.log()
+				// console.log('event',e,'touchY', touchY);
+				// if (touchY > 0) { //scrolling down
+				// 	content.scrollTop += 6;
+				// }
+				// else if (touchY < 0) { //scrolling up
+				// 	content.scrollTop -= 6;
+				// }
 				updateSliderPosition();
-			}
+					// console.log('e.deltaY' , e.deltaY);
+				// wheel(e);
+				}
 			};
 
 			const touchStart = (e) => {
@@ -609,6 +616,7 @@
 			};
 
 			const wheel = (e) => {
+				// console.log(e.deltaY);
  				content.scrollTop = (e = Math.sign(e.deltaY)) > 0 ? content.scrollTop + wheelStep 
  															      : e < 0 ? content.scrollTop - wheelStep 
  																		  : content.scrollTop;
@@ -630,6 +638,7 @@
 				scrollStep = o.scrollStep || 8;
 				slider = document.querySelector(o.slider);
 				slider.onmousedown = sliderDragStart;
+				touchStep = o.touchStep || 8;
 				watcher = requestAnimationFrame(watch);
 				wheelStep = o.wheelStep || 8;
 				o.scrollRestoration && 'scrollRestoration' in history && (history.scrollRestoration = o.scrollRestoration);
