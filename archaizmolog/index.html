@@ -56,6 +56,7 @@
 			text-align: center;
 			display: flex;
 			flex-direction: column;
+			overscroll-behavior: contain;
 		}
 
 		.background {
@@ -558,7 +559,7 @@
 
 			const touchMove = (e) => {
 				// if (scrolling) {
-					e.preventDefault();
+					// e.preventDefault();
 					e = touchStartY - e.touches[0].clientY;
 					content.scrollTop = e > 5 ? content.scrollTop + touchStep 
  															      : e < -5 ? content.scrollTop - touchStep 
