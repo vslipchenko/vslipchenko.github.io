@@ -628,7 +628,7 @@
 				scrollStep = o.scrollStep || 8;
 				slider = document.querySelector(o.slider);
 				slider.onmousedown = sliderDragStart;
-				touchStep = o.touchStep || 10;
+				touchStep = o.touchStep || 8;
 				watcher = requestAnimationFrame(watch);
 				wheelStep = o.wheelStep || 8;
 				o.scrollRestoration && 'scrollRestoration' in history && (history.scrollRestoration = o.scrollRestoration);
