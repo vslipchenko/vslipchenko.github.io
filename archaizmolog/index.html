@@ -559,20 +559,10 @@
 			const touchMove = (e) => {
 				if (scrolling) {
 					e = touchStartY - e.touches[0].clientY;
-					content.scrollTop = e > 0 ? content.scrollTop + touchStep 
- 															      : e < 0 ? content.scrollTop - touchStep 
- 																		  : content.scrollTop;
-				// console.log()
-				// console.log('event',e,'touchY', touchY);
-				// if (touchY > 0) { //scrolling down
-				// 	content.scrollTop += 6;
-				// }
-				// else if (touchY < 0) { //scrolling up
-				// 	content.scrollTop -= 6;
-				// }
-				updateSliderPosition();
-					// console.log('e.deltaY' , e.deltaY);
-				// wheel(e);
+					content.scrollTop = e > 5 ? content.scrollTop + touchStep 
+ 															      : e < -5 ? content.scrollTop - touchStep 
+ 																		   : content.scrollTop;
+					updateSliderPosition();
 				}
 			};
 
@@ -638,7 +628,7 @@
 				scrollStep = o.scrollStep || 8;
 				slider = document.querySelector(o.slider);
 				slider.onmousedown = sliderDragStart;
-				touchStep = o.touchStep || 8;
+				touchStep = o.touchStep || 10;
 				watcher = requestAnimationFrame(watch);
 				wheelStep = o.wheelStep || 8;
 				o.scrollRestoration && 'scrollRestoration' in history && (history.scrollRestoration = o.scrollRestoration);
