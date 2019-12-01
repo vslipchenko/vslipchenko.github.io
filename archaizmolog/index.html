@@ -142,7 +142,6 @@
 		.card__image {
 			flex: 1;
 			width: 100%;
-			background-size: 80% 80%;
 	 	}
 
 	 	.card__image_archaizmolog {
@@ -284,7 +283,7 @@
 			}
 
 			.card {
-				height: calc(30% - 10px);
+				height: calc(29% - 10px);
 			}
     	}
 
@@ -321,6 +320,10 @@
     	@media (min-width: 1200px)  {
     		.main {
 				margin: 0 25%;
+			}
+
+			.card__image {
+				background-size: 80% 80%;
 			}
     	}
 	</style>
@@ -613,7 +616,7 @@
 				scrollStep = o.scrollStep || 8;
 				slider = document.querySelector(o.slider);
 				slider.onmousedown = sliderDragStart;
-				touchStep = o.touchStep || 8;
+				touchStep = o.touchStep || 6;
 				watcher = requestAnimationFrame(watch);
 				wheelStep = o.wheelStep || 8;
 				o.scrollRestoration && 'scrollRestoration' in history && (history.scrollRestoration = o.scrollRestoration);
