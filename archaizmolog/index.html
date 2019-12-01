@@ -518,12 +518,13 @@
 				scrollbar,
 				scrollStep,
 				slider,
-				sliderDragging,
+				scrolling,
+				touchStartY,
 				watcher,
 				wheelStep;
 
 			const sliderDrag = (e) => {
-				if (sliderDragging) {
+				if (scrolling) {
 					const shiftY = Math.ceil((e.pageY - content.getBoundingClientRect().top - dragStartY) * 100 / content.clientHeight);
 					const sliderHeight = slider.clientHeight * 100 / content.clientHeight;
 					const totalShiftY = shiftY + parseInt(sliderHeight);
@@ -544,13 +545,41 @@
 			};
 
 			const sliderDragStart = (e) => {
-				sliderDragging = 1;
+				scrolling = 1;
 				slider.classList.add('active');
 				dragStartY = e.pageY - slider.getBoundingClientRect().top;
 			};
 
 			const sliderDragEnd = (e) => {
-				sliderDragging = 0;
+				scrolling = 0;
+				slider.classList.remove('active');
+			};
+
+			const touchMove = (e) => {
+				if (scrolling) {
+				const touchY = touchStartY - e.touches[0].clientY;
+				console.log('event',e,'touchY', touchY);
+				if (touchY > 0) { //scrolling down
+					content.scrollTop += 5;
+				}
+				else if (touchY < 0) { //scrolling up
+					content.scrollTop -= 5;
+				}
+				updateSliderPosition();
+			}
+			};
+
+			const touchStart = (e) => {
+				
+				scrolling = 1;
+				slider.classList.add('active');
+				touchStartY = e.touches[0].clientY;
+				console.log('touchstart', touchStartY);
+			};
+
+			const touchEnd = (e) => {
+				// console.log('touchend', e);
+				scrolling = 0;
 				slider.classList.remove('active');
 			};
 
@@ -592,6 +621,9 @@
 				scrollArea.onmousemove = sliderDrag;
 				scrollArea.onmouseup = sliderDragEnd;
 				scrollArea.onwheel = wheel;
+				scrollArea.ontouchmove = touchMove;
+				scrollArea.ontouchend = touchEnd;
+				scrollArea.ontouchstart = touchStart;
 				scrollbar = document.querySelector(o.scrollbar);
 				scrollbar.style.marginTop = '0px';
 				if (scrollbar.offsetTop !== content.offsetTop) scrollbar.style.marginTop = content.offsetTop + 'px';
