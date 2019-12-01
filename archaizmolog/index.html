@@ -559,9 +559,12 @@
 			const touchMove = (e) => {
 				if (scrolling) {
 					e = touchStartY - e.touches[0].clientY;
-					content.scrollTop = e > 5 ? content.scrollTop + touchStep 
+					setTimeout(() => {
+content.scrollTop = e > 5 ? content.scrollTop + touchStep 
  															      : e < -5 ? content.scrollTop - touchStep 
  																		   : content.scrollTop;
+					}, 10);
+					
 					updateSliderPosition();
 				}
 			};
