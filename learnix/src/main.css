@@ -24,9 +24,9 @@ html,
         }
 
         ::-webkit-scrollbar {
-			width: 7px;
+            width: 7px;
             background-color: #E8E8E8;
-		}
+        }
 
         ::-webkit-scrollbar-thumb {
             background-color: #C8C8C8; 
@@ -41,6 +41,10 @@ html,
             line-height: 50px;
             height: 50px;
             color: white;
+        }
+
+        .title::after {
+            content: attr(data-text);
         }
 
         .sidebar {
@@ -214,4 +218,33 @@ html,
 
         .github-info__uname {
             font-size: .9em;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                flex-direction: column;
+            }
+
+            .title {
+                position: sticky;
+                top: 0;
+            }
+
+            .main {
+                flex: 0;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .sidebar .menu-list.root,
+            .sidebar .github-info {
+                display: none;
+            }
+
+            .sidebar.expand .menu-list.root,
+            .sidebar.expand .github-info {
+                display: initial;
+            }
         }
