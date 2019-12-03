@@ -1,4 +1,4 @@
-console.log('Have a nice day, 👨‍💻 👩‍💻');
+  console.log('Have a nice day, 👨‍💻 👩‍💻');
         const go = {
             d: document.createElement('_'),
             eventBindAll: (s, e, f) => {
@@ -31,12 +31,12 @@ console.log('Have a nice day, 👨‍💻 👩‍💻');
                 _.parentElement.classList.add('expand');
 
                 (go.get('.main-content.show') || go.d).classList.remove('show');
-                if (_.dataset.contentId) {
-                    go.getAll('.sidebar').forEach( e => {
-                        e.classList.remove('expand');
-                    });
-                    (go.get(`#${_.dataset.contentId}`) || go.d).classList.add('show');
-                }
+                // if (_.dataset.contentId) {
+                    // go.getAll('.sidebar').forEach( e => {
+                    //     e.classList.remove('expand');
+                    // });
+                (go.get(`#${_.dataset.contentId}`) || go.d).classList.add('show');
+                // }
             };
         };
 
