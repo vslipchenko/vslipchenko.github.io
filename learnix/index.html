@@ -7,7 +7,7 @@
     <title>learNIX</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300&display=swap&subset=cyrillic" rel="stylesheet"> 
     <style>
-        body,html{height:100%}body{margin:0;display:flex;font-size:1em;font-family:'Roboto Mono',monospace;text-align:center;background-color:#f5f5f5}ul{list-style-type:none;margin:0;padding:0}a{color:#000;text-decoration:none}::-webkit-scrollbar{width:7px;background-color:#e8e8e8}::-webkit-scrollbar-thumb{background-color:#c8c8c8}.column{display:flex;flex-direction:column}.title{line-height:50px;height:50px;color:#fff}.title::after{content:attr(data-text)}.sidebar{width:25%}.menu-title{background-color:#483d8b}.menu-item{cursor:pointer;line-height:50px;border-bottom:1px solid rgba(0,0,0,.2)}.menu-item .menu-item{border-color:transparent}.menu-item.expand{border-color:rgba(30,144,255,.7)}.menu-item.expand .menu-item.expand{border-color:rgba(0,0,0,.2)}.menu-link{display:block}.menu-link:not(.selected):hover{color:#fff;background-color:#f08080}.menu-list .menu-link.selected{color:#fff;background-color:#1e90ff;cursor:auto}.menu-list .menu-list .menu-link.selected{background-color:#6fb8ff}.menu-list .menu-list .menu-list .menu-link.selected{background-color:#a3d1ff}.menu-link+.menu-list{display:none}.menu-link.selected+.menu-list{display:block}.main{flex:1;box-shadow:inset 0 0 15px -12px #000}.main-title{background-color:#ff8c00}.main-content{flex:1;display:none;overflow-y:auto;scrollbar-width:thin}.main-content.show{display:flex}.main-item{display:flex;font-size:.9em}.main-item{border-bottom:10px solid #f5f5f5}.main-item:last-child{border-bottom:none}.main-info{flex:.25;padding:12.5px;background-color:bisque}.main-info__from::before{content:'от: '}.main-date{margin-bottom:10px}.main-data{flex:auto;padding:12.5px;background-color:#ffebcd;text-align:start;word-break:break-word}.main-data__item{margin-bottom:10px}.main-data__item:last-child{margin-bottom:0}.data-message__title{display:block;font-weight:700;margin-bottom:10px}.data-link{color:brown}.data-link:last-child{margin-bottom:0}.data-link::after{content:attr(href)}.github-title{background-color:teal}.github-info{flex:1;text-align:start;overflow-y:auto;scrollbar-width:thin}.github-info__person{padding:12.5px 20px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.2)}.github-info__person:hover{background-color:#f08080}.github-info__person:hover .github-info__link{color:#fff}.github-info__sur-name{display:block;font-size:1.1em}.github-info__uname{font-size:.9em}@media (max-width:500px){body{flex-direction:column}.title{position:sticky;top:0}.main{flex:0}.sidebar{width:100%}.sidebar .github-info,.sidebar .menu-list.root{display:none}.sidebar.expand .github-info,.sidebar.expand .menu-list.root{display:initial}}
+        body,html{height:100%}body{margin:0;display:flex;font-size:1em;font-family:'Roboto Mono',monospace;text-align:center;background-color:#f5f5f5}ul{list-style-type:none;margin:0;padding:0}a{color:#000;text-decoration:none}::-webkit-scrollbar{width:7px;background-color:#e8e8e8}::-webkit-scrollbar-thumb{background-color:#c8c8c8}.column{display:flex;flex-direction:column}.title{line-height:50px;height:50px;color:#fff}.title::after{content:attr(data-text)}.sidebar{width:25%}.menu-title{background-color:#483d8b}.menu-item{cursor:pointer;line-height:50px;border-bottom:1px solid rgba(0,0,0,.2)}.menu-item .menu-item{border-color:transparent}.menu-item.expand{border-color:rgba(30,144,255,1)}.menu-item.expand .menu-item.expand{border-color:rgba(0,0,0,.2)}.menu-link{display:block}.menu-link:not(.selected):hover{color:#fff;background-color:#f08080}.menu-list .menu-link.selected{color:#fff;background-color:#1e90ff;cursor:auto}.menu-list .menu-list .menu-link.selected{background-color:#6fb8ff}.menu-list .menu-list .menu-list .menu-link.selected{background-color:#a3d1ff}.menu-link+.menu-list{display:none}.menu-link.selected+.menu-list{display:block}.main{flex:1;box-shadow:inset 0 0 15px -12px #000}.main-title{background-color:#ff8c00}.main-content{flex:1;display:none;overflow-y:auto;scrollbar-width:thin}.main-content.show{display:flex}.main-item{display:flex;font-size:.9em}.main-item{border-bottom:10px solid #f5f5f5}.main-item:last-child{border-bottom:none}.main-info{flex:.25;padding:12.5px;background-color:bisque}.main-info__from::before{content:'от: '}.main-date{margin-bottom:10px}.main-data{flex:auto;padding:12.5px;background-color:#ffebcd;text-align:start;word-break:break-word}.main-data__item{margin-bottom:10px}.main-data__item:last-child{margin-bottom:0}.data-message__title{display:block;font-weight:700;margin-bottom:10px}.data-link{color:brown}.data-link:last-child{margin-bottom:0}.data-link::after{content:attr(href)}.github-title{background-color:teal}.github-info{flex:1;text-align:start;overflow-y:auto;scrollbar-width:thin}.github-info__person{padding:12.5px 20px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.2)}.github-info__person:hover{background-color:#f08080}.github-info__person:hover .github-info__link{color:#fff}.github-info__sur-name{display:block;font-size:1.1em}.github-info__uname{font-size:.9em}@media (max-width:500px){body{flex-direction:column}.title{position:sticky;top:0}.main{flex:0}.sidebar{width:100%}.sidebar .github-info,.sidebar .menu-list.root{display:none}.sidebar.expand .github-info,.sidebar.expand .menu-list.root{display:initial}}
     </style>
 </head>
 <body>
@@ -34,6 +34,8 @@
                 <a class="menu-link">Доп. материал</a>
                 <ul class="menu-list">
                     <li class="menu-item"><a class="menu-link" data-content-id="additional-material-javascript">JavaScript</a></li>
+                    <!-- <li class="menu-item"><a class="menu-link" data-content-id="additional-material-svg">SVG</a></li> -->
+                    <li class="menu-item"><a class="menu-link" data-content-id="additional-material-html-css">HTML / CSS</a></li>
                 </ul>
             </li>
             <li class="menu-item">
@@ -133,7 +135,87 @@
                 </div>
             </div>
         </div>
+        <div id="additional-material-html-css" class="main-content column">
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Пятница</span>
+                        <span class="main-date__item date-dmy">29.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/lukachi" target="_blank">Нго За Фат</a></span>
+                </div>
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Секреты CSS Идеальные решения ежедневных задач</span>
+                        <i>"Нашел интересную книгу, кому интересно, welcome"</i>
+                    </span>
+                    <a class="main-data__item data-link" href="https://firewall-e.github.io/learnix/storage/css-secrets-everydays-problem-solver.pdf" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Четверг</span>
+                        <span class="main-date__item date-dmy">21.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/kirisona" target="_blank">Софья Кириленко</a></span>
+                </div>
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">SVG В Вебе - Практическое Руководство</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://svgontheweb.com/ru/" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Polygon feature design: SVG animations for fun and profit</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://product.voxmedia.com/2013/11/25/5426880/polygon-feature-design-svg-animations-for-fun-and-profit" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Using SVG</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://css-tricks.com/using-svg/" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">How To Solve Adaptive Images In Responsive Web Design</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://www.smashingmagazine.com/2013/06/clown-car-technique-solving-for-adaptive-images-in-responsive-web-design/" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">The ultimate SVG guide</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://psdtowp.net/svg.html" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Используем SVG на сайте</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://habr.com/ru/post/260645/" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Icon System with SVG Sprites</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://css-tricks.com/svg-sprites-use-better-icon-fonts/" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Inline SVG vs Icon Fonts</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://css-tricks.com/icon-fonts-vs-svg/" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">The offline cookbook</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://jakearchibald.com/2014/offline-cookbook/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
         <div id="additional-material-javascript" class="main-content column">
+             <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Вторник</span>
+                        <span class="main-date__item date-dmy">03.12.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/wellshark" target="_blank">Дима Коваленко</a></span>
+                </div>
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Полное понимание синхронного и асинхронного JavaScript с Async/Await</span>
+                    </span>
+                    <a class="main-data__item data-link" href="https://medium.com/@stasonmars/полное-понимание-синхронного-и-асинхронного-javascript-с-async-await-ba5f47f4436" target="_blank"></a>
+                </div>
+            </div>
             <div class="main-item">
                 <div class="main-info column">
                     <div class="main-date column">
