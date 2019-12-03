@@ -22,6 +22,7 @@
                         <ul class="menu-list">
                             <li class="menu-item"><a class="menu-link">Angular</a></li>
                             <li class="menu-item"><a class="menu-link">React</a></li>
+                            <li class="menu-item"><a class="menu-link">React Native</a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
@@ -29,7 +30,12 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-item"><a class="menu-link">Доп. материал</a></li>
+            <li class="menu-item">
+                <a class="menu-link">Доп. материал</a>
+                <ul class="menu-list">
+                    <li class="menu-item"><a class="menu-link" data-content-id="additional-material-javascript">JavaScript</a></li>
+                </ul>
+            </li>
             <li class="menu-item">
                 <a class="menu-link">Инструменты</a>
                 <ul class="menu-list">
@@ -40,6 +46,9 @@
                         <a class="menu-link" data-content-id="tools-optimization">Оптимизация</a>
                     </li>
                     <li class="menu-item">
+                        <a class="menu-link" data-content-id="tools-sandboxes">Песочницы</a>
+                    </li>
+                    <li class="menu-item">
                         <a class="menu-link" data-content-id="tools-templates">Шаблоны</a>
                     </li>
                 </ul>
@@ -47,71 +56,7 @@
         </ul>
     </sidebar>
     <main class="main column">
-        <div class="main-title title">🐨</div>
-        <div id="tools-templates" class="main-content column">
-            <div class="main-item">
-                <div class="main-data column">
-                    <span class="main-data__item data-message">
-                        <span class="data-message__title">Email Framework</span>
-                        Фреймворк для создания отзывчивых (responsive) HTML email шаблонов
-                    </span>
-                    <a class="main-data__item data-link" href="https://emailframe.work/" target="_blank"></a>
-                </div>
-            </div>
-            <div class="main-item">
-                <div class="main-data column">
-                    <span class="main-data__item data-message">
-                        <span class="data-message__title">Bourbon</span>
-                        Библиотека миксов и функций на чистом SASS
-                    </span>
-                    <a class="main-data__item data-link" href="https://www.bourbon.io/" target="_blank"></a>
-                    <span class="main-data__item data-message">
-                        Материал по теме:
-                    </span>
-                    <a class="main-data__item data-link" href="http://prgssr.ru/development/nachinaem-rabotu-s-sass-i-bourbon.html" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div id="tools-animation" class="main-content column">
-            <div class="main-item">
-                <div class="main-data column">
-                    <span class="main-data__item data-message">
-                        <span class="data-message__title">Animate.css</span>
-                        Набор готовых CSS анимаций
-                    </span>
-                    <a class="main-data__item data-link" href="https://daneden.github.io/animate.css/" target="_blank"></a>
-                </div>
-            </div>
-            <div class="main-item">
-                <div class="main-data column">
-                    <span class="main-data__item data-message">
-                        <span class="data-message__title">WOW.js</span>
-                        JavaScript библиотека для динамичной анимации
-                    </span>
-                    <a class="main-data__item data-link" href="https://wowjs.uk/" target="_blank"></a>
-                </div>
-            </div>
-            <div class="main-item">
-                <div class="main-data column">
-                    <span class="main-data__item data-message">
-                        <span class="data-message__title">GreenSock</span>
-                        Плагин для анимации всего, что поддерживается JavaScript: CSS свойств, SVG, React, canvas, generic objects и т.д.
-                    </span>
-                    <a class="main-data__item data-link" href="https://greensock.com/" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <div id="tools-optimization" class="main-content column">
-            <div class="main-item">
-                <div class="main-data column">
-                    <span class="main-data__item data-message">
-                        <span class="data-message__title">Tiny PNG</span>
-                        Сервис сжатия .png и .jpg изображений
-                    </span>
-                    <a class="main-data__item data-link" href="https://tinypng.com/" target="_blank"></a>
-                </div>
-            </div>
-        </div>
+        <div class="main-title title" title="No Euclid, Just Eucalypt!">🐨</div>
         <div id="main-material-html-css" class="main-content column">
             <div class="main-item">
                 <div class="main-info column">
@@ -185,6 +130,99 @@
                     <a class="main-data__item data-link" href="https://docs.google.com/document/d/1KgJAooTwHqbtK6JRI7FXm0F8gzaJnalvZP2PtVo6vBQ/edit?usp=sharing" target="_blank"></a>
                     <a class="main-data__item data-link" href="https://code.tutsplus.com/ru/tutorials/the-30-css-selectors-you-must-memorize--net-16048" target="_blank"></a>
                     <a class="main-data__item data-link" href="https://idg.net.ua/blog/uchebnik-css/ispolzovanie-css/otnositelnyj-i-absolyutnyj-put-k-fajlu" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <div id="additional-material-javascript" class="main-content column">
+            <div class="main-item">
+                <div class="main-info column">
+                    <div class="main-date column">
+                        <span class="main-date__item date-day">Вторник</span>
+                        <span class="main-date__item date-dmy">26.11.2019</span>
+                    </div>
+                    <span class="main-info__from"><a href="https://github.com/csyjxtr1999" target="_blank">Алексей Высторопский</a></span>
+                </div>
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">E-Commerce JavaScript Tutorial - Shopping Cart from Scratch</span>
+                        Функционал корзины с нуля
+                    </span>
+                    <a class="main-data__item data-link" href="https://www.youtube.com/watch?v=023Psne_-_4" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <div id="tools-animation" class="main-content column">
+            <div class="main-item">
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Animate.css</span>
+                        Набор готовых CSS анимаций
+                    </span>
+                    <a class="main-data__item data-link" href="https://daneden.github.io/animate.css/" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">WOW.js</span>
+                        JavaScript библиотека для динамичной анимации
+                    </span>
+                    <a class="main-data__item data-link" href="https://wowjs.uk/" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">GreenSock</span>
+                        Плагин для анимации всего, что поддерживается JavaScript: CSS свойств, SVG, React, canvas, generic objects и т.д.
+                    </span>
+                    <a class="main-data__item data-link" href="https://greensock.com/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <div id="tools-sandboxes" class="main-content column">
+            <div class="main-item">
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Loupe</span>
+                        JavaScript песочница для наглядной демонстрации того, как call stack/ event loop/ callback queue взаимодействуют между собой
+                    </span>
+                    <a class="main-data__item data-link" href="http://latentflip.com/loupe/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <div id="tools-optimization" class="main-content column">
+            <div class="main-item">
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Tiny PNG</span>
+                        Сервис сжатия .png и .jpg изображений
+                    </span>
+                    <a class="main-data__item data-link" href="https://tinypng.com/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <div id="tools-templates" class="main-content column">
+            <div class="main-item">
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Email Framework</span>
+                        Фреймворк для создания отзывчивых (responsive) HTML email шаблонов
+                    </span>
+                    <a class="main-data__item data-link" href="https://emailframe.work/" target="_blank"></a>
+                </div>
+            </div>
+            <div class="main-item">
+                <div class="main-data column">
+                    <span class="main-data__item data-message">
+                        <span class="data-message__title">Bourbon</span>
+                        Библиотека миксов и функций на чистом SASS
+                    </span>
+                    <a class="main-data__item data-link" href="https://www.bourbon.io/" target="_blank"></a>
+                    <span class="main-data__item data-message">
+                        Материал по теме:
+                    </span>
+                    <a class="main-data__item data-link" href="http://prgssr.ru/development/nachinaem-rabotu-s-sass-i-bourbon.html" target="_blank"></a>
                 </div>
             </div>
         </div>
