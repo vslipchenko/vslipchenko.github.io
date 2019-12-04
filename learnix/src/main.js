@@ -1,4 +1,4 @@
-  console.log('Have a nice day, 👨‍💻 👩‍💻');
+console.log('Have a nice day, 👨‍💻 👩‍💻 !');
         const go = {
             d: document.createElement('_'),
             eventBindAll: (s, e, f) => {
@@ -40,6 +40,13 @@
             };
         };
 
+        const navigateGithub = _ => {
+            _ = _.target;
+            _ = Array.from(go.getAll('.github-info__sur-name'))
+                     .find(e => e.textContent ===  _.textContent);
+            if (_)  {_.parentElement.click();}
+        };
+
         go.eventBindAll('.sidebar', 'click', e => {
             e = e.target.parentElement;
             if (e.classList.contains('sidebar')) e.classList.toggle('expand');
@@ -56,3 +63,5 @@
                 });
             });  
         });
+
+        go.eventBindAll('.main-info__from a', 'click', navigateGithub);

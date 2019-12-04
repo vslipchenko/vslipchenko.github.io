@@ -7,7 +7,7 @@
     <title>learNIX</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300&display=swap&subset=cyrillic" rel="stylesheet"> 
     <style>
-        body,html{height:100%}body{margin:0;display:flex;font-size:1em;font-family:'Roboto Mono',monospace;text-align:center;background-color:#f5f5f5}ul{list-style-type:none;margin:0;padding:0}a{color:#000;text-decoration:none}::-webkit-scrollbar{width:7px;background-color:#e8e8e8}::-webkit-scrollbar-thumb{background-color:#c8c8c8}.column{display:flex;flex-direction:column}.title{line-height:50px;height:50px;color:#fff}.title::after{content:attr(data-text)}.sidebar{width:25%}.menu-title{background-color:#483d8b}.menu-list.root{flex:1;overflow-y:auto;scrollbar-width:thin}.menu-item{cursor:pointer;line-height:50px;border-bottom:1px solid rgba(0,0,0,.2)}.menu-item .menu-item{border-color:transparent}.menu-item.expand{border-color:rgba(30,144,255,1)}.menu-item.expand .menu-item.expand{border-color:rgba(0,0,0,.2)}.menu-link{display:block}.menu-link:not(.selected):hover{color:#fff;background-color:#f08080}.menu-list .menu-link.selected{color:#fff;background-color:#1e90ff;cursor:auto}.menu-list .menu-list .menu-link.selected{background-color:#6fb8ff}.menu-list .menu-list .menu-list .menu-link.selected{background-color:#a3d1ff}.menu-link+.menu-list{display:none}.menu-link.selected+.menu-list{display:block}.main{flex:1;box-shadow:inset 0 0 15px -12px #000}.main-title{background-color:#ff8c00}.main-content{flex:1;display:none;overflow-y:auto;scrollbar-width:thin}.main-content.show{display:flex}.main-item{display:flex;font-size:.9em}.main-item{border-bottom:10px solid #f5f5f5}.main-item:last-child{border-bottom:none}.main-info{flex:.25;padding:12.5px;background-color:bisque}.main-info__from::before{content:'от: '}.main-date{margin-bottom:10px}.main-data{flex:auto;padding:12.5px;background-color:#ffebcd;text-align:start;word-break:break-word}.main-data__item{margin-bottom:10px}.main-data__item:last-child{margin-bottom:0}.data-message__title{display:block;font-weight:700;margin-bottom:10px}.data-link{color:brown}.data-link:last-child{margin-bottom:0}.data-link::after{content:attr(href)}.github-title{background-color:teal}.github-info{flex:1;text-align:start;overflow-y:auto;scrollbar-width:thin}.github-info__person{padding:12.5px 20px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.2)}.github-info__person:hover{background-color:#f08080}.github-info__person:hover .github-info__link{color:#fff}.github-info__sur-name{display:block;font-size:1.1em}.github-info__uname{font-size:.9em}@media (max-width:500px){body{flex-direction:column}.title{position:sticky;top:0}.main{flex:0}.sidebar{width:100%}.sidebar .github-info,.sidebar .menu-list.root{display:none}.sidebar.expand .github-info,.sidebar.expand .menu-list.root{display:initial}}
+        body,html{height:100%}body{margin:0;display:flex;font-size:1em;font-family:'Roboto Mono',monospace;text-align:center;background-color:#f5f5f5}ul{list-style-type:none;margin:0;padding:0}a{color:#000;text-decoration:none;cursor:pointer}::-webkit-scrollbar{width:7px;background-color:#e8e8e8}::-webkit-scrollbar-thumb{background-color:#c8c8c8}.column{display:flex;flex-direction:column}.title{line-height:50px;height:50px;color:#fff}.title::after{content:attr(data-text)}.sidebar{width:25%}.menu-title{background-color:#483d8b}.menu-list.root{flex:1;overflow-y:auto;scrollbar-width:thin}.menu-item{cursor:pointer;line-height:50px;border-bottom:1px solid rgba(0,0,0,.2)}.menu-item .menu-item{border-color:transparent}.menu-item.expand{border-color:rgba(30,144,255,1)}.menu-item.expand .menu-item.expand{border-color:rgba(0,0,0,.2)}.menu-link{display:block}.menu-link:not(.selected):hover{color:#fff;background-color:#f08080}.menu-list .menu-link.selected{color:#fff;background-color:#1e90ff;cursor:auto}.menu-list .menu-list .menu-link.selected{background-color:#6fb8ff}.menu-list .menu-list .menu-list .menu-link.selected{background-color:#a3d1ff}.menu-link+.menu-list{display:none}.menu-link.selected+.menu-list{display:block}.main{flex:1;box-shadow:inset 0 0 15px -12px #000}.main-title{background-color:#ff8c00}.main-content{flex:1;display:none;overflow-y:auto;scrollbar-width:thin}.main-content.show{display:flex}.main-item{display:flex;font-size:.9em}.main-item{border-bottom:10px solid #f5f5f5}.main-item:last-child{border-bottom:none}.main-info{flex:.25;padding:12.5px;background-color:bisque}.main-info__from::before{content:'от: '}.main-date{margin-bottom:10px}.main-data{flex:auto;padding:12.5px;background-color:#ffebcd;text-align:start;word-break:break-word}.main-data__item{margin-bottom:10px}.main-data__item:last-child{margin-bottom:0}.data-message__title{display:block;font-weight:700;margin-bottom:10px}.data-link{color:brown}.data-link:last-child{margin-bottom:0}.data-link::after{content:attr(href)}.github-title{background-color:teal}.github-info{flex:1;text-align:start;overflow-y:auto;scrollbar-width:thin}.github-info__person{padding:12.5px 20px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.2)}.github-info__person:hover{background-color:#f08080}.github-info__person:hover .github-info__link{color:#fff}.github-info__sur-name{display:block;font-size:1.1em}.github-info__uname{font-size:.9em}@media (max-width:500px){body{flex-direction:column}.title{position:sticky;top:0}.main{flex:0}.sidebar{width:100%}.sidebar .github-info,.sidebar .menu-list.root{display:none}.sidebar.expand .github-info,.sidebar.expand .menu-list.root{display:initial}}
     </style>
 </head>
 <body>
@@ -34,7 +34,6 @@
                 <a class="menu-link">Доп. материал</a>
                 <ul class="menu-list">
                     <li class="menu-item"><a class="menu-link" data-content-id="additional-material-javascript">JavaScript</a></li>
-                    <!-- <li class="menu-item"><a class="menu-link" data-content-id="additional-material-svg">SVG</a></li> -->
                     <li class="menu-item"><a class="menu-link" data-content-id="additional-material-html-css">HTML / CSS</a></li>
                 </ul>
             </li>
@@ -142,7 +141,7 @@
                         <span class="main-date__item date-day">Пятница</span>
                         <span class="main-date__item date-dmy">29.11.2019</span>
                     </div>
-                    <span class="main-info__from"><a href="https://github.com/lukachi" target="_blank">Нго За Фат</a></span>
+                    <span class="main-info__from"><a>Нго За Фат</a></span>
                 </div>
                 <div class="main-data column">
                     <span class="main-data__item data-message">
@@ -158,7 +157,7 @@
                         <span class="main-date__item date-day">Четверг</span>
                         <span class="main-date__item date-dmy">21.11.2019</span>
                     </div>
-                    <span class="main-info__from"><a href="https://github.com/kirisona" target="_blank">Софья Кириленко</a></span>
+                    <span class="main-info__from"><a>Софья Кириленко</a></span>
                 </div>
                 <div class="main-data column">
                     <span class="main-data__item data-message">
@@ -207,7 +206,7 @@
                         <span class="main-date__item date-day">Вторник</span>
                         <span class="main-date__item date-dmy">03.12.2019</span>
                     </div>
-                    <span class="main-info__from"><a href="https://github.com/wellshark" target="_blank">Дима Коваленко</a></span>
+                    <span class="main-info__from"><a>Дмитрий Коваленко</a></span>
                 </div>
                 <div class="main-data column">
                     <span class="main-data__item data-message">
@@ -222,7 +221,7 @@
                         <span class="main-date__item date-day">Вторник</span>
                         <span class="main-date__item date-dmy">26.11.2019</span>
                     </div>
-                    <span class="main-info__from"><a href="https://github.com/csyjxtr1999" target="_blank">Алексей Высторопский</a></span>
+                    <span class="main-info__from"><a>Высторопский Алексей</a></span>
                 </div>
                 <div class="main-data column">
                     <span class="main-data__item data-message">
@@ -417,7 +416,7 @@
         </div>
     </sidebar>
     <script>
-        console.log("Have a nice day, 👨‍💻 👩‍💻");const go={d:document.createElement("_"),eventBindAll:(e,t,s)=>{const l=document.querySelectorAll(e);for(e=0;e<l.length;e++)l[e].addEventListener(t,s)},get:e=>document.querySelector(e),getAll:e=>document.querySelectorAll(e)},navigateMenu=e=>{(e=e.target).classList.contains("selected")||(go.getAll(".menu-item.expand").forEach(t=>{t.contains(e)||(t.classList.remove("expand"),t.childNodes.forEach(e=>{e.classList&&e.classList.remove("selected")}))}),e.classList.add("selected"),e.parentElement.classList.add("expand"),(go.get(".main-content.show")||go.d).classList.remove("show"),(go.get(`#${e.dataset.contentId}`)||go.d).classList.add("show"))};go.eventBindAll(".sidebar","click",e=>{(e=e.target.parentElement).classList.contains("sidebar")&&e.classList.toggle("expand")}),go.eventBindAll(".menu-link","click",navigateMenu),go.eventBindAll(".main-title","click",()=>{(go.get(".main-content.show")||go.d).classList.remove("show"),go.getAll(".menu-item.expand").forEach(e=>{e.classList.remove("expand"),e.childNodes.forEach(e=>{e.classList&&e.classList.remove("selected")})})});
+        console.log("Have a nice day, 👨‍💻 👩‍💻 !");const go={d:document.createElement("_"),eventBindAll:(e,t,n)=>{const s=document.querySelectorAll(e);for(e=0;e<s.length;e++)s[e].addEventListener(t,n)},get:e=>document.querySelector(e),getAll:e=>document.querySelectorAll(e)},navigateMenu=e=>{(e=e.target).classList.contains("selected")||(go.getAll(".menu-item.expand").forEach(t=>{t.contains(e)||(t.classList.remove("expand"),t.childNodes.forEach(e=>{e.classList&&e.classList.remove("selected")}))}),e.classList.add("selected"),e.parentElement.classList.add("expand"),(go.get(".main-content.show")||go.d).classList.remove("show"),(go.get(`#${e.dataset.contentId}`)||go.d).classList.add("show"))},navigateGithub=e=>{e=e.target,(e=Array.from(go.getAll(".github-info__sur-name")).find(t=>t.textContent===e.textContent))&&e.parentElement.click()};go.eventBindAll(".sidebar","click",e=>{(e=e.target.parentElement).classList.contains("sidebar")&&e.classList.toggle("expand")}),go.eventBindAll(".menu-link","click",navigateMenu),go.eventBindAll(".main-title","click",()=>{(go.get(".main-content.show")||go.d).classList.remove("show"),go.getAll(".menu-item.expand").forEach(e=>{e.classList.remove("expand"),e.childNodes.forEach(e=>{e.classList&&e.classList.remove("selected")})})}),go.eventBindAll(".main-info__from a","click",navigateGithub);
     </script>
 </body>
 </html>
