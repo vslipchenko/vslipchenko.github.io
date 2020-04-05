@@ -71,7 +71,7 @@
 			height: 100%;
 			width: 100%;
 			z-index: -2;
-			filter: brightness(15%);
+			filter: brightness(25%);
 		}
 
 		.background__image {
@@ -91,7 +91,7 @@
 			height: 100%;
 			box-sizing: border-box;
 			background-color: rgba(0, 0, 0, .8);
-			box-shadow: 0px 0px 5px 0px #000;
+			box-shadow: 0px 0px 7px 0px #000;
 		}
 
 		.content {
@@ -131,7 +131,7 @@
 		}
 
 		.card__title {
-			transition: color .3s;
+			transition: color .2s;
 		}
 
 		.card:hover .card__title {
@@ -253,6 +253,10 @@
 			background-image: url(src/image/icon/read-aloud-play.svg);
 		}
 
+		.i-read-aloud.pause {
+			background-image: url(src/image/icon/read-aloud-pause.svg);
+		}
+
 		.article-header__title {
 			color: #F5DEB3;
 			font-size: 1.4em;
@@ -295,6 +299,11 @@
 
 		.vscrollbar.active .vscrollbar__slider {
 			display: block;
+		}
+
+		::selection {
+			background-color: #fff;
+			color: #000;
 		}
 
 		/*Phone landscape*/
@@ -377,49 +386,49 @@
 	<main class="main">
 		<div class="content">
 			<div class="preview">
-				<div class="card card_single" data-article-id="initium" data-background-image="initium.jpg">
+				<div id="initium" class="card card_single" data-background-image="initium.jpg">
 					<span class="card__image card__image_initium i"></span>
 					<span class="card__title">
 						INITIUM
 					</span>
 				</div>
-				<div class="card" data-article-id="nichto">
+				<div id="nichto" class="card">
 					<span class="card__image card__image_nichto i"></span>
 					<span class="card__title">
 						Ничто
 					</span>
 				</div>
-				<div class="card" data-article-id="koster">
+				<div id="koster" class="card">
 					<span class="card__image card__image_koster i"></span>
 					<span class="card__title">
 						Костёр
 					</span>
 				</div>
-				<div class="card" data-article-id="germetika">
+				<div id="germetika" class="card">
 					<span class="card__image card__image_germetika i"></span>
 					<span class="card__title">
 						Герметика
 					</span>
 				</div>
-				<div class="card" data-article-id="krepost">
+				<div id="krepost" class="card">
 					<span class="card__image card__image_krepost i"></span>
 					<span class="card__title">
 						Крепость
 					</span>
 				</div>
-				<div class="card" data-article-id="podih">
+				<div id="podih" class="card">
 					<span class="card__image card__image_podih i"></span>
 					<span class="card__title">
 						Подих
 					</span>
 				</div>
-				<div class="card" data-article-id="poslednij-got">
+				<div id="poslednij-got" class="card">
 					<span class="card__image card__image_poslednij-got i"></span>
 					<span class="card__title">
 						Последний гот
 					</span>
 				</div>
-				<div class="card" data-article-id="penie-divno">
+				<div id="penie-divno" class="card">
 					<span class="card__image card__image_penie-divno i"></span>
 					<span class="card__title">
 						Пение дивно
@@ -427,7 +436,7 @@
 				</div>
 			</div>
 			<div class="articles">
-				<article id="initium" class="article">
+				<article data-article-id="initium" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back"></button>
 						<span class="article-header__title"></span>
@@ -467,7 +476,7 @@
 						</div>
 					</div>
 				</article>
-				<article id="koster" class="article">
+				<article data-article-id="koster" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -499,7 +508,7 @@
 						</div>
 					</div>
 				</article>
-				<article id="germetika" class="article">
+				<article data-article-id="germetika" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -514,7 +523,7 @@
 							<p>Смотри, сколько мастерства в одной только материи.<br>
 								Сколько искусства собрано в одном только творении;<br>
 								Везде красота, везде соотношение, везде разнообразие, порядку подчинение.</p>
-							<p>Кто же сделал все это ?! Какая мать, какой отец ?<br>
+							<p>Кто же сделал все это ?! Какая мать, какой отец ?!<br>
 								Если не единственный невидимый мирских вещей Творец,<br>
 								Который создал все волею Своею, благом окропив<br>
 								И созерцанием величества всех нас Он одарил.</p>
@@ -524,7 +533,7 @@
 						</div>
 					</div>
 				</article>
-				<article id="krepost" class="article">
+				<article data-article-id="krepost" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -550,7 +559,7 @@
 						</div>
 					</div>
 				</article>
-				<article id="podih" class="article">
+				<article data-article-id="podih" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -592,7 +601,7 @@
 						</div>
 					</div>
 				</article>
-				<article id="poslednij-got" class="article">
+				<article data-article-id="poslednij-got" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -612,11 +621,11 @@
 								Вода живит раны — трофей полученный в знойном сезоне.<br>
 								Настала пора разгладить ладонью багровые локоны, следом<br>
 								Отдам аромат в руки ветру попутно влекущему кудри цвет пепла<br>
-								Вот я слился с природой — хамелеон, и невидим для зрячих,<br>
+								Вот я слился с природой — хамелеон и невидим для зрячих,<br>
 								Известно: чувств гамм миллионы,<br>
 								Но душу крамсает та ветвь — худощавая кляча.</p>
 							<p>Внутри холоднО, сыро, темно и снаружи<br>
-								Прост,нелюдим готичный лорд — в душе стужа<br>
+								Прост, нелюдим готичный лорд — в душе стужа<br>
 								Мне трость, монокль с цилиндром…<br>
 								Карету, резвых коней;<br>
 								С немым ямщиком расплачусь как доеду.</p>
@@ -626,7 +635,7 @@
 						</div>
 					</div>
 				</article>
-				<article id="penie-divno" class="article">
+				<article data-article-id="penie-divno" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -665,21 +674,69 @@
 		</div>
 	</main>
 	<script>
-		"use strict"; const VScroll = (() => { let e, t, l, o, c, r, s, n, a, i, d, u; const h = l => { if (n) { const o = Math.ceil(100 * (l.pageY - e.getBoundingClientRect().top - t) / e.clientHeight), c = 100 * s.clientHeight / e.clientHeight, r = o + parseInt(c); o > 0 && r < 100 ? (s.style.top = o + "%", e.scrollTop = o * e.scrollHeight / 100) : r >= 100 ? (s.style.top = 100 - Math.round(c) + "%", e.scrollTop = e.scrollHeight - e.clientHeight) : o <= 0 && (s.style.top = "0%", e.scrollTop = 0) } }, p = e => { n = 1, s.classList.add("active"), t = e.pageY - s.getBoundingClientRect().top }, g = e => { n = 0, s.classList.remove("active") }, m = t => { t = a - t.touches[0].clientY, e.scrollTop = t > 5 ? e.scrollTop + i : t < -5 ? e.scrollTop - i : e.scrollTop, S() }, v = e => { s.classList.add("active"), a = e.touches[0].clientY }, y = e => { s.classList.remove("active") }, S = () => { s.style.top = parseInt(100 * e.scrollTop / e.scrollHeight) + "%" }, _ = () => { cancelAnimationFrame(d), l !== e.scrollHeight && (s.style.height = Math.ceil(100 * e.clientHeight / e.scrollHeight) + "%", c.classList.contains("active") ? e.scrollHeight <= e.clientHeight && c.classList.remove("active") : e.scrollHeight > e.clientHeight && c.classList.add("active")), l = e.scrollHeight, d = requestAnimationFrame(_) }, b = t => { e.scrollTop = (t = Math.sign(t.deltaY)) > 0 ? e.scrollTop + u : t < 0 ? e.scrollTop - u : e.scrollTop, S() }; return function (t) { e = document.querySelector(t.content), (o = t.scrollArea ? document.querySelector(t.scrollArea) : e).onmousemove = h, o.onmouseup = g, o.onwheel = b, o.ontouchmove = m, o.ontouchend = y, o.ontouchstart = v, o.style.overscrollBehavior = t.overscrollBehavior ? t.overscrollBehavior : "none", (c = document.querySelector(t.scrollbar)).style.marginTop = "0px", c.offsetTop !== e.offsetTop && (c.style.marginTop = e.offsetTop + "px"), r = t.scrollStep || 8, (s = document.querySelector(t.slider)).onmousedown = p, i = t.touchStep || 6, d = requestAnimationFrame(_), u = t.wheelStep || 12, t.scrollRestoration && "scrollRestoration" in history && (history.scrollRestoration = t.scrollRestoration), S() } })(), previewScrollOptions = { content: ".content", scrollArea: ".body", scrollbar: ".vscrollbar", scrollRestoration: "manual", slider: ".vscrollbar__slider" }, articleScrollOptions = { content: ".article.show .article-body", scrollArea: ".body", scrollbar: ".vscrollbar", scrollRestoration: "manual", slider: ".vscrollbar__slider" }; new VScroll(previewScrollOptions); const eventBindAll = (e, t, l) => { const o = document.querySelectorAll(e); for (e = 0; e < o.length; e++)o[e].addEventListener(t, l) }, getChildElement = (e, t) => { for (let l = 0; l < e.length; l++)if (e[l].classList && e[l].classList.contains(t)) return e[l] }; eventBindAll(".card", "click", e => { (e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.dataset.articleId), document.querySelector("#" + e.dataset.articleId).classList.add("show"), document.querySelector("#" + e.dataset.articleId + " .article-header__title").textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —", new VScroll(articleScrollOptions) }), eventBindAll(".article-header__button_type_back", "click", e => { window.speech = null; document.querySelector(".background__image_default").style = "", document.querySelector(".article.show").classList.remove("show"); const t = document.querySelector(".content"); t.className = t.className.replace(/\s+show[^\s]*/, ""), new VScroll(previewScrollOptions) });
+		"use strict"; const VScroll = (() => { let e, t, l, o, c, r, s, n, a, i, d, u; const h = l => { if (n) { const o = Math.ceil(100 * (l.pageY - e.getBoundingClientRect().top - t) / e.clientHeight), c = 100 * s.clientHeight / e.clientHeight, r = o + parseInt(c); o > 0 && r < 100 ? (s.style.top = o + "%", e.scrollTop = o * e.scrollHeight / 100) : r >= 100 ? (s.style.top = 100 - Math.round(c) + "%", e.scrollTop = e.scrollHeight - e.clientHeight) : o <= 0 && (s.style.top = "0%", e.scrollTop = 0) } }, p = e => { n = 1, s.classList.add("active"), t = e.pageY - s.getBoundingClientRect().top }, g = e => { n = 0, s.classList.remove("active") }, m = t => { t = a - t.touches[0].clientY, e.scrollTop = t > 5 ? e.scrollTop + i : t < -5 ? e.scrollTop - i : e.scrollTop, S() }, v = e => { s.classList.add("active"), a = e.touches[0].clientY }, y = e => { s.classList.remove("active") }, S = () => { s.style.top = parseInt(100 * e.scrollTop / e.scrollHeight) + "%" }, _ = () => { cancelAnimationFrame(d), l !== e.scrollHeight && (s.style.height = Math.ceil(100 * e.clientHeight / e.scrollHeight) + "%", c.classList.contains("active") ? e.scrollHeight <= e.clientHeight && c.classList.remove("active") : e.scrollHeight > e.clientHeight && c.classList.add("active")), l = e.scrollHeight, d = requestAnimationFrame(_) }, b = t => { e.scrollTop = (t = Math.sign(t.deltaY)) > 0 ? e.scrollTop + u : t < 0 ? e.scrollTop - u : e.scrollTop, S() }; return function (t) { e = document.querySelector(t.content), (o = t.scrollArea ? document.querySelector(t.scrollArea) : e).onmousemove = h, o.onmouseup = g, o.onwheel = b, o.ontouchmove = m, o.ontouchend = y, o.ontouchstart = v, o.style.overscrollBehavior = t.overscrollBehavior ? t.overscrollBehavior : "none", (c = document.querySelector(t.scrollbar)).style.marginTop = "0px", c.offsetTop !== e.offsetTop && (c.style.marginTop = e.offsetTop + "px"), r = t.scrollStep || 8, (s = document.querySelector(t.slider)).onmousedown = p, i = t.touchStep || 6, d = requestAnimationFrame(_), u = t.wheelStep || 12, t.scrollRestoration && "scrollRestoration" in history && (history.scrollRestoration = t.scrollRestoration), S() } })(), previewScrollOptions = { content: ".content", scrollArea: ".body", scrollbar: ".vscrollbar", scrollRestoration: "manual", slider: ".vscrollbar__slider" }, articleScrollOptions = { content: ".article.show .article-body", scrollArea: ".body", scrollbar: ".vscrollbar", scrollRestoration: "manual", slider: ".vscrollbar__slider" }; new VScroll(previewScrollOptions); const eventBindAll = (e, t, l) => { const o = document.querySelectorAll(e); for (e = 0; e < o.length; e++)o[e].addEventListener(t, l) }, getChildElement = (e, t) => { for (let l = 0; l < e.length; l++)if (e[l].classList && e[l].classList.contains(t)) return e[l] }; eventBindAll(".card", "click", e => { window.speech = null; window.speechSynthesis.cancel(); (e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.dataset.articleId), document.querySelector('[data-article-id="' + e.id + '"]').classList.add("show"), document.querySelector('[data-article-id="' + e.id + '"] .article-header__title').textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —", new VScroll(articleScrollOptions) }), eventBindAll(".article-header__button_type_back", "click", e => { window.location.hash = e.target.parentNode.parentNode.dataset.articleId; document.querySelector(".background__image_default").style = "", document.querySelector(".article.show").classList.remove("show"); const t = document.querySelector(".content"); t.className = t.className.replace(/\s+show[^\s]*/, ""), new VScroll(previewScrollOptions) });
 	</script>
 	<script>
-		const readAloud = (target) => {
-			if (window.speech) {
-				return speech.resume();
+		// if track is paused for more then 15s browser will reset it;
+		let myTimeout;
+		let paused = false;
+		let pausedAtS;
+
+		const myTimer = () => {
+			if (!paused) {
+				window.speechSynthesis.pause();
+				window.speechSynthesis.resume();
 			}
-			const article = target.parentNode.parentNode.parentNode;
-			const text = document.querySelector(`#${article.id} .article-content`).innerText;
-			window.speech = new SpeechSynthesisUtterance(text);
-			speech.lang = article.dataset.speechLang || 'ru-RU';
-			window.speechSynthesis.speak(speech);
-			console.log('speech is ', speech);
-			console.log('artice is ', window.speechSynthesis.getVoices());
+			else {
+				if (((new Date().getTime() / 1000) - pausedAtS) > 10) { }
+				window.speechSynthesis.pause();
+			}
+			myTimeout = setTimeout(myTimer, 10000);
 		};
+
+		const readAloud = (target) => {
+
+			target.classList.toggle('pause');
+
+			if (window.speech) {
+				if (paused) {
+					paused = false;
+					window.speechSynthesis.resume();
+				}
+				else {
+					paused = true;
+					window.speechSynthesis.pause();
+					pausedAtS = (new Date()).getTime() / 1000;
+				}
+				return;
+			}
+
+			myTimeout = setTimeout(myTimer, 10000);
+
+			const article = target.parentNode.parentNode.parentNode;
+			const text = document.querySelector(`[data-article-id="${article.dataset.articleId}"] .article-content`).innerText;
+
+			window.speech = new SpeechSynthesisUtterance(text);
+			window.speech.lang = article.dataset.speechLang || 'ru-RU';
+			window.speech.rate = 0.75;
+			window.speech.pitch = 1.1;
+			window.speech.onend = function () {
+				window.speech = null;
+				clearTimeout(myTimeout);
+				target.classList.remove('pause');
+			}
+
+			window.speechSynthesis.cancel();
+			window.speechSynthesis.speak(window.speech);
+		}
+
+		(window.onhashchange = () => {
+			if (window.location.hash) {
+				const a = document.createElement('a');
+				a.href = window.location.hash;
+				a.click();
+			}
+		})();
 	</script>
 </body>
 
