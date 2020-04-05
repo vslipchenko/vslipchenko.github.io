@@ -1082,16 +1082,17 @@
 	</script>
 	<script>
 		// if track is paused for more then 15s browser will reset it;
-		let myTimeout, pausedAtS, paused = false;
+		// let myTimeout, pausedAtS, paused = false;
+		let myTimeout, paused = false;
 
 		const myTimer = () => {
 			if (!paused) {
 				window.speechSynthesis.resume();
 			}
-			else {
-				if (((new Date().getTime() / 1000) - pausedAtS) > 10) { }
-				window.speechSynthesis.pause();
-			}
+			// else {
+			// 	if (((new Date().getTime() / 1000) - pausedAtS) > 10) { }
+			// 	window.speechSynthesis.pause();
+			// }
 			myTimeout = setTimeout(myTimer, 10000);
 		};
 
@@ -1099,7 +1100,7 @@
 
 			target.classList.toggle('pause');
 
-			if (window.speech) {
+			if (window.speech && !/Android/i.test(navigator.userAgent)) {
 				if (paused) {
 					paused = false;
 					window.speechSynthesis.resume();
@@ -1107,12 +1108,12 @@
 				else {
 					paused = true;
 					window.speechSynthesis.pause();
-					pausedAtS = (new Date()).getTime() / 1000;
+					// pausedAtS = (new Date()).getTime() / 1000;
 				}
 				return;
 			}
 
-			myTimeout = setTimeout(myTimer, 10000);
+
 
 			const article = target.parentNode.parentNode.parentNode;
 			const text = document.querySelector(`[data-article-id="${article.dataset.articleId}"] .article-content`).innerText;
@@ -1121,6 +1122,7 @@
 			window.speech.lang = article.dataset.speechLang || 'ru-RU';
 			window.speech.rate = 0.75;
 			window.speech.pitch = 1.1;
+			myTimeout = setTimeout(myTimer, 10000);
 			window.speech.onend = function () {
 				window.speech = null;
 				clearTimeout(myTimeout);
