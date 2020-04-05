@@ -1102,7 +1102,7 @@
 
 			if (window.speech) {
 				if (!/Android/i.test(navigator.userAgent)) {
-					window.speechSynthesis.cancel();
+					window.speech = null;
 				}
 				else {
 					if (paused) {
@@ -1130,8 +1130,8 @@
 			myTimeout = setTimeout(myTimer, 10000);
 			window.speech.onend = function () {
 				window.speech = null;
-				clearTimeout(myTimeout);
 				target.classList.remove('pause');
+				clearTimeout(myTimeout);
 			}
 
 			window.speechSynthesis.cancel();
