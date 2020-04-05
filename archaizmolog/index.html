@@ -1100,17 +1100,22 @@
 
 			target.classList.toggle('pause');
 
-			if (window.speech && !/Android/i.test(navigator.userAgent)) {
-				if (paused) {
-					paused = false;
-					window.speechSynthesis.resume();
+			if (window.speech) {
+				if (!/Android/i.test(navigator.userAgent)) {
+					window.speechSynthesis.cancel();
 				}
 				else {
-					paused = true;
-					window.speechSynthesis.pause();
-					// pausedAtS = (new Date()).getTime() / 1000;
+					if (paused) {
+						paused = false;
+						window.speechSynthesis.resume();
+					}
+					else {
+						paused = true;
+						window.speechSynthesis.pause();
+						// pausedAtS = (new Date()).getTime() / 1000;
+					}
+					return;
 				}
-				return;
 			}
 
 
