@@ -108,6 +108,10 @@
 			align-content: baseline;
 			justify-content: space-between;
 			font-size: 0.8em;
+			overflow-y: auto;
+			scrollbar-width: thin;
+			scrollbar-color: white transparent;
+			padding-right: 14px;
 		}
 
 		[class*=show_article] .preview {
@@ -266,7 +270,10 @@
 			flex: 1;
 			display: flex;
 			flex-direction: column;
-			overflow: hidden;
+			overflow-y: auto;
+			scrollbar-width: thin;
+			scrollbar-color: white transparent;
+			padding-right: 14px;
 		}
 
 		.article-footer {
@@ -277,7 +284,7 @@
 			color: #F5DEB3;
 		}
 
-		.vscrollbar {
+		/* .vscrollbar {
 			width: 20px;
 		}
 
@@ -299,11 +306,32 @@
 
 		.vscrollbar.active .vscrollbar__slider {
 			display: block;
-		}
+		} */
 
 		::selection {
 			background-color: #fff;
 			color: #000;
+		}
+
+		::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		::-webkit-scrollbar-track {
+			background-color: none;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: rgba(255, 255, 255, .8);
+			border-radius: 4px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background-color: rgba(255, 255, 255, .9);
+		}
+
+		::-webkit-scrollbar-thumb:active {
+			background-color: rgba(255, 255, 255, 1);
 		}
 
 		/*Phone landscape*/
@@ -669,12 +697,85 @@
 				</article>
 			</div>
 		</div>
-		<div class="vscrollbar">
+		<!-- <div class="vscrollbar">
 			<span class="vscrollbar__slider"></span>
-		</div>
+		</div> -->
 	</main>
 	<script>
-		"use strict"; const VScroll = (() => { let e, t, l, o, c, r, s, n, a, i, d, u; const h = l => { if (n) { const o = Math.ceil(100 * (l.pageY - e.getBoundingClientRect().top - t) / e.clientHeight), c = 100 * s.clientHeight / e.clientHeight, r = o + parseInt(c); o > 0 && r < 100 ? (s.style.top = o + "%", e.scrollTop = o * e.scrollHeight / 100) : r >= 100 ? (s.style.top = 100 - Math.round(c) + "%", e.scrollTop = e.scrollHeight - e.clientHeight) : o <= 0 && (s.style.top = "0%", e.scrollTop = 0) } }, p = e => { n = 1, s.classList.add("active"), t = e.pageY - s.getBoundingClientRect().top }, g = e => { n = 0, s.classList.remove("active") }, m = t => { t = a - t.touches[0].clientY, e.scrollTop = t > 5 ? e.scrollTop + i : t < -5 ? e.scrollTop - i : e.scrollTop, S() }, v = e => { s.classList.add("active"), a = e.touches[0].clientY }, y = e => { s.classList.remove("active") }, S = () => { s.style.top = parseInt(100 * e.scrollTop / e.scrollHeight) + "%" }, _ = () => { cancelAnimationFrame(d), l !== e.scrollHeight && (s.style.height = Math.ceil(100 * e.clientHeight / e.scrollHeight) + "%", c.classList.contains("active") ? e.scrollHeight <= e.clientHeight && c.classList.remove("active") : e.scrollHeight > e.clientHeight && c.classList.add("active")), l = e.scrollHeight, d = requestAnimationFrame(_) }, b = t => { e.scrollTop = (t = Math.sign(t.deltaY)) > 0 ? e.scrollTop + u : t < 0 ? e.scrollTop - u : e.scrollTop, S() }; return function (t) { e = document.querySelector(t.content), (o = t.scrollArea ? document.querySelector(t.scrollArea) : e).onmousemove = h, o.onmouseup = g, o.onwheel = b, o.ontouchmove = m, o.ontouchend = y, o.ontouchstart = v, o.style.overscrollBehavior = t.overscrollBehavior ? t.overscrollBehavior : "none", (c = document.querySelector(t.scrollbar)).style.marginTop = "0px", c.offsetTop !== e.offsetTop && (c.style.marginTop = e.offsetTop + "px"), r = t.scrollStep || 8, (s = document.querySelector(t.slider)).onmousedown = p, i = t.touchStep || 6, d = requestAnimationFrame(_), u = t.wheelStep || 12, t.scrollRestoration && "scrollRestoration" in history && (history.scrollRestoration = t.scrollRestoration), S() } })(), previewScrollOptions = { content: ".content", scrollArea: ".body", scrollbar: ".vscrollbar", scrollRestoration: "manual", slider: ".vscrollbar__slider" }, articleScrollOptions = { content: ".article.show .article-body", scrollArea: ".body", scrollbar: ".vscrollbar", scrollRestoration: "manual", slider: ".vscrollbar__slider" }; new VScroll(previewScrollOptions); const eventBindAll = (e, t, l) => { const o = document.querySelectorAll(e); for (e = 0; e < o.length; e++)o[e].addEventListener(t, l) }, getChildElement = (e, t) => { for (let l = 0; l < e.length; l++)if (e[l].classList && e[l].classList.contains(t)) return e[l] }; eventBindAll(".card", "click", e => { window.speech = null; window.speechSynthesis.cancel(); (e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.dataset.articleId), document.querySelector('[data-article-id="' + e.id + '"]').classList.add("show"), document.querySelector('[data-article-id="' + e.id + '"] .article-header__title').textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —", new VScroll(articleScrollOptions) }), eventBindAll(".article-header__button_type_back", "click", e => { window.location.hash = e.target.parentNode.parentNode.dataset.articleId; document.querySelector(".background__image_default").style = "", document.querySelector(".article.show").classList.remove("show"); const t = document.querySelector(".content"); t.className = t.className.replace(/\s+show[^\s]*/, ""), new VScroll(previewScrollOptions) });
+		"use strict";
+		const VScroll = (() => {
+			let e, t, l, o, c, r, s, n, a, i, d, u;
+			const h = l => {
+				if (n) {
+					const o = Math.ceil(100 * (l.pageY - e.getBoundingClientRect().top - t) / e.clientHeight),
+						c = 100 * s.clientHeight / e.clientHeight,
+						r = o + parseInt(c);
+					o > 0 && r < 100 ? (s.style.top = o + "%", e.scrollTop = o * e.scrollHeight / 100) : r >= 100 ? (s.style.top = 100 - Math.round(c) + "%", e.scrollTop = e.scrollHeight - e.clientHeight) : o <= 0 && (s.style.top = "0%", e.scrollTop = 0)
+				}
+			},
+				p = e => {
+					n = 1, s.classList.add("active"), t = e.pageY - s.getBoundingClientRect().top
+				},
+				g = e => {
+					n = 0, s.classList.remove("active")
+				},
+				m = t => {
+					t = a - t.touches[0].clientY, e.scrollTop = t > 5 ? e.scrollTop + i : t < -5 ? e.scrollTop - i : e.scrollTop, S()
+				},
+				v = e => {
+					s.classList.add("active"), a = e.touches[0].clientY
+				},
+				y = e => {
+					s.classList.remove("active")
+				},
+				S = () => {
+					s.style.top = parseInt(100 * e.scrollTop / e.scrollHeight) + "%"
+				},
+				_ = () => {
+					cancelAnimationFrame(d), l !== e.scrollHeight && (s.style.height = Math.ceil(100 * e.clientHeight / e.scrollHeight) + "%", c.classList.contains("active") ? e.scrollHeight <= e.clientHeight && c.classList.remove("active") : e.scrollHeight > e.clientHeight && c.classList.add("active")), l = e.scrollHeight, d = requestAnimationFrame(_)
+				},
+				b = t => {
+					e.scrollTop = (t = Math.sign(t.deltaY)) > 0 ? e.scrollTop + u : t < 0 ? e.scrollTop - u : e.scrollTop, S()
+				};
+			return function (t) {
+				e = document.querySelector(t.content), (o = t.scrollArea ? document.querySelector(t.scrollArea) : e).onmousemove = h, o.onmouseup = g, o.onwheel = b, o.ontouchmove = m, o.ontouchend = y, o.ontouchstart = v, o.style.overscrollBehavior = t.overscrollBehavior ? t.overscrollBehavior : "none", (c = document.querySelector(t.scrollbar)).style.marginTop = "0px", c.offsetTop !== e.offsetTop && (c.style.marginTop = e.offsetTop + "px"), r = t.scrollStep || 8, (s = document.querySelector(t.slider)).onmousedown = p, i = t.touchStep || 6, d = requestAnimationFrame(_), u = t.wheelStep || 12, t.scrollRestoration && "scrollRestoration" in history && (history.scrollRestoration = t.scrollRestoration), S()
+			}
+		})(),
+			previewScrollOptions = {
+				content: ".content",
+				scrollArea: ".body",
+				scrollbar: ".vscrollbar",
+				scrollRestoration: "manual",
+				slider: ".vscrollbar__slider"
+			},
+			articleScrollOptions = {
+				content: ".article.show .article-body",
+				scrollArea: ".body",
+				scrollbar: ".vscrollbar",
+				scrollRestoration: "manual",
+				slider: ".vscrollbar__slider"
+			};
+		// new VScroll(previewScrollOptions);
+		const eventBindAll = (e, t, l) => {
+			const o = document.querySelectorAll(e);
+			for (e = 0; e < o.length; e++) o[e].addEventListener(t, l)
+		},
+			getChildElement = (e, t) => {
+				for (let l = 0; l < e.length; l++)
+					if (e[l].classList && e[l].classList.contains(t)) return e[l]
+			};
+		eventBindAll(".card", "click", e => {
+			window.speech = null;
+			window.speechSynthesis.cancel();
+			// (e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.dataset.articleId), document.querySelector('[data-article-id="' + e.id + '"]').classList.add("show"), document.querySelector('[data-article-id="' + e.id + '"] .article-header__title').textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —", new VScroll(articleScrollOptions)
+			(e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.dataset.articleId), document.querySelector('[data-article-id="' + e.id + '"]').classList.add("show"), document.querySelector('[data-article-id="' + e.id + '"] .article-header__title').textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —"
+		}), eventBindAll(".article-header__button_type_back", "click", e => {
+			window.location.hash = e.target.parentNode.parentNode.dataset.articleId;
+			document.querySelector(".background__image_default").style = "", document.querySelector(".article.show").classList.remove("show");
+			const t = document.querySelector(".content");
+			// t.className = t.className.replace(/\s+show[^\s]*/, ""), new VScroll(previewScrollOptions)
+			t.className = t.className.replace(/\s+show[^\s]*/, "")
+		});
 	</script>
 	<script>
 		// if track is paused for more then 15s browser will reset it;
