@@ -70,8 +70,14 @@
 			position: absolute;
 			height: 100%;
 			width: 100%;
-			z-index: -2;
+			/* z-index: -2; */
 			filter: brightness(25%);
+			cursor: pointer;
+			transition: filter .7s;
+		}
+
+		.background:hover {
+			filter: brightness(100%);
 		}
 
 		.background__image {
@@ -80,8 +86,12 @@
 		}
 
 		.background__image_default {
-			background-image: url(src/image/background/thereasontobehere.jpg);
+			background-image: url(src/image/background/thereasontobehere-ilene_meyer.jpg);
 			/*background-image: url(src/image/background/fool.jpg);*/
+		}
+
+		.background:hover+.main {
+			opacity: 0;
 		}
 
 		.main {
@@ -92,6 +102,8 @@
 			box-sizing: border-box;
 			background-color: rgba(0, 0, 0, .8);
 			box-shadow: 0px 0px 7px 0px #000;
+			z-index: 1;
+			transition: opacity .5s;
 		}
 
 		.content {
@@ -135,7 +147,7 @@
 		}
 
 		.card__title {
-			transition: color .2s;
+			transition: color .15s;
 		}
 
 		.card:hover .card__title {
@@ -145,7 +157,7 @@
 		.card__image {
 			flex: 1;
 			width: 100%;
-			transition: opacity .2s;
+			transition: opacity .15s;
 		}
 
 		.card:hover .card__image {
@@ -158,6 +170,10 @@
 
 		.card__image_initium {
 			background-image: url(src/image/preview/initium.svg);
+		}
+
+		.card__image_nichto {
+			background-image: url(src/image/preview/nothing.svg);
 		}
 
 		.card__image_koster {
@@ -250,7 +266,7 @@
 		}
 
 		.article-header__button_type_read-aloud {
-			right: 0;
+			right: 20px;
 		}
 
 		.i-read-aloud {
@@ -322,12 +338,12 @@
 		}
 
 		::-webkit-scrollbar-thumb {
-			background-color: rgba(255, 255, 255, .8);
+			background-color: rgba(255, 255, 255, .5);
 			border-radius: 4px;
 		}
 
 		::-webkit-scrollbar-thumb:hover {
-			background-color: rgba(255, 255, 255, .9);
+			background-color: rgba(255, 255, 255, .75);
 		}
 
 		::-webkit-scrollbar-thumb:active {
@@ -381,6 +397,7 @@
 				width: 6px;
 			}
 
+			/* 20px total in total (scrollbar width + padding-right)*/
 			.preview,
 			.article-body {
 				padding-right: 14px;
@@ -400,9 +417,9 @@
 				background-size: 80% 80%;
 			}
 
-			.vscrollbar__slider {
+			/* .vscrollbar__slider {
 				width: 4px;
-			}
+			} */
 		}
 
 		/* iPad Pro */
@@ -423,7 +440,7 @@
 	<main class="main">
 		<div class="content">
 			<div class="preview">
-				<div id="initium" class="card card_single" data-background-image="initium.jpg">
+				<div id="initium" class="card card_single" data-background-image="initium-ilene_meyer.jpg">
 					<span class="card__image card__image_initium i"></span>
 					<span class="card__title">
 						INITIUM
@@ -441,34 +458,70 @@
 						Костёр
 					</span>
 				</div>
-				<div id="germetika" class="card">
+				<div id="germ" class="card">
 					<span class="card__image card__image_germetika i"></span>
 					<span class="card__title">
 						Герметика
 					</span>
 				</div>
-				<div id="krepost" class="card">
+				<div id="robust" class="card">
 					<span class="card__image card__image_krepost i"></span>
 					<span class="card__title">
 						Крепость
 					</span>
 				</div>
-				<div id="podih" class="card">
+				<div id="breath" class="card">
 					<span class="card__image card__image_podih i"></span>
 					<span class="card__title">
 						Подих
 					</span>
 				</div>
-				<div id="poslednij-got" class="card">
+				<div id="the-last-year" class="card">
 					<span class="card__image card__image_poslednij-got i"></span>
 					<span class="card__title">
 						Последний гот
 					</span>
 				</div>
-				<div id="penie-divno" class="card">
+				<div id="penie-div-no" class="card">
 					<span class="card__image card__image_penie-divno i"></span>
 					<span class="card__title">
 						Пение дивно
+					</span>
+				</div>
+				<div id="pan-teon" class="card">
+					<span class="card__image card__image_pan-teon i"></span>
+					<span class="card__title">
+						Пан Теон
+					</span>
+				</div>
+				<div id="bill-pro-grognostic" class="card">
+					<span class="card__image card__image_bill-pro-grognostic i"></span>
+					<span class="card__title">
+						Быль / Предсказание
+					</span>
+				</div>
+				<div id="first-y" class="card">
+					<span class="card__image card__image_first-y i"></span>
+					<span class="card__title">
+						Жажда
+					</span>
+				</div>
+				<div id="the-hope-lennya" class="card">
+					<span class="card__image card__image_the-hope-lennya i"></span>
+					<span class="card__title">
+						Ждал
+					</span>
+				</div>
+				<div id="agnec" class="card">
+					<span class="card__image card__image_agnec i"></span>
+					<span class="card__title">
+						Агнец
+					</span>
+				</div>
+				<div id="corn-net" class="card">
+					<span class="card__image card__image_corn-net i"></span>
+					<span class="card__title">
+						Корнет
 					</span>
 				</div>
 			</div>
@@ -513,6 +566,41 @@
 						</div>
 					</div>
 				</article>
+				<article data-article-id="nichto" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+						<button class="article-header__button article-header__button_type_read-aloud"
+							onclick="readAloud(event.target)">
+							<i class="i i-read-aloud"></i>
+						</button>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Мы крутимся быстрей Земли<br>
+								И топчем вовсе не в ритм сердца.<br>
+								О, мать Природа, пощади:<br>
+								Мы видим свет, забыв про средства.</p>
+							<p>Ведь даже крылья опалив,<br>
+								Мы рухнем, так не выбрав места<br>
+								И очи ветром растворит -<br>
+								О как мир пуст, хотя в нем тесно.
+							</p>
+							<p>И пока хор картинок блек,<br>
+								Я усомнился в темпе шества:<br>
+								Сиюминутным был наш век -<br>
+								Лишь всплеск, щелчок, лишь миг, искра.
+							</p>
+							<p>Обидно слыть еще одним,<br>
+								Когда хотел виной торжества.
+							</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">IV / IV / MMXX</span>
+						</div>
+					</div>
+				</article>
 				<article data-article-id="koster" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
@@ -545,7 +633,7 @@
 						</div>
 					</div>
 				</article>
-				<article data-article-id="germetika" class="article">
+				<article data-article-id="germ" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -570,7 +658,7 @@
 						</div>
 					</div>
 				</article>
-				<article data-article-id="krepost" class="article">
+				<article data-article-id="robust" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -596,7 +684,7 @@
 						</div>
 					</div>
 				</article>
-				<article data-article-id="podih" class="article">
+				<article data-article-id="breath" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -638,7 +726,7 @@
 						</div>
 					</div>
 				</article>
-				<article data-article-id="poslednij-got" class="article">
+				<article data-article-id="the-last-year" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -672,7 +760,7 @@
 						</div>
 					</div>
 				</article>
-				<article data-article-id="penie-divno" class="article">
+				<article data-article-id="penie-div-no" class="article">
 					<div class="article__item article-header">
 						<button class="article-header__button article-header__button_type_back">
 						</button>
@@ -704,6 +792,196 @@
 						</div>
 					</div>
 				</article>
+				<article data-article-id="pan-teon" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+						<button class="article-header__button article-header__button_type_read-aloud"
+							onclick="readAloud(event.target)">
+							<i class="i i-read-aloud"></i>
+						</button>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Я осаждал тебя как замок,<br>
+								Теряя ночи, дней полет.<br>
+								Переставал считать утраты,<br>
+								Возобновлял свой горнизон.<br>
+								Я не щадил свои затраты<br>
+								И подведя туннель за стены,<br>
+								Я осадил всю цитадель,<br>
+								Не страсти более, а презренья.<br>
+								Я обомлел, поняв утраты,<br>
+								И стоил их, тот замок твой ?!<br>
+								Я верил в золотые залы,<br>
+								Жаль, из слоновой кости он.<br>
+								Я для себя оставил храмы,<br>
+								А для тебя — чувств пантеон.<br>
+								Сложил орудие и латы,<br>
+								Похоже, это мой последний бой…</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">XIV / VII / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+				<article data-article-id="bill-pro-grognostic" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+						<button class="article-header__button article-header__button_type_read-aloud"
+							onclick="readAloud(event.target)">
+							<i class="i i-read-aloud"></i>
+						</button>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>ПравИло бесконечности<br>
+								Телит все пуще.<br>
+								Привык быть рабом <br>
+								Бесконечности правил.<br>
+								Хромой след устремил <br>
+								Вдогон за прогрессией.<br>
+								Поэзия мифом еще одним станет.<br>
+								Дагон неумельцев топит, дурманит.<br>
+								Я царства достиг: глубина меня манит.<br>
+								Колосс Уробороса в речи влекает.</p>
+							<p>Устал, я перечу! И пускай пропаду...<br>
+								Передай привет прохладному ветру...</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">XXX / VI / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+				<article data-article-id="first-y" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+						<button class="article-header__button article-header__button_type_read-aloud"
+							onclick="readAloud(event.target)">
+							<i class="i i-read-aloud"></i>
+						</button>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Каким благим бы ни было призвание,<br>
+								Отдаст сомнению, распять велит народ.<br>
+								Проклятие меня мучает, желание-<br>
+								Пядью воззвать к истокам,<br>
+								Небес переступить черту.</p>
+							<P> Истосковал персть по твоим объятиям.<br>
+								Паломнику нет места там,<br>
+								Где в разумах герой обрел покой.<br>
+								Звезды впились в окружностей чертания:<br>
+								Не бес меня попутал - я живой !</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">IX / VI / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+				<article data-article-id="the-hope-lennya" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+						<button class="article-header__button article-header__button_type_read-aloud"
+							onclick="readAloud(event.target)">
+							<i class="i i-read-aloud"></i>
+						</button>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Я ждал смиренно понедельник,<br>
+								Теряя ночи, дум полет.<br>
+								Бессмысленно питал надежду:<br>
+								Надеялся, что ты придешь.<br>
+								Найдя тебя сред столь безликих,<br>
+								Таким предстал перед тобой.<br>
+								Невежественный, норов дикий;<br>
+								Бестактность выдавал мой тон.<br>
+								Один вопрос сквозь взгляд сочился:<br>
+								«Зачем возник передо мной ?»<br>
+								Не обессудь,<br>
+								Литературе образ мой привычен —<br>
+								Поэт, калеченый судьбой.<br>
+								Я чувствую, что потихоньку иссякаю,<br>
+								Действительно, любви отведен срок.<br>
+								В двух случаях убийцам подражает-<br>
+								Спустя лишь время, иль не начав отсчет.</p>
+							<p>Я ждал смиренно понедельник,<br>
+								Теряя ночи, дум полет.<br>
+								Искал тебя сред каждой женской тени.<br>
+								Я ждал, а посетила боль.</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">XIII / V / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+				<article data-article-id="agnec" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+						<button class="article-header__button article-header__button_type_read-aloud"
+							onclick="readAloud(event.target)">
+							<i class="i i-read-aloud"></i>
+						</button>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Боже, дай вкусить ее плоти,<br>
+								Подобно волку, клыками впившись в агнца.<br>
+								Прости, мать и отец:<br>
+								Луна определила наследника, <br>
+								Осветив краткий путь до греха.<br>
+								Её взгляд тревожит дыханье;<br>
+								Глаза кутает стати её красота.<br>
+								Душа подобна мемозе:<br>
+								Не позволяет касаться лица<br>
+								Страх, что меня может ранить,<br>
+								Крадет полуночное время;<br>
+								Как только откроет уста,<br>
+								Что прекрасно лишь ее отражение.</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">III / V / MMXVIII</span>
+						</div>
+					</div>
+				</article>
+				<article data-article-id="corn-net" class="article">
+					<div class="article__item article-header">
+						<button class="article-header__button article-header__button_type_back">
+						</button>
+						<span class="article-header__title"></span>
+						<button class="article-header__button article-header__button_type_read-aloud"
+							onclick="readAloud(event.target)">
+							<i class="i i-read-aloud"></i>
+						</button>
+					</div>
+					<div class="article__item article-body">
+						<div class="article__item article-content">
+							<p>Ты готова вкусить мои губы ?<br>
+								Я готов раскусить для тебя.<br>
+								Одна из многих причуд -<br>
+								Поцелуи в крови до утра.<br>
+								Ты готова вкусить мою грубость ?!<br>
+								Мотивы хранят небеса.<br>
+								Я ведь знаю почему тебе нравлюсь,<br>
+								От того обхожу зеркала.<br>
+								Достаточно ! Познал я мир:<br>
+								Старость — спутница, трость и скамья.</p>
+						</div>
+						<div class="article__item article-footer">
+							<span class="article-footer__publication-date">— / — / ~MMXVIII</span>
+						</div>
+					</div>
+				</article>
 			</div>
 		</div>
 		<!-- <div class="vscrollbar">
@@ -712,63 +990,71 @@
 	</main>
 	<script>
 		"use strict";
-		const VScroll = (() => {
-			let e, t, l, o, c, r, s, n, a, i, d, u;
-			const h = l => {
-				if (n) {
-					const o = Math.ceil(100 * (l.pageY - e.getBoundingClientRect().top - t) / e.clientHeight),
-						c = 100 * s.clientHeight / e.clientHeight,
-						r = o + parseInt(c);
-					o > 0 && r < 100 ? (s.style.top = o + "%", e.scrollTop = o * e.scrollHeight / 100) : r >= 100 ? (s.style.top = 100 - Math.round(c) + "%", e.scrollTop = e.scrollHeight - e.clientHeight) : o <= 0 && (s.style.top = "0%", e.scrollTop = 0)
-				}
-			},
-				p = e => {
-					n = 1, s.classList.add("active"), t = e.pageY - s.getBoundingClientRect().top
-				},
-				g = e => {
-					n = 0, s.classList.remove("active")
-				},
-				m = t => {
-					t = a - t.touches[0].clientY, e.scrollTop = t > 5 ? e.scrollTop + i : t < -5 ? e.scrollTop - i : e.scrollTop, S()
-				},
-				v = e => {
-					s.classList.add("active"), a = e.touches[0].clientY
-				},
-				y = e => {
-					s.classList.remove("active")
-				},
-				S = () => {
-					s.style.top = parseInt(100 * e.scrollTop / e.scrollHeight) + "%"
-				},
-				_ = () => {
-					cancelAnimationFrame(d), l !== e.scrollHeight && (s.style.height = Math.ceil(100 * e.clientHeight / e.scrollHeight) + "%", c.classList.contains("active") ? e.scrollHeight <= e.clientHeight && c.classList.remove("active") : e.scrollHeight > e.clientHeight && c.classList.add("active")), l = e.scrollHeight, d = requestAnimationFrame(_)
-				},
-				b = t => {
-					e.scrollTop = (t = Math.sign(t.deltaY)) > 0 ? e.scrollTop + u : t < 0 ? e.scrollTop - u : e.scrollTop, S()
-				};
-			return function (t) {
-				e = document.querySelector(t.content), (o = t.scrollArea ? document.querySelector(t.scrollArea) : e).onmousemove = h, o.onmouseup = g, o.onwheel = b, o.ontouchmove = m, o.ontouchend = y, o.ontouchstart = v, o.style.overscrollBehavior = t.overscrollBehavior ? t.overscrollBehavior : "none", (c = document.querySelector(t.scrollbar)).style.marginTop = "0px", c.offsetTop !== e.offsetTop && (c.style.marginTop = e.offsetTop + "px"), r = t.scrollStep || 8, (s = document.querySelector(t.slider)).onmousedown = p, i = t.touchStep || 6, d = requestAnimationFrame(_), u = t.wheelStep || 12, t.scrollRestoration && "scrollRestoration" in history && (history.scrollRestoration = t.scrollRestoration), S()
-			}
-		})(),
-			previewScrollOptions = {
-				content: ".content",
-				scrollArea: ".body",
-				scrollbar: ".vscrollbar",
-				scrollRestoration: "manual",
-				slider: ".vscrollbar__slider"
-			},
-			articleScrollOptions = {
-				content: ".article.show .article-body",
-				scrollArea: ".body",
-				scrollbar: ".vscrollbar",
-				scrollRestoration: "manual",
-				slider: ".vscrollbar__slider"
-			};
+		// const VScroll = (() => {
+		// 	let e, t, l, o, c, r, s, n, a, i, d, u;
+		// 	const h = l => {
+		// 		if (n) {
+		// 			const o = Math.ceil(100 * (l.pageY - e.getBoundingClientRect().top - t) / e.clientHeight),
+		// 				c = 100 * s.clientHeight / e.clientHeight,
+		// 				r = o + parseInt(c);
+		// 			o > 0 && r < 100 ? (s.style.top = o + "%", e.scrollTop = o * e.scrollHeight / 100) : r >= 100 ? (s.style.top = 100 - Math.round(c) + "%", e.scrollTop = e.scrollHeight - e.clientHeight) : o <= 0 && (s.style.top = "0%", e.scrollTop = 0)
+		// 		}
+		// 	},
+		// 		p = e => {
+		// 			n = 1, s.classList.add("active"), t = e.pageY - s.getBoundingClientRect().top
+		// 		},
+		// 		g = e => {
+		// 			n = 0, s.classList.remove("active")
+		// 		},
+		// 		m = t => {
+		// 			t = a - t.touches[0].clientY, e.scrollTop = t > 5 ? e.scrollTop + i : t < -5 ? e.scrollTop - i : e.scrollTop, S()
+		// 		},
+		// 		v = e => {
+		// 			s.classList.add("active"), a = e.touches[0].clientY
+		// 		},
+		// 		y = e => {
+		// 			s.classList.remove("active")
+		// 		},
+		// 		S = () => {
+		// 			s.style.top = parseInt(100 * e.scrollTop / e.scrollHeight) + "%"
+		// 		},
+		// 		_ = () => {
+		// 			cancelAnimationFrame(d), l !== e.scrollHeight && (s.style.height = Math.ceil(100 * e.clientHeight / e.scrollHeight) + "%", c.classList.contains("active") ? e.scrollHeight <= e.clientHeight && c.classList.remove("active") : e.scrollHeight > e.clientHeight && c.classList.add("active")), l = e.scrollHeight, d = requestAnimationFrame(_)
+		// 		},
+		// 		b = t => {
+		// 			e.scrollTop = (t = Math.sign(t.deltaY)) > 0 ? e.scrollTop + u : t < 0 ? e.scrollTop - u : e.scrollTop, S()
+		// 		};
+		// 	return function (t) {
+		// 		e = document.querySelector(t.content), (o = t.scrollArea ? document.querySelector(t.scrollArea) : e).onmousemove = h, o.onmouseup = g, o.onwheel = b, o.ontouchmove = m, o.ontouchend = y, o.ontouchstart = v, o.style.overscrollBehavior = t.overscrollBehavior ? t.overscrollBehavior : "none", (c = document.querySelector(t.scrollbar)).style.marginTop = "0px", c.offsetTop !== e.offsetTop && (c.style.marginTop = e.offsetTop + "px"), r = t.scrollStep || 8, (s = document.querySelector(t.slider)).onmousedown = p, i = t.touchStep || 6, d = requestAnimationFrame(_), u = t.wheelStep || 12, t.scrollRestoration && "scrollRestoration" in history && (history.scrollRestoration = t.scrollRestoration), S()
+		// 	}
+		// })(),
+		// 	previewScrollOptions = {
+		// 		content: ".content",
+		// 		scrollArea: ".body",
+		// 		scrollbar: ".vscrollbar",
+		// 		scrollRestoration: "manual",
+		// 		slider: ".vscrollbar__slider"
+		// 	},
+		// 	articleScrollOptions = {
+		// 		content: ".article.show .article-body",
+		// 		scrollArea: ".body",
+		// 		scrollbar: ".vscrollbar",
+		// 		scrollRestoration: "manual",
+		// 		slider: ".vscrollbar__slider"
+		// 	};
 		// new VScroll(previewScrollOptions);
-		const eventBindAll = (e, t, l) => {
-			const o = document.querySelectorAll(e);
-			for (e = 0; e < o.length; e++) o[e].addEventListener(t, l)
+
+		// const eventBind = (s, e, c) => {
+		// 	return document.querySelector(s).addEventListener(e, c);
+		// }
+
+		const eventBind = (s, e, c) => {
+			return document.querySelector(s).addEventListener(e, c);
 		},
+			eventBindAll = (e, t, l) => {
+				const o = document.querySelectorAll(e);
+				for (e = 0; e < o.length; e++) o[e].addEventListener(t, l)
+			},
 			getChildElement = (e, t) => {
 				for (let l = 0; l < e.length; l++)
 					if (e[l].classList && e[l].classList.contains(t)) return e[l]
@@ -777,20 +1063,25 @@
 			window.speech = null;
 			window.speechSynthesis.cancel();
 			// (e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.dataset.articleId), document.querySelector('[data-article-id="' + e.id + '"]').classList.add("show"), document.querySelector('[data-article-id="' + e.id + '"] .article-header__title').textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —", new VScroll(articleScrollOptions)
-			(e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.dataset.articleId), document.querySelector('[data-article-id="' + e.id + '"]').classList.add("show"), document.querySelector('[data-article-id="' + e.id + '"] .article-header__title').textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —"
+			(e = e.target).dataset.backgroundImage && (document.querySelector(".background__image_default").style.backgroundImage = "url(src/image/background/" + e.dataset.backgroundImage + ")"), document.querySelector(".content").classList.add("show_article_" + e.id), document.querySelector('[data-article-id="' + e.id + '"]').classList.add("show"), document.querySelector('[data-article-id="' + e.id + '"] .article-header__title').textContent = "— " + getChildElement(e.childNodes, "card__title").textContent + " —"
+			// console.log('wdadd', e.id);
+			window.location.hash = '#' + e.id;
 		}), eventBindAll(".article-header__button_type_back", "click", e => {
-			window.location.hash = e.target.parentNode.parentNode.dataset.articleId;
+			window.location.hash = e.target.parentNode.parentNode.dataset.articleId + '#';
 			document.querySelector(".background__image_default").style = "", document.querySelector(".article.show").classList.remove("show");
 			const t = document.querySelector(".content");
 			// t.className = t.className.replace(/\s+show[^\s]*/, ""), new VScroll(previewScrollOptions)
 			t.className = t.className.replace(/\s+show[^\s]*/, "")
 		});
+
+		eventBind('.background', 'click', (e) => {
+			window.location.href = getComputedStyle(e.target)['background-image'].slice(5, -2);
+		});
+		// eventBind('.ba')
 	</script>
 	<script>
 		// if track is paused for more then 15s browser will reset it;
-		let myTimeout;
-		let paused = false;
-		let pausedAtS;
+		let myTimeout, pausedAtS, paused = false;
 
 		const myTimer = () => {
 			if (!paused) {
@@ -840,11 +1131,23 @@
 			window.speechSynthesis.speak(window.speech);
 		}
 
+		// hash based navigation
 		(window.onhashchange = () => {
-			if (window.location.hash) {
-				const a = document.createElement('a');
-				a.href = window.location.hash;
-				a.click();
+			const hash = window.location.hash;
+			if (hash) {
+				if (/#.+#/.test(hash)) {
+					const a = document.createElement('a');
+					a.href = window.location.hash.slice(0, -1);
+					a.click();
+					history.replaceState(null, null, ' ');
+				}
+				else { // assumed to be main page nav
+					const articleId = hash.slice(1);
+					// if (!document.querySelector('.show_article_' + articleId)) {
+
+					document.querySelector('#' + articleId).click();
+					// }
+				}
 			}
 		})();
 	</script>

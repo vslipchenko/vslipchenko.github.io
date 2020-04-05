@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Creator: CorelDRAW 2018 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="250mm" height="250mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 25000 25000"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="210mm" height="297mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 21000 29700"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <style type="text/css">
@@ -15,13 +15,13 @@ viewBox="0 0 25000 25000"
  <g id="Слой_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
   <g id="_919764816">
-   <rect class="fil0 str0" x="2441.27" y="5041.37" width="11304.72" height="11304.72"/>
-   <rect class="fil0 str0" transform="matrix(1.19883 -1.19883 1.19883 1.19883 99.9813 10693.7)" width="6667.85" height="6667.85"/>
-   <rect class="fil0 str0" x="12562.88" y="16896.36" width="4476.45" height="4476.45"/>
-   <rect class="fil0 str0" transform="matrix(0.474715 -0.474715 0.474715 0.474715 11635.8 19134.6)" width="6667.85" height="6667.85"/>
-   <rect class="fil0 str0" x="17514.23" y="10693.72" width="7385.75" height="7385.75"/>
-   <circle class="fil0 str0" cx="21207.11" cy="14386.62" r="1431.92"/>
-   <rect class="fil0 str0" transform="matrix(0.424732 -0.424732 0.424732 0.424732 4789.58 10693.7)" width="7779.16" height="7779.16"/>
+   <rect class="fil0 str0" x="441.27" y="7391.37" width="11304.72" height="11304.72"/>
+   <rect class="fil0 str0" transform="matrix(1.19883 -1.19883 1.19883 1.19883 -1900.01 13043.7)" width="6667.85" height="6667.85"/>
+   <rect class="fil0 str0" x="10562.88" y="19246.35" width="4476.45" height="4476.45"/>
+   <rect class="fil0 str0" transform="matrix(0.474715 -0.474715 0.474715 0.474715 9635.8 21484.6)" width="6667.85" height="6667.85"/>
+   <rect class="fil0 str0" x="15514.24" y="13043.72" width="7385.75" height="7385.75"/>
+   <circle class="fil0 str0" cx="19207.11" cy="16736.62" r="1431.92"/>
+   <rect class="fil0 str0" transform="matrix(0.424732 -0.424732 0.424732 0.424732 2789.58 13043.7)" width="7779.16" height="7779.16"/>
   </g>
  </g>
 </svg>
