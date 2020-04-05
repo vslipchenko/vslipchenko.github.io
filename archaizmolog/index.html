@@ -1101,8 +1101,9 @@
 			target.classList.toggle('pause');
 
 			if (window.speech) {
-				if (/Android/i.test(navigator.userAgent)) {
+				if (/android/i.test(navigator.userAgent)) {
 					window.speech = null;
+					clearTimeout(myTimeout);
 				}
 				else {
 					if (paused) {
