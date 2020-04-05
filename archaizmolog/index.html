@@ -1119,7 +1119,7 @@
 					window.speechSynthesis.pause();
 
 					if (/android/i.test(navigator.userAgent)) {
-						window.speech = null;
+						// window.speech = null;
 						clearTimeout(myTimeout);
 					}
 					// pausedAtS = (new Date()).getTime() / 1000;
@@ -1141,7 +1141,7 @@
 			myTimeout = setTimeout(myTimer, 10000);
 			window.speech.onend = function () {
 				window.speech = null;
-				if (!(/android/i.test(navigator.userAgent))) target.classList.remove('pause');
+				target.classList.remove('pause');
 				clearTimeout(myTimeout);
 			}
 
