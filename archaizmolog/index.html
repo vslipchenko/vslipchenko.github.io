@@ -1140,6 +1140,7 @@
 			window.speech.pitch = 1.1;
 			myTimeout = setTimeout(myTimer, 10000);
 			window.speech.onend = function () {
+				paused = false;
 				window.speech = null;
 				target.classList.remove('pause');
 				clearTimeout(myTimeout);
