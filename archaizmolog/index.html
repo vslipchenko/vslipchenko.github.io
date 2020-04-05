@@ -1119,6 +1119,7 @@
 
 					if (/android/i.test(navigator.userAgent)) {
 						window.speech = null;
+						window.speechSynthesis.cancel();
 						clearTimeout(myTimeout);
 					}
 					// pausedAtS = (new Date()).getTime() / 1000;
@@ -1139,7 +1140,6 @@
 			window.speech.pitch = 1.1;
 			myTimeout = setTimeout(myTimer, 10000);
 			window.speech.onend = function () {
-				paused = false;
 				window.speech = null;
 				target.classList.remove('pause');
 				clearTimeout(myTimeout);
