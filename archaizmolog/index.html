@@ -1098,9 +1098,9 @@
 
 		const readAloud = (target) => {
 
-			// target.classList.toggle('pause');
+			target.classList.toggle('pause');
 
-			paused ? target.classList.add('pause') : target.classList.remove('pause');
+			// paused ? target.classList.add('pause') : target.classList.remove('pause');
 
 			if (window.speech) {
 
@@ -1141,7 +1141,7 @@
 			myTimeout = setTimeout(myTimer, 10000);
 			window.speech.onend = function () {
 				window.speech = null;
-				target.classList.remove('pause');
+				if (!(/android/i.test(navigator.userAgent))) target.classList.remove('pause');
 				clearTimeout(myTimeout);
 			}
 
