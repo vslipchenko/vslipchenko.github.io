@@ -1098,12 +1098,18 @@
 
 		const readAloud = (target) => {
 
+			const resetSpeech = () => {
+				paused = false;
+				window.speech = null;
+				target.classList.remove('pause');
+				clearTimeout(myTimeout);
+			};
+
 			target.classList.toggle('pause');
 
 			// paused ? target.classList.add('pause') : target.classList.remove('pause');
 
 			if (window.speech) {
-
 				if (paused) {
 					paused = false;
 					if (!(/android/i.test(navigator.userAgent))) {
@@ -1114,19 +1120,19 @@
 					}
 				}
 				else {
-					paused = true;
-					window.speechSynthesis.pause();
+
 
 					if (/android/i.test(navigator.userAgent)) {
-						window.speech = null;
+						resetSpeech();
 						window.speechSynthesis.cancel();
-						clearTimeout(myTimeout);
+					}
+					else {
+						paused = true;
+						window.speechSynthesis.pause();
 					}
 					// pausedAtS = (new Date()).getTime() / 1000;
 					return;
 				}
-
-
 			}
 
 
@@ -1139,12 +1145,7 @@
 			window.speech.rate = 0.75;
 			window.speech.pitch = 1.1;
 			myTimeout = setTimeout(myTimer, 10000);
-			window.speech.onend = function () {
-				paused = false;
-				window.speech = null;
-				target.classList.remove('pause');
-				clearTimeout(myTimeout);
-			}
+			window.speech.onend = resetSpeech;
 
 			window.speechSynthesis.cancel();
 			window.speechSynthesis.speak(window.speech);
