@@ -1083,7 +1083,7 @@
 	<script>
 		// if track is paused for more then 15s browser will reset it;
 		// let myTimeout, pausedAtS, paused = false;
-		let myTimeout, paused = false;
+		let paused = false, myTimeout;
 
 		const myTimer = () => {
 			if (!paused) {
@@ -1103,7 +1103,6 @@
 			// paused ? target.classList.add('pause') : target.classList.remove('pause');
 
 			if (window.speech) {
-
 
 				if (paused) {
 					paused = false;
@@ -1140,7 +1139,7 @@
 			window.speech.pitch = 1.1;
 			myTimeout = setTimeout(myTimer, 10000);
 			window.speech.onend = function () {
-				paused = true;
+				paused = false;
 				window.speech = null;
 				target.classList.remove('pause');
 				clearTimeout(myTimeout);
