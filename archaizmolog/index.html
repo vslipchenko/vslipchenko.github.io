@@ -1104,12 +1104,10 @@
 
 
 				if (paused) {
-					if (/android/i.test(navigator.userAgent)) {
-						window.speech = null;
-						clearTimeout(myTimeout);
-					}
-					else {
-						paused = false;
+					paused = false;
+					if (!(/android/i.test(navigator.userAgent))) {
+						// window.speech = null;
+						// clearTimeout(myTimeout);
 						window.speechSynthesis.resume();
 						return;
 					}
@@ -1117,6 +1115,11 @@
 				else {
 					paused = true;
 					window.speechSynthesis.pause();
+
+					if (/android/i.test(navigator.userAgent)) {
+						window.speech = null;
+						clearTimeout(myTimeout);
+					}
 					// pausedAtS = (new Date()).getTime() / 1000;
 					return;
 				}
