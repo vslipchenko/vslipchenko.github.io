@@ -87,7 +87,6 @@
 
 		.background__image_default {
 			background-image: url(src/image/background/thereasontobehere-ilene_meyer.jpg);
-			/*background-image: url(src/image/background/fool.jpg);*/
 		}
 
 		.background:hover+.main {
@@ -126,6 +125,7 @@
 			padding-right: 18px;
 		}
 
+		.preview.loading,
 		[class*=show_article] .preview {
 			display: none;
 		}
@@ -166,38 +166,6 @@
 
 		.card_single {
 			margin-left: 25%;
-		}
-
-		.card__image_initium {
-			background-image: url(src/image/preview/initium.svg);
-		}
-
-		.card__image_nichto {
-			background-image: url(src/image/preview/nothing.svg);
-		}
-
-		.card__image_koster {
-			background-image: url(src/image/preview/koster.svg);
-		}
-
-		.card__image_germetika {
-			background-image: url(src/image/preview/germetika.svg);
-		}
-
-		.card__image_krepost {
-			background-image: url(src/image/preview/krepost.svg);
-		}
-
-		.card__image_podih {
-			background-image: url(src/image/preview/podih.svg);
-		}
-
-		.card__image_poslednij-got {
-			background-image: url(src/image/preview/poslednij-got.svg);
-		}
-
-		.card__image_penie-divno {
-			background-image: url(src/image/preview/penie-divno.svg);
 		}
 
 		.card__title {
@@ -408,98 +376,13 @@
 <body class="body">
 	<h1 style="position: absolute; top: -100%;">Архаизмолог Archaizmolog Plumarcanus Сир Элик</h1>
 	<div class="background">
-		<span class="background__image background__image_default i" style=""></span>
+		<span class="background__image background__image_default i"></span>
 	</div>
 	<main class="main">
 		<div class="content">
-			<div class="preview">
-				<div id="initium" class="card card_single" data-background-image="initium-ilene_meyer.jpg">
-					<span class="card__image card__image_initium i"></span>
-					<span class="card__title">
-						INITIUM
-					</span>
-				</div>
-				<div id="nichto" class="card">
-					<span class="card__image card__image_nichto i"></span>
-					<span class="card__title">
-						Ничто
-					</span>
-				</div>
-				<div id="koster" class="card">
-					<span class="card__image card__image_koster i"></span>
-					<span class="card__title">
-						Костёр
-					</span>
-				</div>
-				<div id="germ" class="card">
-					<span class="card__image card__image_germetika i"></span>
-					<span class="card__title">
-						Герметика
-					</span>
-				</div>
-				<div id="robust" class="card">
-					<span class="card__image card__image_krepost i"></span>
-					<span class="card__title">
-						Крепость
-					</span>
-				</div>
-				<div id="breath" class="card">
-					<span class="card__image card__image_podih i"></span>
-					<span class="card__title">
-						Подих
-					</span>
-				</div>
-				<div id="the-last-year" class="card">
-					<span class="card__image card__image_poslednij-got i"></span>
-					<span class="card__title">
-						Последний гот
-					</span>
-				</div>
-				<div id="penie-div-no" class="card">
-					<span class="card__image card__image_penie-divno i"></span>
-					<span class="card__title">
-						Пение дивно
-					</span>
-				</div>
-				<div id="pan-teon" class="card">
-					<span class="card__image card__image_pan-teon i"></span>
-					<span class="card__title">
-						Пан Теон
-					</span>
-				</div>
-				<div id="bill-pro-grognostic" class="card">
-					<span class="card__image card__image_bill-pro-grognostic i"></span>
-					<span class="card__title">
-						Быль / Предсказание
-					</span>
-				</div>
-				<div id="first-y" class="card">
-					<span class="card__image card__image_first-y i"></span>
-					<span class="card__title">
-						Жажда
-					</span>
-				</div>
-				<div id="the-hope-lennya" class="card">
-					<span class="card__image card__image_the-hope-lennya i"></span>
-					<span class="card__title">
-						Ждал
-					</span>
-				</div>
-				<div id="agnec" class="card">
-					<span class="card__image card__image_agnec i"></span>
-					<span class="card__title">
-						Агнец
-					</span>
-				</div>
-				<div id="corn-net" class="card">
-					<span class="card__image card__image_corn-net i"></span>
-					<span class="card__title">
-						Корнет
-					</span>
-				</div>
-			</div>
-			<div class="articles">
-				<article data-article-id="initium" data-publication-date="VII / IV / MMXVIII" class="article">
+			<div class="preview loading">
+				<div id="initium" data-title="INITIUM" data-publication-date="VII / IV / MMXVIII"
+					data-background-image="initium-ilene_meyer.jpg" class="card card_single">
 					<p>Несмотря на мои попытки не выпускать меч из рук, я чувствую, как огонь, запечатленный
 						доспехами, меркнет с каждым днем.</p>
 					<p>Жалкое существование заставляет меня день за днем разбиваться о стену материальности.</p>
@@ -523,8 +406,8 @@
 						которого никогда не снисходит в отражение !</p>
 					<p class="b">Да буду я запечатлен там, где бессильно притяжение, дабы нести стражу у ворот
 						вечности !</p>
-				</article>
-				<article data-article-id="nichto" data-publication-date="IV / IV / MMXX" class="article">
+				</div>
+				<div id="nichto" data-title="Ничто" data-publication-date="IV / IV / MMXX" class="card">
 					<p>Мы крутимся быстрей Земли<br>
 						И топчем вовсе не в ритм сердца.<br>
 						О, мать Природа, пощади:<br>
@@ -542,8 +425,8 @@
 					<p>Обидно слыть еще одним,<br>
 						Когда хотел виной торжества.
 					</p>
-				</article>
-				<article data-article-id="koster" data-publication-date="II / XII / MMXIX" class="article">
+				</div>
+				<div id="koster" data-title="Костёр" data-publication-date="II / XII / MMXIX" class="card">
 					<p>Не туши свой костёр до рассвета,<br>
 						Пусть утопит нас матерь всех - тьма.<br>
 						Вспоминаешь былые моменты,<br>
@@ -558,8 +441,8 @@
 						Пусть утопит нас матерь всех - тьма.<br>
 						Понимаешь, что ты не последний,<br>
 						Лицезрея всю прелесть утра.</p>
-				</article>
-				<article data-article-id="germ" data-publication-date="II / XII / MMXIX" class="article">
+				</div>
+				<div id="germ" data-title="Герметика" data-publication-date="II / XII / MMXIX" class="card">
 					<p>Смотри, сколько мастерства в одной только материи.<br>
 						Сколько искусства собрано в одном только творении;<br>
 						Везде красота, везде соотношение, везде разнообразие, порядку подчинение.</p>
@@ -567,8 +450,8 @@
 						Если не единственный невидимый мирских вещей Творец,<br>
 						Который создал все волею Своею, благом окропив<br>
 						И созерцанием величества всех нас Он одарил.</p>
-				</article>
-				<article data-article-id="robust" data-publication-date="XV / V / MMXIX" class="article">
+				</div>
+				<div id="robust" data-title="Крепость" data-publication-date="XV / V / MMXIX" class="card">
 					<p>Это крепость вина, мистерий и таинств,<br>
 						Мраморный тронный зал, вечный золотой кладезь,<br>
 						Пронзающий клин, серебристый подол,<br>
@@ -577,8 +460,8 @@
 						В ней слава всех предков, мощь и честь древней ложи.<br>
 						Загадочный взор устилает статут,<br>
 						Пусть в эссенции Вечности тонет сосуд.</p>
-				</article>
-				<article data-article-id="breath" data-publication-date="XX / X / MMXVIII" class="article">
+				</div>
+				<div id="breath" data-title="Подих" data-publication-date="XX / X / MMXVIII" class="card">
 					<p>Я був і буду тут завжди,<br>
 						Як не забракло уяви.<br>
 						За рiдним словом не стлiє а нi душа,<br>
@@ -603,8 +486,8 @@
 						А думки до хмарин.<br>
 						Дмухав вiтер свободи,<br>
 						А мiй дух не змарнiв.</p>
-				</article>
-				<article data-article-id="the-last-year" data-publication-date="I / X / MMXVIII" class="article">
+				</div>
+				<div id="the-last-year" data-title="Последний гот" data-publication-date="I / X / MMXVIII" class="card">
 					<p>Смотрю в глаза бездне или не открыл их доселе.<br>
 						Не веду диалог:<br>
 						Не знают кто за телом стоит,<br>
@@ -621,8 +504,9 @@
 						Мне трость, монокль с цилиндром…<br>
 						Карету, резвых коней;<br>
 						С немым ямщиком расплачусь как доеду.</p>
-				</article>
-				<article data-article-id="penie-div-no" data-publication-date="XIX / VIII / MMXVIII" class="article">
+				</div>
+				<div id="penie-div-no" data-title="Пение дивно" data-publication-date="XIX / VIII / MMXVIII"
+					class="card">
 					<p>Существует бесконечно причин<br>
 						все вкусы затмить,<br>
 						Чтобы слушать пение дивы.<br>
@@ -637,8 +521,8 @@
 						Вечный узник леденящей долины.<br>
 						Сквозь слой тьмы неслышны отголоски добра:<br>
 						Согревает лишь пение богини.</p>
-				</article>
-				<article data-article-id="pan-teon" data-publication-date="XIV / VII / MMXVIII" class="article">
+				</div>
+				<div id="pan-teon" data-title="Пан Теон" data-publication-date="XIV / VII / MMXVIII" class="card">
 					<p>Я осаждал тебя как замок,<br>
 						Теряя ночи, дней полет.<br>
 						Переставал считать утраты,<br>
@@ -655,9 +539,9 @@
 						А для тебя — чувств пантеон.<br>
 						Сложил орудие и латы,<br>
 						Похоже, это мой последний бой…</p>
-				</article>
-				<article data-article-id="bill-pro-grognostic" data-publication-date="XXX / VI / MMXVIII"
-					class="article">
+				</div>
+				<div id="bill-pro-grognostic" data-title="Быль / Предсказание"
+					data-publication-date="XXX / VI / MMXVIII" class="card">
 					<p>ПравИло бесконечности<br>
 						Телит все пуще.<br>
 						Привык быть рабом <br>
@@ -670,8 +554,8 @@
 						Колосс Уробороса в речи влекает.</p>
 					<p>Устал, я перечу! И пускай пропаду...<br>
 						Передай привет прохладному ветру...</p>
-				</article>
-				<article data-article-id="first-y" data-publication-date="IX / VI / MMXVIII" class="article">
+				</div>
+				<div id="first-y" data-title="Жажда" data-publication-date="IX / VI / MMXVIII" class="card">
 					<p>Каким благим бы ни было призвание,<br>
 						Отдаст сомнению, распять велит народ.<br>
 						Проклятие меня мучает, желание-<br>
@@ -682,8 +566,8 @@
 						Где в разумах герой обрел покой.<br>
 						Звезды впились в окружностей чертания:<br>
 						Не бес меня попутал - я живой !</p>
-				</article>
-				<article data-article-id="the-hope-lennya" data-publication-date="XIII / V / MMXVIII" class="article">
+				</div>
+				<div id="the-hope-lennya" data-title="Ждал" data-publication-date="XIII / V / MMXVIII" class="card">
 					<p>Я ждал смиренно понедельник,<br>
 						Теряя ночи, дум полет.<br>
 						Бессмысленно питал надежду:<br>
@@ -705,8 +589,8 @@
 						Теряя ночи, дум полет.<br>
 						Искал тебя сред каждой женской тени.<br>
 						Я ждал, а посетила боль.</p>
-				</article>
-				<article data-article-id="agnec" data-publication-date="III / V / MMXVIII" class="article">
+				</div>
+				<div id="agnec" data-title="Агнец" data-publication-date="III / V / MMXVIII" class="card">
 					<p>Боже, дай вкусить ее плоти,<br>
 						Подобно волку, клыками впившись в агнца.<br>
 						Прости, мать и отец:<br>
@@ -720,8 +604,8 @@
 						Крадет полуночное время;<br>
 						Как только откроет уста,<br>
 						Что прекрасно лишь ее отражение.</p>
-				</article>
-				<article data-article-id="corn-net" data-publication-date="— / — / ~MMXVIII" class="article">
+				</div>
+				<div id="corn-net" data-title="Корнет" data-publication-date="— / — / ~MMXVIII" class="card">
 					<p>Ты готова вкусить мои губы ?<br>
 						Я готов раскусить для тебя.<br>
 						Одна из многих причуд -<br>
@@ -732,8 +616,9 @@
 						От того обхожу зеркала.<br>
 						Достаточно ! Познал я мир:<br>
 						Старость — спутница, трость и скамья.</p>
-				</article>
+				</div>
 			</div>
+			<div class="articles"></div>
 		</div>
 	</main>
 	<script>
@@ -754,30 +639,38 @@
 				if (e[l].classList && e[l].classList.contains(t)) return e[l]
 		};
 
-		const masonArticle = (article) => `
-			<div class="article__item article-header">
-				<button class="article-header__button article-header__button_type_back">
-				</button>
-				<span class="article-header__title"></span>
-				<button class="article-header__button article-header__button_type_read-aloud"
-					onclick="readAloud(event.target)">
-					<i class="i i-read-aloud"></i>
-				</button>
-			</div>
-			<div class="article__item article-body">
-				<div class="article__item article-content">
-					${article.innerHTML}
+		const masonArticle = (id, content, publicationDate = '— / — / —') => `
+			<article data-article-id="${id}" class="article">
+				<div class="article__item article-header">
+					<button class="article-header__button article-header__button_type_back">
+					</button>
+					<span class="article-header__title"></span>
+					<button class="article-header__button article-header__button_type_read-aloud"
+						onclick="readAloud(event.target)">
+						<i class="i i-read-aloud"></i>
+					</button>
 				</div>
-				<div class="article__item article-footer">
-					<span class="article-footer__publication-date">${article.dataset.publicationDate || '— / — / —'}</span>
+				<div class="article__item article-body">
+					<div class="article__item article-content">
+						${content}
+					</div>
+					<div class="article__item article-footer">
+						<span class="article-footer__publication-date">${publicationDate}</span>
+					</div>
 				</div>
-			</div>
+			</article>
 		`;
 
-		// Mason articles
-		document.querySelectorAll('article').forEach(article => {
-			article.innerHTML = masonArticle(article);
+		// Mason cards and articles
+		const articles = document.querySelector('.articles');
+		document.querySelectorAll('.card').forEach(card => {
+			articles.insertAdjacentHTML('beforeend', masonArticle(card.id, card.innerHTML, card.dataset.publicationDate));
+			card.innerHTML = `
+				<span class="card__image i" style="background-image: url(src/image/preview/${card.id}.svg)"></span>
+				<span class="card__title">${card.dataset.title}</span>
+			`;
 		});
+		document.querySelector('.preview').classList.remove('loading');
 
 		// Cards bind click event
 		eventBindAll(".card", "click", e => {
