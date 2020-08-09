@@ -149,6 +149,9 @@
 
 		.card__title {
 			transition: color .15s;
+			margin: 0;
+			font-size: inherit;
+			font-weight: normal;
 		}
 
 		.card:hover .card__title {
@@ -1024,7 +1027,7 @@
 			articles.insertAdjacentHTML('beforeend', masonArticle(card.id, card.innerHTML, card.dataset.publicationDate));
 			card.innerHTML = `
 				<span class="card__image i" style="background-image: url(src/image/preview/rose.svg)"></span>
-				<span class="card__title">${card.dataset.title}</span>
+				<h2 class="card__title">${card.dataset.title}</h2>
 			`;
 		});
 		document.querySelector('.preview').classList.remove('loading');
