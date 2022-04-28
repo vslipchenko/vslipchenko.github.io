@@ -1,0 +1,8 @@
+@use '@angular/material/theming' as mat;
+@use 'sass:map';
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: map.get(mat.$mat-grey, 900);
+  color: #FFF;
+}

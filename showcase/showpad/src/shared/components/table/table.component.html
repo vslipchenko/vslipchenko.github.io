@@ -1,0 +1,26 @@
+<div class="container mat-elevation-z8">
+  <app-spinner *ngIf="loading" class="overlay"></app-spinner>
+
+  <app-search></app-search>
+
+  <table mat-table [dataSource]="data">
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.name">
+      <th mat-header-cell *matHeaderCellDef> {{column.title}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column.name]}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['name']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name'];"></tr>
+  </table>
+
+  <div class="footer">
+    <div>Page: {{page}}</div>
+
+    <div class="pagination">
+      <app-mini-fab-button color="primary" icon="arrow_back" (clicked)="navigate.emit(navigatePreviousPage())"
+                           [disabled]="!canNavigatePrevious"></app-mini-fab-button>
+      <app-mini-fab-button color="primary" icon="arrow_forward" (clicked)="navigate.emit(navigateNextPage())"
+                           [disabled]="!canNavigateNext"></app-mini-fab-button>
+    </div>
+  </div>
+</div>

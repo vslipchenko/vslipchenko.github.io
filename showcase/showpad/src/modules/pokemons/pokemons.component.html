@@ -1,0 +1,9 @@
+<app-table
+  *ngIf="pokemonData$ | async as pokemonData"
+  [data]="pokemonData.data"
+  [columns]="[{name: 'name', title: 'Name'}]"
+  [pageSize]="pageSize"
+  [total]="pokemonData.total"
+  [loading]="$any(loading$ | async)"
+  (navigate)="loadPage($event)"
+></app-table>
