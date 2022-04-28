@@ -1,7 +1,9 @@
 <div class="container mat-elevation-z8">
   <app-spinner *ngIf="loading" class="overlay"></app-spinner>
 
-  <app-search></app-search>
+  <div class="header">
+    <app-search (search)="search.emit($event)"></app-search>
+  </div>
 
   <table mat-table [dataSource]="data">
     <ng-container *ngFor="let column of columns" [matColumnDef]="column.name">

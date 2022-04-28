@@ -1,17 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {TableColumn} from '~typings/table/table.interfaces';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import {BehaviorSubject, of} from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -27,13 +16,20 @@ export class TableComponent implements OnInit {
   @Input() total = 0;
   @Input() loading = false;
 
+  @Output() navigate = new EventEmitter<number>();
+  @Output() search = new EventEmitter<string>();
+
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  @Output() navigate = new EventEmitter<number>();
+  get canNavigatePrevious(): boolean {
+    return this.page !== 1;
+  }
 
-  // dataSource$ = new BehaviorSubject(new MatTableDataSource<any>([]));
+  get canNavigateNext(): boolean {
+    const totalPages = this.total / this.pageSize;
 
-  constructor(private readonly cd: ChangeDetectorRef) {}
+    return this.page < totalPages;
+  }
 
   ngOnInit(): void {
     // this.dataSource$.next(new MatTableDataSource(this.data));
@@ -45,13 +41,5 @@ export class TableComponent implements OnInit {
 
   navigateNextPage(): number {
     return (this.page += 1);
-  }
-
-  get canNavigatePrevious(): boolean {
-    return this.page !== 1;
-  }
-
-  get canNavigateNext(): boolean {
-    return true;
   }
 }

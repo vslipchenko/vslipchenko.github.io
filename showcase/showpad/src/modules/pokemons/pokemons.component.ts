@@ -48,6 +48,27 @@ export class PokemonsComponent implements OnInit, OnDestroy {
       });
   }
 
+  search(name: string): void {
+    this.loading$.next(true);
+
+    this.pokemonService
+      .getPokemonByName(name)
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => this.loading$.next(false)),
+      )
+      .subscribe((data) => {
+        console.log(data);
+
+        this.pokemonData$.next({
+          total: 1,
+          data: [data.name],
+        });
+      }, () => {
+        // TODO Pokemon not found
+      });
+  }
+
   private getFilteredPokemonList$(offset = 0, limit = POKEMON_PAGE_SIZE): Observable<any> {
     return this.pokemonService.getPokemonList(offset, limit).pipe(
       map((list) => {

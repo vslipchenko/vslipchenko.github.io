@@ -10,7 +10,8 @@ import {InputComponent} from './components/input/input.component';
 import {MatInputModule} from '@angular/material/input';
 import {SearchComponent} from './components/search/search.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { SpinnerComponent } from './components/spinner/spinner.component';
+import {SpinnerComponent} from './components/spinner/spinner.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [TableComponent, MiniFabButtonComponent, InputComponent, SearchComponent, SpinnerComponent],
@@ -23,6 +24,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}
