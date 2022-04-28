@@ -11,4 +11,8 @@ export class SearchComponent {
   @Output() search = new EventEmitter<string>();
 
   control = new FormControl();
+
+  get emptyValue(): boolean {
+    return !this.control.value;
+  }
 }

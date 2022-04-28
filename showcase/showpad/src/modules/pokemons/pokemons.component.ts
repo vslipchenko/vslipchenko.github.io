@@ -57,16 +57,20 @@ export class PokemonsComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
         finalize(() => this.loading$.next(false)),
       )
-      .subscribe((data) => {
-        console.log(data);
+      .subscribe(
+        (data) => {
+          console.log(data);
 
-        this.pokemonData$.next({
-          total: 1,
-          data: [data.name],
-        });
-      }, () => {
-        // TODO Pokemon not found
-      });
+          this.pokemonData$.next({
+            total: 1,
+            data: [{name: data.name}],
+          });
+        },
+        () => {
+          console.log('error');
+          // TODO Pokemon not found
+        },
+      );
   }
 
   private getFilteredPokemonList$(offset = 0, limit = POKEMON_PAGE_SIZE): Observable<any> {

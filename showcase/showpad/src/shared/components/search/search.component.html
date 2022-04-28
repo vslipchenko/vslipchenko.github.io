@@ -1,4 +1,6 @@
 <div class="search">
   <app-input label="Search" color="accent" [control]="control"></app-input
-  ><app-mini-fab-button class="search-icon" icon="search" (clicked)="search.emit(control.value)"></app-mini-fab-button>
+  >
+  <app-mini-fab-button class="search-icon" icon="search" [disabled]="emptyValue"
+                       (clicked)="search.emit(control.value)"></app-mini-fab-button>
 </div>
