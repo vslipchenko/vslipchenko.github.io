@@ -1,6 +1,12 @@
 <div class="search">
-  <app-input label="Search" color="accent" [control]="control"></app-input
+  <app-input label="Search" color="accent" [control]="control" [disabled]="active"></app-input
   >
-  <app-mini-fab-button class="search-icon" icon="search" [disabled]="emptyValue"
-                       (clicked)="search.emit(control.value)"></app-mini-fab-button>
+
+  <app-mini-fab-button *ngIf="active; else searchButton" class="search-icon" icon="clear" [disabled]="emptyValue"
+                       (clicked)="reset()"></app-mini-fab-button>
+
+  <ng-template #searchButton>
+    <app-mini-fab-button class="search-icon" icon="search" [disabled]="emptyValue"
+                         (clicked)="searchValue()"></app-mini-fab-button>
+  </ng-template>
 </div>

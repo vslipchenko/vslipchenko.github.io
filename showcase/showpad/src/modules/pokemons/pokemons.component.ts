@@ -49,6 +49,8 @@ export class PokemonsComponent implements OnInit, OnDestroy {
   }
 
   search(name: string): void {
+    if (!name) return this.loadPage(1);
+
     this.loading$.next(true);
 
     this.pokemonService

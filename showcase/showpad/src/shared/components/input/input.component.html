@@ -1,4 +1,4 @@
 <mat-form-field [appearance]="appearance" [color]="color">
   <mat-label>{{label}}</mat-label>
-  <input matInput [placeholder]="placeholder" [formControl]="control">
+  <input matInput [placeholder]="placeholder" [formControl]="control" [attr.disabled]="disabled || null">
 </mat-form-field>
