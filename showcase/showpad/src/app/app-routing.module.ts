@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {HomeModule} from '~modules/home/home.module';
 import {WishlistModule} from '~modules/wishlist/wishlist.module';
 import {IveCaughtModule} from '~modules/ive-caught/ive-caught.module';
+import {ProfileModule} from '~modules/profile/profile.module';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: 'ive-caught',
     loadChildren: (): Promise<typeof IveCaughtModule> =>
       import('~modules/ive-caught/ive-caught.module').then((m) => m.IveCaughtModule),
+  },
+  {
+    path: 'pokemon/:name',
+    loadChildren: (): Promise<typeof ProfileModule> =>
+      import('~modules/profile/profile.module').then((m) => m.ProfileModule),
   },
 ];
 
