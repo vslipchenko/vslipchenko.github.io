@@ -1,15 +1,16 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
 import {Button} from '~typings/button/button.interfaces';
+import {ThemePalette} from '@angular/material/core';
 
 @Component({
-  selector: 'app-mini-fab-button',
-  templateUrl: './mini-fab-button.component.html',
-  styleUrls: ['./mini-fab-button.component.scss'],
+  selector: 'app-button',
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MiniFabButtonComponent implements Button {
+export class ButtonComponent implements Button {
   @Input() color: ThemePalette;
+  @Input() text = '';
   @Input() icon = '';
   @Input() disabled = false;
 

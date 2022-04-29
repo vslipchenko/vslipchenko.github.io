@@ -6,3 +6,8 @@ body {
   background-color: map.get(mat.$mat-grey, 900);
   color: #FFF;
 }
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: end;
+}

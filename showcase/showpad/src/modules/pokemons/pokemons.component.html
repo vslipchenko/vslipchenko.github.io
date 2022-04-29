@@ -1,5 +1,6 @@
 <app-table
   *ngIf="pokemonData$ | async as pokemonData"
+  hint="Click on a row in order for item menu to appear"
   [data]="pokemonData.data"
   [columns]="[{name: 'name', title: 'Name'}]"
   [pageSize]="pageSize"
@@ -7,4 +8,5 @@
   [loading]="$any(loading$ | async)"
   (search)="search($event)"
   (navigate)="loadPage($event)"
+  (rowClicked)="openRowMenu($event)"
 ></app-table>

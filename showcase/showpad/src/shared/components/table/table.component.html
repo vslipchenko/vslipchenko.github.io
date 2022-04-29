@@ -3,6 +3,10 @@
 
   <div class="header">
     <app-search (search)="search.emit($event)"></app-search>
+
+    <mat-hint *ngIf="hint" class="hint">
+      <mat-icon color="accent" class="hint-icon">flare</mat-icon>
+      {{hint}}</mat-hint>
   </div>
 
   <table mat-table [dataSource]="data">
@@ -12,7 +16,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="['name']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['name'];"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name'];" (click)="rowClicked.emit(row)"></tr>
   </table>
 
   <div class="footer">

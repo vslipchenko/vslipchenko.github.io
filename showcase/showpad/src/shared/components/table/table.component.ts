@@ -11,6 +11,7 @@ import {MatPaginator} from '@angular/material/paginator';
 export class TableComponent implements OnInit {
   @Input() data: Array<any> = [];
   @Input() columns: Array<TableColumn> = [];
+  @Input() hint = '';
   @Input() pageSize = 0;
   @Input() page = 1;
   @Input() total = 0;
@@ -18,6 +19,7 @@ export class TableComponent implements OnInit {
 
   @Output() navigate = new EventEmitter<number>();
   @Output() search = new EventEmitter<string>();
+  @Output() rowClicked = new EventEmitter<any>();
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 

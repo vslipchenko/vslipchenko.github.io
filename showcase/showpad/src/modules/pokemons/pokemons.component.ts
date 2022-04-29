@@ -1,8 +1,10 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {PokemonService} from '~services/pokemon/pokemon.service';
-import {BehaviorSubject, finalize, map, Observable, Subject, takeUntil, tap} from 'rxjs';
+import {BehaviorSubject, finalize, map, Observable, Subject, takeUntil} from 'rxjs';
 import {NamedAPIResource} from 'pokenode-ts';
 import {POKEMON_PAGE_SIZE} from '~constants/pokemon';
+import {MatDialog} from '@angular/material/dialog';
+import {RowMenuComponent} from '~shared/components/row-menu/row-menu.component';
 
 @Component({
   selector: 'app-pokemons',
@@ -17,7 +19,7 @@ export class PokemonsComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly pokemonService: PokemonService) {}
+  constructor(private readonly pokemonService: PokemonService, private readonly dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getFilteredPokemonList$()
@@ -33,6 +35,11 @@ export class PokemonsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  openRowMenu(row: {name: string}): void {
+    console.log(row);
+    this.dialog.open(RowMenuComponent, {autoFocus: 'dialog'});
   }
 
   loadPage(page: number): any {

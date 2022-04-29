@@ -12,9 +12,20 @@ import {SearchComponent} from './components/search/search.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SpinnerComponent} from './components/spinner/spinner.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RowMenuComponent} from './components/row-menu/row-menu.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
-  declarations: [TableComponent, MiniFabButtonComponent, InputComponent, SearchComponent, SpinnerComponent],
+  declarations: [
+    TableComponent,
+    MiniFabButtonComponent,
+    InputComponent,
+    SearchComponent,
+    SpinnerComponent,
+    RowMenuComponent,
+    ButtonComponent,
+  ],
   exports: [TableComponent],
   imports: [
     CommonModule,
@@ -25,6 +36,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
 })
 export class SharedModule {}
