@@ -1,20 +1,22 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {IveCaughtComponent} from './ive-caught.component';
+import {ProfileComponent} from './profile.component';
 import {RouterModule} from '@angular/router';
-import {SharedModule} from '~shared/shared.module';
+
 
 @NgModule({
-  declarations: [IveCaughtComponent],
+  declarations: [
+    ProfileComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: IveCaughtComponent,
+        component: ProfileComponent,
       },
     ]),
-    SharedModule,
   ],
 })
-export class IveCaughtModule {}
+export class ProfileModule {
+}
