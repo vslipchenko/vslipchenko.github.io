@@ -14,7 +14,8 @@ import {SpinnerComponent} from './components/spinner/spinner.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RowMenuComponent} from './components/row-menu/row-menu.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { ButtonComponent } from './components/button/button.component';
+import {ButtonComponent} from './components/button/button.component';
+import {PanelComponent} from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { ButtonComponent } from './components/button/button.component';
     SpinnerComponent,
     RowMenuComponent,
     ButtonComponent,
+    PanelComponent,
   ],
-  exports: [TableComponent],
+  exports: [TableComponent, PanelComponent],
   imports: [
     CommonModule,
     MatTableModule,

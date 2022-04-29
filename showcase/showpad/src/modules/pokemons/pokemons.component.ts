@@ -5,6 +5,8 @@ import {NamedAPIResource} from 'pokenode-ts';
 import {POKEMON_PAGE_SIZE} from '~constants/pokemon';
 import {MatDialog} from '@angular/material/dialog';
 import {RowMenuComponent} from '~shared/components/row-menu/row-menu.component';
+import {SnackbarService} from '~services/snackbar/snackbar.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-pokemons',
@@ -19,7 +21,12 @@ export class PokemonsComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly pokemonService: PokemonService, private readonly dialog: MatDialog) {}
+  constructor(
+    private readonly pokemonService: PokemonService,
+    private readonly dialog: MatDialog,
+    private readonly snackbarService: SnackbarService,
+    private readonly router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.getFilteredPokemonList$()
@@ -38,8 +45,15 @@ export class PokemonsComponent implements OnInit, OnDestroy {
   }
 
   openRowMenu(row: {name: string}): void {
-    console.log(row);
-    this.dialog.open(RowMenuComponent, {autoFocus: 'dialog'});
+    const dialog = this.dialog.open(RowMenuComponent, {autoFocus: 'dialog'});
+
+    dialog.componentInstance.open
+      .pipe(takeUntil(dialog.afterClosed()))
+      .subscribe(() => this.navigatePokemonProfile(row.name));
+    dialog.componentInstance.addToWishlist.pipe(takeUntil(dialog.afterClosed())).subscribe(() => this.addToWishlist());
+    dialog.componentInstance.addToIveCaught
+      .pipe(takeUntil(dialog.afterClosed()))
+      .subscribe(() => this.addToIveCaught());
   }
 
   loadPage(page: number): any {
@@ -80,6 +94,18 @@ export class PokemonsComponent implements OnInit, OnDestroy {
           // TODO Pokemon not found
         },
       );
+  }
+
+  private navigatePokemonProfile(name: string): void {
+    void this.router.navigate([`/pokemon/${name}`]);
+  }
+
+  private addToWishlist(): void {
+    this.snackbarService.open('Pokemon was successfully added to Wishlist', 'OK');
+  }
+
+  private addToIveCaught(): void {
+    this.snackbarService.open("Pokemon was successfully added to I've caught", 'OK');
   }
 
   private getFilteredPokemonList$(offset = 0, limit = POKEMON_PAGE_SIZE): Observable<any> {
