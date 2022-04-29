@@ -16,6 +16,9 @@ import {RowMenuComponent} from './components/row-menu/row-menu.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ButtonComponent} from './components/button/button.component';
 import {PanelComponent} from './components/panel/panel.component';
+import {MenuComponent} from './components/menu/menu.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,8 +30,9 @@ import {PanelComponent} from './components/panel/panel.component';
     RowMenuComponent,
     ButtonComponent,
     PanelComponent,
+    MenuComponent,
   ],
-  exports: [TableComponent, PanelComponent],
+  exports: [TableComponent, PanelComponent, MenuComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -39,6 +43,8 @@ import {PanelComponent} from './components/panel/panel.component';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatMenuModule,
+    RouterModule,
   ],
 })
 export class SharedModule {}

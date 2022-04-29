@@ -1,0 +1,14 @@
+<app-mini-fab-button [matMenuTriggerFor]="menu" icon="menu" color="accent"></app-mini-fab-button>
+
+<mat-menu #menu="matMenu">
+  <!--  Sorry for hardcoding, it should have been an ngFor loop-->
+  <ng-container [ngTemplateOutlet]="link" [ngTemplateOutletContext]="{routerLink: '/', title: 'Home'}"></ng-container>
+  <ng-container [ngTemplateOutlet]="link" [ngTemplateOutletContext]="{routerLink: '/pokemons', title: 'Pokemons'}"></ng-container>
+  <ng-container [ngTemplateOutlet]="link" [ngTemplateOutletContext]="{routerLink: '/wishlist', title: 'Wishlist'}"></ng-container>
+  <ng-container [ngTemplateOutlet]="link" [ngTemplateOutletContext]="{routerLink: '/ive-caught', title: 'I\'ve caught'}"></ng-container>
+</mat-menu>
+
+<ng-template #link let-routerLink="routerLink" let-title="title">
+  <a mat-menu-item [routerLink]="routerLink" routerLinkActive="active-link"
+     [routerLinkActiveOptions]="{exact: true}">{{title}}</a>
+</ng-template>

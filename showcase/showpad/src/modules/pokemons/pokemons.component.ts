@@ -82,16 +82,13 @@ export class PokemonsComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (data) => {
-          console.log(data);
-
           this.pokemonData$.next({
             total: 1,
             data: [{name: data.name}],
           });
         },
         () => {
-          console.log('error');
-          // TODO Pokemon not found
+          this.snackbarService.open('Pokemon with such a name is not found', 'OK');
         },
       );
   }
