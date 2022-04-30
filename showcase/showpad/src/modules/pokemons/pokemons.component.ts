@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {RowMenuComponent} from '~shared/components/row-menu/row-menu.component';
 import {SnackbarService} from '~services/snackbar/snackbar.service';
 import {Router} from '@angular/router';
+import {Destroyable} from '~typings/component/component.interfaces';
 
 @Component({
   selector: 'app-pokemons',
@@ -14,12 +15,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./pokemons.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PokemonsComponent implements OnInit, OnDestroy {
+export class PokemonsComponent implements OnInit, Destroyable {
   pokemonData$ = new BehaviorSubject<{total: number; data: Array<any>}>(null as any);
   loading$ = new BehaviorSubject(true);
   pageSize = POKEMON_PAGE_SIZE;
 
-  private readonly destroy$ = new Subject<void>();
+  destroy$ = new Subject<void>();
 
   constructor(
     private readonly pokemonService: PokemonService,

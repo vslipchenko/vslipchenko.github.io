@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {PokemonService} from '~services/pokemon/pokemon.service';
-import {BehaviorSubject, finalize} from 'rxjs';
+import {BehaviorSubject, finalize, Subject, takeUntil} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {SnackbarService} from '~services/snackbar/snackbar.service';
+import {Destroyable} from '~typings/component/component.interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +11,13 @@ import {SnackbarService} from '~services/snackbar/snackbar.service';
   styleUrls: ['./profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements Destroyable {
   loading$ = new BehaviorSubject(true);
   name = '';
   pokemon: {stats: Array<{name: string; base_stat: number}>; moves: Array<string>} = {} as any;
   panels: Array<{title: string; body: string}> = [];
+
+  destroy$ = new Subject<void>();
 
   constructor(
     private readonly pokemonService: PokemonService,
@@ -27,7 +30,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.pokemonService
       .getPokemonByName(this.name)
-      .pipe(finalize(() => this.loading$.next(false)))
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => this.loading$.next(false)),
+      )
       .subscribe(
         (pokemon) => {
           const moves = pokemon.moves.map((item) => item.move.name);

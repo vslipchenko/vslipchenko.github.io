@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {TableColumn} from '~typings/table/table.interfaces';
 import {MatPaginator} from '@angular/material/paginator';
 
@@ -8,7 +8,7 @@ import {MatPaginator} from '@angular/material/paginator';
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
   @Input() data: Array<any> = [];
   @Input() columns: Array<TableColumn> = [];
   @Input() hint = '';
@@ -23,6 +23,14 @@ export class TableComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
+  navigatePreviousPage(): number {
+    return (this.page -= 1);
+  }
+
+  navigateNextPage(): number {
+    return (this.page += 1);
+  }
+
   get canNavigatePrevious(): boolean {
     return this.page !== 1;
   }
@@ -31,17 +39,5 @@ export class TableComponent implements OnInit {
     const totalPages = this.total / this.pageSize;
 
     return this.page < totalPages;
-  }
-
-  ngOnInit(): void {
-    // this.dataSource$.next(new MatTableDataSource(this.data));
-  }
-
-  navigatePreviousPage(): number {
-    return (this.page -= 1);
-  }
-
-  navigateNextPage(): number {
-    return (this.page += 1);
   }
 }
