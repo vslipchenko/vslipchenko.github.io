@@ -7,16 +7,16 @@ import {BehaviorSubject, takeUntil} from 'rxjs';
 @Component({
   selector: 'app-ive-caught',
   templateUrl: './ive-caught.component.html',
-  styleUrls: ['./ive-caught.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IveCaughtComponent implements OnInit {
   pokemons$ = new BehaviorSubject<Array<string>>([]);
+  LIST_NAME = 'ive-caught';
 
   constructor(private readonly storageService: StorageService, private readonly dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.pokemons$.next(this.storageService.getList('ive-caught'));
+    this.pokemons$.next(this.storageService.getList(this.LIST_NAME));
   }
 
   openRemoveDialog(): void {
@@ -26,7 +26,7 @@ export class IveCaughtComponent implements OnInit {
   }
 
   private removeAll(): void {
-    this.storageService.resetList('ive-caught');
+    this.storageService.resetList(this.LIST_NAME);
     this.pokemons$.next([]);
   }
 }

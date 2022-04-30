@@ -5,7 +5,6 @@ import {Button} from '~typings/button/button.interfaces';
 @Component({
   selector: 'app-mini-fab-button',
   templateUrl: './mini-fab-button.component.html',
-  styleUrls: ['./mini-fab-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MiniFabButtonComponent implements Button {

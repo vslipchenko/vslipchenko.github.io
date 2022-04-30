@@ -3,7 +3,6 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular
 @Component({
   selector: 'app-remove-dialog',
   templateUrl: './remove-dialog.component.html',
-  styleUrls: ['./remove-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RemoveDialogComponent {

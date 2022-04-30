@@ -7,16 +7,16 @@ import {BehaviorSubject, takeUntil} from 'rxjs';
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
-  styleUrls: ['./wishlist.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WishlistComponent implements OnInit {
   pokemons$ = new BehaviorSubject<Array<string>>([]);
+  LIST_NAME = 'wishlist';
 
   constructor(private readonly storageService: StorageService, private readonly dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.pokemons$.next(this.storageService.getList('wishlist'));
+    this.pokemons$.next(this.storageService.getList(this.LIST_NAME));
   }
 
   openRemoveDialog(): void {
@@ -26,7 +26,7 @@ export class WishlistComponent implements OnInit {
   }
 
   private removeAll(): void {
-    this.storageService.resetList('wishlist');
+    this.storageService.resetList(this.LIST_NAME);
     this.pokemons$.next([]);
   }
 }
