@@ -1,5 +1,9 @@
 <div class="profile">
   <app-menu class="menu"></app-menu>
 
-  <app-spinner class="spinner"></app-spinner>
+  <app-spinner *ngIf="loading$ | async; else profile" class="spinner"></app-spinner>
+
+  <ng-template #profile>
+    <h2>Name: {{name}}</h2>
+  </ng-template>
 </div>
