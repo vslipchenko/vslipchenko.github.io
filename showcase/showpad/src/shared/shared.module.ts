@@ -23,6 +23,7 @@ import {AccordionComponent} from './components/accordion/accordion.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {ChipsComponent} from './components/chips/chips.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { RemoveDialogComponent } from './components/remove-dialog/remove-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MenuComponent,
     AccordionComponent,
     ChipsComponent,
+    RemoveDialogComponent,
   ],
   exports: [
     TableComponent,

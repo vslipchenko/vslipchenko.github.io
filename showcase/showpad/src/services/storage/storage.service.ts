@@ -11,6 +11,10 @@ export class StorageService {
 
     const list = JSON.parse(data);
 
+    const duplicateEntry = list.includes(pokemonName);
+
+    if (duplicateEntry) return;
+
     list.push(pokemonName);
 
     localStorage.setItem(key, JSON.stringify(list));
