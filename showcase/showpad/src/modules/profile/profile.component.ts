@@ -49,4 +49,9 @@ export class ProfileComponent implements Destroyable {
         },
       );
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }
