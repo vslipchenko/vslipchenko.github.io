@@ -32,7 +32,7 @@ import {RouterModule} from '@angular/router';
     PanelComponent,
     MenuComponent,
   ],
-  exports: [TableComponent, PanelComponent, MenuComponent],
+  exports: [TableComponent, PanelComponent, MenuComponent, SpinnerComponent],
   imports: [
     CommonModule,
     MatTableModule,

@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {PokemonService} from '~services/pokemon/pokemon.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +8,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly pokemonService: PokemonService) {}
 
   ngOnInit(): void {}
 }

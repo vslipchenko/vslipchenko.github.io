@@ -1,10 +1,17 @@
 @use '@angular/material/theming' as mat;
 @use 'sass:map';
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: map.get(mat.$mat-grey, 900);
   color: #FFF;
+  margin: 0;
+  padding: 0 8px;
 }
 
 mat-dialog-actions {
@@ -14,5 +21,5 @@ mat-dialog-actions {
 
 .menu {
   display: block;
-  margin: 16px 0;
+  padding: 16px 0;
 }
