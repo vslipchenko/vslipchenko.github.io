@@ -11,6 +11,7 @@ import {MatPaginator} from '@angular/material/paginator';
 export class TableComponent {
   @Input() data: Array<any> = [];
   @Input() columns: Array<TableColumn> = [];
+  @Input() visibleColumns: Array<string> = [];
   @Input() hint = '';
   @Input() pageSize = 0;
   @Input() page = 1;

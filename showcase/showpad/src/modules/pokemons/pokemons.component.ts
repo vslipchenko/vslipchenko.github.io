@@ -19,6 +19,8 @@ export class PokemonsComponent implements OnInit, Destroyable {
   pokemonData$ = new BehaviorSubject<{total: number; data: Array<any>}>(null as any);
   loading$ = new BehaviorSubject(true);
   pageSize = POKEMON_PAGE_SIZE;
+  tableColumns = [{name: 'name', title: 'Name'}];
+  visibleColumns = ['name'];
 
   destroy$ = new Subject<void>();
 

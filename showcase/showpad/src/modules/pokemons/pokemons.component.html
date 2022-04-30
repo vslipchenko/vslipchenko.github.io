@@ -1,10 +1,12 @@
+<!-- Check pokemons.component.spec.ts for unit tests -->
 <app-menu class="menu"></app-menu>
 
 <app-table
   *ngIf="pokemonData$ | async as pokemonData"
   hint="Click on a row in order for item menu to appear"
   [data]="pokemonData.data"
-  [columns]="[{name: 'name', title: 'Name'}]"
+  [columns]="tableColumns"
+  [visibleColumns]="visibleColumns"
   [pageSize]="pageSize"
   [total]="pokemonData.total"
   [loading]="$any(loading$ | async)"
