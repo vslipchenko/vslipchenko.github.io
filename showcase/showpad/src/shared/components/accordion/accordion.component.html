@@ -1,0 +1,10 @@
+<mat-accordion [multi]="multi">
+  <mat-expansion-panel *ngFor="let panel of panels; let last = last">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{panel.title}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>{{panel.body}}</div>
+  </mat-expansion-panel>
+</mat-accordion>

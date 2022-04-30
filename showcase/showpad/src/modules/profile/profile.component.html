@@ -4,6 +4,8 @@
   <app-spinner *ngIf="loading$ | async; else profile" class="spinner"></app-spinner>
 
   <ng-template #profile>
-    <h2>Name: {{name}}</h2>
+    <h2>Pokemon: {{name}}</h2>
+
+    <app-accordion [panels]="panels"></app-accordion>
   </ng-template>
 </div>
