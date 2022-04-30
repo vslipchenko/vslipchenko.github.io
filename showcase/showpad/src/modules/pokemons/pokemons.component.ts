@@ -8,6 +8,7 @@ import {RowMenuComponent} from '~shared/components/row-menu/row-menu.component';
 import {SnackbarService} from '~services/snackbar/snackbar.service';
 import {Router} from '@angular/router';
 import {Destroyable} from '~typings/component/component.interfaces';
+import {StorageService} from '~services/storage/storage.service';
 
 @Component({
   selector: 'app-pokemons',
@@ -27,6 +28,7 @@ export class PokemonsComponent implements OnInit, Destroyable {
     private readonly dialog: MatDialog,
     private readonly snackbarService: SnackbarService,
     private readonly router: Router,
+    private readonly storageService: StorageService,
   ) {}
 
   ngOnInit(): void {
@@ -51,10 +53,12 @@ export class PokemonsComponent implements OnInit, Destroyable {
     dialog.componentInstance.open
       .pipe(takeUntil(dialog.afterClosed()))
       .subscribe(() => this.navigatePokemonProfile(row.name));
-    dialog.componentInstance.addToWishlist.pipe(takeUntil(dialog.afterClosed())).subscribe(() => this.addToWishlist());
+    dialog.componentInstance.addToWishlist
+      .pipe(takeUntil(dialog.afterClosed()))
+      .subscribe(() => this.addToWishlist(row.name));
     dialog.componentInstance.addToIveCaught
       .pipe(takeUntil(dialog.afterClosed()))
-      .subscribe(() => this.addToIveCaught());
+      .subscribe(() => this.addToIveCaught(row.name));
   }
 
   loadPage(page: number): any {
@@ -98,11 +102,13 @@ export class PokemonsComponent implements OnInit, Destroyable {
     void this.router.navigate([`/pokemon/${name}`]);
   }
 
-  private addToWishlist(): void {
+  private addToWishlist(name: string): void {
+    this.storageService.saveToList('wishlist', name);
     this.snackbarService.open('Pokemon was successfully added to Wishlist', 'OK');
   }
 
-  private addToIveCaught(): void {
+  private addToIveCaught(name: string): void {
+    this.storageService.saveToList('ive-caught', name);
     this.snackbarService.open("Pokemon was successfully added to I've caught", 'OK');
   }
 

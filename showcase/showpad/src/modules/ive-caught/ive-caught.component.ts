@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {StorageService} from '~services/storage/storage.service';
 
 @Component({
   selector: 'app-ive-caught',
@@ -7,7 +8,11 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IveCaughtComponent implements OnInit {
-  constructor() {}
+  pokemons: Array<string> = [];
 
-  ngOnInit(): void {}
+  constructor(private readonly storageService: StorageService) {}
+
+  ngOnInit(): void {
+    this.pokemons = this.storageService.getList('ive-caught');
+  }
 }

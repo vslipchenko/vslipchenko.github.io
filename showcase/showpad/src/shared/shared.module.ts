@@ -21,6 +21,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 import {AccordionComponent} from './components/accordion/accordion.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {ChipsComponent} from './components/chips/chips.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,18 @@ import {MatExpansionModule} from '@angular/material/expansion';
     PanelComponent,
     MenuComponent,
     AccordionComponent,
+    ChipsComponent,
   ],
-  exports: [TableComponent, PanelComponent, MenuComponent, SpinnerComponent, AccordionComponent],
+  exports: [
+    TableComponent,
+    PanelComponent,
+    MenuComponent,
+    SpinnerComponent,
+    AccordionComponent,
+    ChipsComponent,
+    ButtonComponent,
+    MiniFabButtonComponent,
+  ],
   imports: [
     CommonModule,
     MatTableModule,
@@ -49,6 +61,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatMenuModule,
     RouterModule,
     MatExpansionModule,
+    MatChipsModule,
   ],
 })
 export class SharedModule {}
