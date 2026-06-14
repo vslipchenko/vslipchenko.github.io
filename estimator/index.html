@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>estimator</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">estimator</h1>
+</header>
+<h1 id="estimator">estimator</h1>
+<p><em>Grounded, explainable Jira story-point estimates — learned from
+your team’s own resolved tickets.</em></p>
+<p>Estimate Jira tickets from your team’s actual history. The plugin
+pulls resolved tickets via the Atlassian MCP to build a baseline
+dataset, then uses it to suggest effort / story-point estimates for new
+work by comparing it to similar past tickets.</p>
+<h2 id="install">Install</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># register the marketplace, then install the plugin</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> plugin marketplace add vslipchenko/estimator</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> plugin install estimator@vslipchenko</span></code></pre></div>
+<p>Then restart Claude Code. The plugin needs the <strong>Atlassian
+(Jira) MCP</strong> connected (run <code>/mcp</code> to check).
+Repository: <a href="https://github.com/vslipchenko/estimator"
+class="uri">https://github.com/vslipchenko/estimator</a>.</p>
+<h2 id="skills-commands-at-a-glance">Skills &amp; commands at a
+glance</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Invoke</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sync</code></td>
+<td>Build / refresh the history dataset from resolved, estimated Jira
+tickets.</td>
+</tr>
+<tr>
+<td><code>estimate</code></td>
+<td>Suggest story points for a ticket from similar past work, then
+record the outcome.</td>
+</tr>
+<tr>
+<td><code>add</code></td>
+<td>Add specific tickets by key (one or many) to the history.</td>
+</tr>
+<tr>
+<td><code>find</code></td>
+<td>Look up stored records by key.</td>
+</tr>
+<tr>
+<td><code>edit</code></td>
+<td>Correct fields of, or delete, stored records.</td>
+</tr>
+<tr>
+<td><code>export</code> / <code>import</code></td>
+<td>Back up the dataset / load an existing one (merge or replace).</td>
+</tr>
+<tr>
+<td><code>/estimator:prune</code></td>
+<td>Scan for and delete broken records (after confirmation).</td>
+</tr>
+<tr>
+<td><code>/estimator:reset</code></td>
+<td>Delete the stored dataset.</td>
+</tr>
+</tbody>
+</table>
+<p>Skills (<code>sync</code>, <code>estimate</code>, <code>add</code>,
+<code>find</code>, <code>edit</code>, <code>export</code>,
+<code>import</code>) respond to natural language; <code>prune</code> and
+<code>reset</code> are slash commands.</p>
+<h2 id="getting-started">Getting started</h2>
+<p>Run the <code>sync</code> skill to build your estimation baseline —
+and re-run it any time to top up new or missing tickets:</p>
+<ul>
+<li>Verifies the Atlassian MCP is connected.</li>
+<li>Asks for the project key(s) and how to scope the fetch — a
+<strong>time window</strong> and/or the <strong>latest N</strong>
+tickets — and, on the first run, a <strong>minimum story-points</strong>
+filter, then builds and confirms a JQL query for resolved, estimated
+tickets.</li>
+<li>Detects your site’s “Story Points” custom field.</li>
+<li>Fetches the matching tickets (including parent, all comments, and a
+design link where available) and writes them to a CSV dataset.</li>
+</ul>
+<p>Re-running <code>sync</code> lets you <strong>refresh</strong>
+(overwrite) or <strong>append</strong> (fetch only tickets updated since
+the last run, merged in).</p>
+<h2 id="estimate-a-ticket">Estimate a ticket</h2>
+<p>Once you have a baseline, ask Claude to estimate a ticket —
+e.g. <em>“estimate ABC-7777”</em>, <em>“how many points is this
+ticket?”</em> with a Jira link, or just <em>“estimate 7777”</em> (the
+project key is taken from your <code>sync</code> config). The
+<code>estimate</code> skill:</p>
+<ul>
+<li>Fetches the ticket via the Atlassian MCP.</li>
+<li>Compares it to your history — narrowing by issue type / components /
+labels, then ranking by similarity — and suggests story points in your
+team’s scale, with a rationale and the most comparable past
+tickets.</li>
+<li>Prompts for the value <strong>your team settles on</strong>. If you
+give one it’s recorded as <code>final</code>; if you skip, the
+suggestion is recorded as <code>suggested</code>.</li>
+<li>Adds the ticket to <code>history.csv</code> (prompting before
+overwriting an existing row), so the dataset grows as you estimate.</li>
+</ul>
+<p>On the <strong>first</strong> estimate run, the skill asks (once) for
+your preferred point <strong>scale</strong> (Fibonacci, linear, powers
+of two, or a custom scale) and optional <strong>min/max</strong> limits,
+caching them in <code>config.json</code>. Later runs reuse them to keep
+suggestions on your scale and within range; the value your team actually
+settles on is always recorded as-is. To change them, edit
+<code>config.json</code>.</p>
+<h3 id="estimate-provenance">Estimate provenance</h3>
+<p>Each row records <em>where its estimate came from</em> in the
+<code>estimate_basis</code> column: <code>actual</code> (resolved ticket
+from <code>sync</code>), <code>final</code> (your team’s agreed value),
+or <code>suggested</code> (the skill’s own suggestion). Estimation
+trusts <code>actual</code> over <code>final</code> over
+<code>suggested</code>, so the tool never treats its own guesses as
+ground truth. When an estimated ticket is later resolved, re-running
+<code>sync</code> replaces its row with the real outcome.</p>
+<h2 id="add-specific-tickets">Add specific tickets</h2>
+<p>Already ran <code>/sync</code> but missing a few tickets? Ask Claude
+to <em>“add ABC-7777 to history”</em> (or several keys / bare numbers).
+The <code>add</code> skill fetches each ticket from Jira and appends it
+as a new record — capturing real <code>story_points</code>,
+<code>time_spent</code>, and resolution (so resolved tickets are
+recorded as <code>actual</code>, open-but-estimated ones as
+<code>final</code>). It only adds tickets that have a key, summary, and
+story points, prompts before overriding an existing record, and reports
+anything skipped. Field-level edits are handled by the edit skill.</p>
+<h2 id="find-a-stored-record">Find a stored record</h2>
+<p>Ask Claude to look up records by key — e.g. <em>“find ABC-7777 in
+history”</em>, <em>“show the record for 7777”</em> (bare numbers expand
+via your <code>sync</code> project key), or <em>“look up ABC-1,
+ABC-2”</em>. The <code>find</code> skill prints each matched record’s
+fields and its <strong>row number</strong> in <code>history.csv</code>
+(for manual reference), and lists any keys it couldn’t find.</p>
+<h2 id="edit-or-delete-records">Edit or delete records</h2>
+<p>Need to correct or remove a stored record? Ask Claude to <em>“fix the
+story points on ABC-7777”</em>, <em>“edit ABC-1”</em>, or <em>“delete
+ABC-2, ABC-3 from history”</em> (bare numbers expand via your
+<code>sync</code> project key). The <code>edit</code> skill:</p>
+<ul>
+<li>Looks up the requested keys and reports any it can’t find.</li>
+<li>For an <strong>edit</strong>, changes only the fields you name
+(validating the new values first) and never alters the record’s
+<code>key</code>.</li>
+<li>For a <strong>delete</strong>, removes the matched records after you
+confirm.</li>
+<li>Does <strong>not</strong> insert new records — use
+<code>estimate</code> (or <code>add</code>) for that.</li>
+</ul>
+<h2 id="prune-broken-records">Prune broken records</h2>
+<p>Run <code>/estimator:prune</code> to tidy the dataset. It takes no
+arguments and scans all of <code>history.csv</code>:</p>
+<ul>
+<li><strong>Deletes</strong> genuinely broken rows — a missing key,
+summary, or story points — but only after listing them and asking you to
+confirm.</li>
+<li><strong>Flags</strong> fixable issues (e.g. a blank/invalid
+<code>estimate_basis</code> or missing issue type) so you can repair
+them with the <code>edit</code> skill; flagged rows are never
+deleted.</li>
+</ul>
+<h2 id="load-existing-history-import">Load existing history
+(import)</h2>
+<p>Already have a history CSV — from <code>/estimator:export</code>,
+another machine, or a teammate? Ask Claude to <em>“import my history
+from <code>&lt;path&gt;</code>”</em>. The <code>import</code> skill
+reads the file and either <strong>merges</strong> it into your dataset
+(dedup by key, imported wins) or <strong>replaces</strong> it (with
+explicit confirmation). It maps columns by their header tokens —
+tolerant of reordered columns and legacy 12-column files — derives your
+<code>project_keys</code>, and reports what changed. It’s the
+counterpart to <code>export</code>, and lets you start from an existing
+dataset without running <code>/sync</code>.</p>
+<h2 id="where-data-is-stored">Where data is stored</h2>
+<p>The dataset lives in a per-user folder in your home directory:</p>
+<pre><code>~/.estimator/               (a normal home dotfolder, like ~/.aws)
+├── history.csv              the ticket dataset (13 columns; &quot;;&quot;-delimited)
+└── config.json              run metadata (JQL, field ids, updated watermark,
+                             min_fetch_story_points, last_exported,
+                             estimation_prefs: scale + min/max limits, …)</code></pre>
+<p>This is a single global directory per user — built once and reused
+from any project.</p>
+<h2 id="cleanup-uninstall">Cleanup / uninstall</h2>
+<ul>
+<li><strong>Data lives in <code>~/.estimator</code></strong> (a normal
+folder in your home). Uninstalling the plugin does <strong>not</strong>
+remove it.</li>
+<li><strong>Remove it deliberately:</strong> run
+<code>/estimator:reset</code> — it lists the stored files
+(<code>history.csv</code>, <code>config.json</code>, and any leftover
+temp file), deletes them after you confirm, and removes the
+<code>~/.estimator</code> folder if it ends up empty. Or just
+<code>rm -rf ~/.estimator</code>.</li>
+<li><strong>Back up / migrate:</strong> the <code>export</code> skill
+copies the dataset to a path you choose — a folder
+(<code>history.csv</code>, and <code>config.json</code> too if you opt
+in) or a <code>*.csv</code> file (history only). Restore later with the
+<code>import</code> skill.</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>The Atlassian (Jira) MCP connected in Claude Code.</li>
+<li>For CSV assembly the plugin uses, in order of preference, Python 3,
+then Node.js; if neither is available it falls back to building the CSV
+directly. No third-party packages are required.</li>
+</ul>
+<h2 id="license">License</h2>
+<p>MIT — see <a href="LICENSE">LICENSE</a>.</p>
+</body>
+</html>
