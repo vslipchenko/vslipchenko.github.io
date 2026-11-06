@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>sessions</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">sessions</h1>
+</header>
+<p><em>Close your sessions without losing your place: save open Claude
+Code sessions, then reopen them all in one go.</em></p>
+<p>Before closing them (a reboot, a terminal update, or just stopping
+for the day), ask Claude to <strong>save your sessions</strong>: it
+lists the Claude Code sessions running on the machine and lets you pick
+which to keep. Later, start Claude Code anywhere and ask it to
+<strong>restore your sessions</strong>: each one reopens resumed in its
+original folder, in the same kind of terminal it ran in — Git Bash,
+PowerShell or cmd on Windows; bash, zsh or fish in your terminal or tmux
+on Linux; zsh or bash in Terminal, iTerm2, Ghostty and others on
+macOS.</p>
+<p>No more writing session ids down. Or let the <strong>session
+manager</strong> do it: say <em>"manage sessions"</em> once, and every
+session you start or resume is added to the list automatically, so even
+a crash or a sudden reboot loses nothing.</p>
+<h2 id="install">Install</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> plugin marketplace add vslipchenko/ai</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> plugin install sessions@vslipchenko</span></code></pre></div>
+<p>Then restart Claude Code.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li><strong>Claude Code in a terminal</strong> (the <code>claude</code>
+CLI). It saves and reopens terminal sessions only: sessions in Claude
+Desktop, the IDE extensions, claude.ai chat or Cowork are never listed,
+and the plugin can't do anything when installed there.</li>
+<li><strong>Windows</strong> 10/11 with Windows PowerShell 5.1 (built
+in). Git Bash and Windows Terminal are used when installed, never
+required.</li>
+<li><strong>Linux</strong> with Python 3 (preinstalled on almost every
+desktop distro). Works under WSL too.</li>
+<li><strong>macOS</strong> with Python 3 from Apple's Command Line Tools
+(<code>/usr/bin/python3</code>; installed with
+<code>xcode-select --install</code>, and already there if you use
+<code>git</code>). macOS support is tested on GitHub's macOS runners but
+<strong>not yet on a real Mac</strong> — see <a
+href="#limits">Limits</a>.</li>
+</ul>
+<h2 id="skills">Skills</h2>
+<table>
+<thead>
+<tr>
+<th>Invoke</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>save</code></td>
+<td>List live Claude Code sessions, let you pick, and store them,
+replacing the previously saved set.</td>
+</tr>
+<tr>
+<td><code>restore</code></td>
+<td>Reopen every saved session, each with
+<code>claude --resume &lt;id&gt;</code> in its folder and original
+terminal.</td>
+</tr>
+<tr>
+<td><code>clear</code> (also <code>/sessions:remove</code>)</td>
+<td>Delete the saved set without restoring it (only the list; the
+conversations stay). Asks first if some were never restored.</td>
+</tr>
+<tr>
+<td><code>manage</code></td>
+<td>Session manager: keep the saved set up to date automatically (see
+below). Also turns it off and shows its status.</td>
+</tr>
+</tbody>
+</table>
+<p>They respond to natural language, e.g. <em>"save my sessions, I'm
+rebooting"</em>, <em>"restore my sessions"</em>, <em>"restore just the
+API one"</em>, <em>"restore them in cmd this time"</em>, <em>"restore
+them in tmux"</em>, <em>"always restore in Git Bash"</em>, <em>"clear
+sessions"</em> or <em>"remove sessions"</em>, <em>"manage
+sessions"</em>, <em>"stop managing sessions"</em>.</p>
+<h2 id="session-manager">Session manager</h2>
+<p>Instead of saving by hand, say <em>"manage sessions"</em> (or
+<em>"session manager"</em>). It asks what to start with — <strong>all
+open sessions</strong>, <strong>some you pick</strong>, or
+<strong>none</strong> for a fresh start where only sessions started or
+resumed from then on are added — then keeps the list current on its
+own:</p>
+<table>
+<thead>
+<tr>
+<th>What happens to a session</th>
+<th>On the list?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>started or resumed (in any folder, any terminal)</td>
+<td>added, with its folder, shell and terminal</td>
+</tr>
+<tr>
+<td>closed with <code>/exit</code>, Ctrl+D or <code>/logout</code></td>
+<td>dropped — you closed it on purpose</td>
+</tr>
+<tr>
+<td><code>/clear</code> or <code>/resume</code> to another session</td>
+<td>swapped for the new one</td>
+</tr>
+<tr>
+<td>window closed, process killed, crash, power loss, reboot</td>
+<td>kept</td>
+</tr>
+</tbody>
+</table>
+<p>Restore them any time with <em>"restore my sessions"</em>. Managing
+stays on across reboots until you say <em>"stop managing sessions"</em>;
+the list is kept when you stop. While it's on, a manual
+<code>save</code> asks to turn it off first, and <code>clear</code>
+empties the list without stopping it.</p>
+<p>It works through two plugin hooks (<code>SessionStart</code>,
+<code>SessionEnd</code>) that run in the background and exit at once
+while managing is off. Headless runs (<code>claude -p</code>, the SDK)
+are never added. Each Claude Code install (e.g. Windows and WSL) has its
+own list. Sessions that were already open when the plugin was installed
+or updated pick the hooks up after <code>/reload-plugins</code> or a
+restart.</p>
+<h2 id="where-sessions-reopen">Where sessions reopen</h2>
+<p><code>save</code> records the shell each session was started from,
+and — when it can be told — the window or terminal it was in.</p>
+<h3 id="windows">Windows</h3>
+<table>
+<thead>
+<tr>
+<th>Saved from</th>
+<th>Reopens in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git Bash (its own window)</td>
+<td>a Git Bash window</td>
+</tr>
+<tr>
+<td>Git Bash inside Windows Terminal</td>
+<td>a Windows Terminal tab running Git Bash</td>
+</tr>
+<tr>
+<td>PowerShell 7 / Windows PowerShell / cmd in a standalone console
+window</td>
+<td>a standalone console window with the same shell</td>
+</tr>
+<tr>
+<td>PowerShell 7 / Windows PowerShell / cmd in Windows Terminal</td>
+<td>a Windows Terminal tab (all in one window), or a console window
+without Windows Terminal</td>
+</tr>
+<tr>
+<td>VS Code / JetBrains terminal</td>
+<td>a Windows Terminal tab with the same shell (editor terminals can't
+be opened from outside)</td>
+</tr>
+<tr>
+<td>unknown (e.g. sessions saved by version 1.0.0)</td>
+<td>Windows PowerShell</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fallbacks.</strong> If the saved shell isn't there any more
+(say Git Bash was uninstalled), the session still opens, in PowerShell
+7, else Windows PowerShell, else cmd, and you're told which session fell
+back and why. A missing Windows Terminal or Git Bash window (mintty)
+likewise falls back to the other.</p>
+<h3 id="linux">Linux</h3>
+<table>
+<thead>
+<tr>
+<th>Saved from</th>
+<th>Reopens in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bash / zsh / fish / sh in GNOME Terminal, Ptyxis, Console, Konsole,
+xfce4-terminal, Tilix, Terminator, kitty, WezTerm, Alacritty, foot or
+xterm</td>
+<td>the same shell in the same terminal</td>
+</tr>
+<tr>
+<td>tmux</td>
+<td>a new window in the same tmux session (recreated detached if tmux
+was restarted; <code>tmux attach -t &lt;name&gt;</code>)</td>
+</tr>
+<tr>
+<td>WSL inside Windows Terminal</td>
+<td>a Windows Terminal tab running WSL</td>
+</tr>
+<tr>
+<td>VS Code terminal, SSH, unknown</td>
+<td>the system default / first installed terminal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fallbacks.</strong> On Linux a missing shell falls back to
+bash, then sh; a missing terminal to Windows Terminal (under WSL), the
+system default terminal, any installed one, and finally a detached tmux
+session when there is no desktop at all. Either way the session still
+opens and you're told which one fell back and why.</p>
+<h3 id="macos">macOS</h3>
+<table>
+<thead>
+<tr>
+<th>Saved from</th>
+<th>Reopens in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zsh / bash / fish / sh in Terminal or iTerm2</td>
+<td>a new window of the same app with the same shell (via
+AppleScript)</td>
+</tr>
+<tr>
+<td>Ghostty, kitty, WezTerm or Alacritty</td>
+<td>a new window of the same terminal</td>
+</tr>
+<tr>
+<td>tmux</td>
+<td>a new window in the same tmux session (recreated detached if tmux
+was restarted)</td>
+</tr>
+<tr>
+<td>Warp, VS Code / editor terminal, unknown</td>
+<td>Terminal (they can't be opened with a command)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fallbacks.</strong> A missing shell falls back to zsh, then
+bash, then sh; a missing terminal to Terminal (it ships with every Mac),
+then any other installed one, then a detached tmux session.</p>
+<p><strong>Permission.</strong> The first restore into Terminal or
+iTerm2 makes macOS ask whether the app running Claude may control it. If
+that's refused, the session is reported as skipped
+(<code>automation-denied</code>) rather than lost — also when the prompt
+is left unanswered for 45 seconds: allow it in System Settings › Privacy
+&amp; Security › Automation and restore again.</p>
+<p><strong>Overrides.</strong> Ask for a different shell for one
+restore, or set a default ("always restore in Git Bash"); the default is
+kept in the plugin's data folder and can be cleared any time.</p>
+<h2 id="how-it-works">How it works</h2>
+<ul>
+<li><strong>Finding live sessions.</strong> Claude Code keeps a small
+file per running session in <code>~/.claude/sessions/</code>. The plugin
+reads it and checks each entry against the actual process (PID and start
+time), so leftovers from crashed sessions and reused PIDs are ignored.
+Only terminal sessions are offered: sessions of Claude Desktop (and
+Cowork), the VS Code extension panel, headless runs
+(<code>claude -p</code>, the SDK) and other apps belong to those apps
+and are left out (Claude Code running in a VS Code terminal is a
+terminal session and is kept). If that folder is ever missing or its
+format changes, it falls back to transcripts written in the last 12
+hours.</li>
+<li><strong>Labels.</strong> Each session is shown by its title (your
+<code>/rename</code> title, else Claude's generated one), folder, and
+last prompt.</li>
+<li><strong>Storage.</strong> The saved set is a single small JSON file
+in the plugin's own data folder
+(<code>~/.claude/plugins/data/sessions-vslipchenko/snapshots/</code>),
+which survives reboots and plugin updates. Nothing piles up: each save
+replaces the previous file. If the previous set still has sessions that
+were never restored, <code>save</code> asks before replacing it, so a
+mistaken save later on can't wipe what you meant to restore. A default
+shell, if you set one, is kept next to it in <code>config.json</code>.
+Uninstalling the plugin deletes the folder unless you pass
+<code>--keep-data</code>.</li>
+<li><strong>Clean start.</strong> Restored sessions are fully
+independent: the markers Claude Code gives to processes started from
+inside a session (child-session flag, session id, messaging socket) are
+removed before launching, so each resumed session keeps saving its own
+transcript. So are the "no colour" switch Claude sets for its tool
+commands and the description of the terminal <code>restore</code> ran
+in, so each session comes back in full colour and sees its own
+terminal.</li>
+<li><strong>Restoring.</strong> Sessions reopen in the order you
+originally opened them (Windows Terminal tabs left to right, windows one
+after another). Sessions that are already open are skipped, as are
+sessions whose folder or conversation no longer exists, and you're told
+which and why.</li>
+</ul>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>Only conversations come back. Dev servers, watchers and other
+processes started inside a session are not restarted.</li>
+<li>A reply that is still being generated when a session is closed is
+lost; let busy sessions finish first.</li>
+<li>Claude Code deletes old conversations after its retention period
+(<code>cleanupPeriodDays</code>, default 30 days); those can't be
+resumed.</li>
+<li><strong>macOS is not yet tested on a real Mac.</strong> Everything
+that can run on GitHub's macOS runners is tested there (session
+discovery from <code>ps</code>, shell and terminal detection, every
+restore plan, the session manager). Still unchecked: windows actually
+opening in Terminal, iTerm2, Ghostty, kitty, WezTerm and Alacritty, the
+Automation permission prompt, and the exact <code>procStart</code>
+format in Claude Code's session files on macOS (any format falls back to
+a safe process-name check). Reports from Mac users are welcome.</li>
+<li>Other AI CLIs are not supported yet.</li>
+</ul>
+<h2 id="without-claude">Without Claude</h2>
+<p>The script can also be run directly, e.g. to restore without first
+opening a Claude session:</p>
+<p>On Windows:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">$p</span> <span class="op">=</span> <span class="fu">Get-ChildItem</span> <span class="st">&quot;</span><span class="va">$env</span><span class="op">:</span><span class="va">USERPROFILE</span><span class="st">\.claude\plugins\cache\vslipchenko\sessions&quot;</span> <span class="op">-</span>Directory <span class="op">|</span> <span class="fu">Sort-Object</span> Name <span class="op">|</span> <span class="fu">Select-Object</span> <span class="op">-</span>Last <span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">powershell</span> <span class="op">-</span>NoProfile <span class="op">-</span>ExecutionPolicy Bypass <span class="op">-</span>File <span class="st">&quot;</span><span class="op">$(</span><span class="va">$p</span><span class="op">.</span><span class="fu">FullName</span><span class="op">)</span><span class="st">\scripts\sessions.ps1&quot;</span> restore</span></code></pre></div>
+<p>On Linux and macOS:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">p</span><span class="op">=</span><span class="va">$(</span><span class="fu">ls</span> <span class="at">-d</span> ~/.claude/plugins/cache/vslipchenko/sessions/<span class="pp">*</span>/ <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-V</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-1</span><span class="va">)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="st">&quot;</span><span class="va">$p</span><span class="st">/scripts/sessions.py&quot;</span> restore</span></code></pre></div>
+<p>Commands: <code>list</code>,
+<code>save -Ids &lt;id,...&gt; [-Force]</code>, <code>snapshots</code>,
+<code>restore [-Ids &lt;id,...&gt;] [-UseShell &lt;shell&gt;] [-Terminal &lt;terminal&gt;] [-DryRun]</code>,
+<code>config [-UseShell ...] [-Terminal ...] [-Reset]</code>,
+<code>clear [-Force] [-IncludeConfig]</code>,
+<code>manage [-Enable [-Ids &lt;id,...&gt;] [-Force] | -Disable]</code>.</p>
+<h2 id="license">License</h2>
+<p>MIT</p>
+<hr />
+<p>Source: <a
+href="https://github.com/vslipchenko/ai/tree/main/plugins/sessions">https://github.com/vslipchenko/ai/tree/main/plugins/sessions</a>
+· <a
+href="https://github.com/vslipchenko/ai/blob/main/plugins/sessions/PRIVACY.md">Privacy
+policy</a> · <a
+href="https://github.com/vslipchenko/ai/issues">Support</a></p>
+</body>
+</html>
