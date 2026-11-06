@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>estimator</title>
+  <title>jira-estimator</title>
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -97,11 +97,11 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">estimator</h1>
+<h1 class="title">jira-estimator</h1>
 </header>
 <p><em>Grounded, explainable Jira story-point estimates — learned from
-your team’s own resolved tickets.</em></p>
-<p>Estimate Jira tickets from your team’s actual history. The plugin
+your team's own resolved tickets.</em></p>
+<p>Estimate Jira tickets from your team's actual history. The plugin
 pulls resolved tickets via the Atlassian MCP to build a baseline
 dataset, then uses it to suggest effort / story-point estimates for new
 work by comparing it to similar past tickets.</p>
@@ -109,18 +109,15 @@ work by comparing it to similar past tickets.</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># register the marketplace, then install the plugin</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> plugin marketplace add vslipchenko/ai</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> plugin install estimator@vslipchenko</span></code></pre></div>
-<p>Then restart Claude Code. The plugin needs the <strong>Atlassian
-(Jira) MCP</strong> connected (run <code>/mcp</code> to check).
-Repository: <a href="https://github.com/vslipchenko/ai/tree/main/plugins/estimator"
-class="uri">https://github.com/vslipchenko/ai/plugins/estimator</a>.</p>
-<h2 id="skills-commands-at-a-glance">Skills &amp; commands at a
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> plugin install jira-estimator@vslipchenko</span></code></pre></div>
+<p>Then restart Claude Code. The plugin brings Atlassian's remote MCP
+server (<code>https://mcp.atlassian.com/v2/mcp</code>) with it: run
+<code>/mcp</code> once and sign in to Atlassian to connect it.
+Repository: <a
+href="https://github.com/vslipchenko/ai/tree/main/plugins/jira-estimator">https://github.com/vslipchenko/ai/tree/main/plugins/jira-estimator</a>.</p>
+<h2 id="skills--commands-at-a-glance">Skills &amp; commands at a
 glance</h2>
 <table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr>
 <th>Invoke</th>
@@ -155,11 +152,11 @@ record the outcome.</td>
 <td>Back up the dataset / load an existing one (merge or replace).</td>
 </tr>
 <tr>
-<td><code>/estimator:prune</code></td>
+<td><code>/jira-estimator:prune</code></td>
 <td>Scan for and delete broken records (after confirmation).</td>
 </tr>
 <tr>
-<td><code>/estimator:reset</code></td>
+<td><code>/jira-estimator:reset</code></td>
 <td>Delete the stored dataset.</td>
 </tr>
 </tbody>
@@ -178,7 +175,7 @@ and re-run it any time to top up new or missing tickets:</p>
 tickets — and, on the first run, a <strong>minimum story-points</strong>
 filter, then builds and confirms a JQL query for resolved, estimated
 tickets.</li>
-<li>Detects your site’s “Story Points” custom field.</li>
+<li>Detects your site's "Story Points" custom field.</li>
 <li>Fetches the matching tickets (including parent, all comments, and a
 design link where available) and writes them to a CSV dataset.</li>
 </ul>
@@ -186,19 +183,19 @@ design link where available) and writes them to a CSV dataset.</li>
 (overwrite) or <strong>append</strong> (fetch only tickets updated since
 the last run, merged in).</p>
 <h2 id="estimate-a-ticket">Estimate a ticket</h2>
-<p>Once you have a baseline, ask Claude to estimate a ticket —
-e.g. <em>“estimate ABC-7777”</em>, <em>“how many points is this
-ticket?”</em> with a Jira link, or just <em>“estimate 7777”</em> (the
-project key is taken from your <code>sync</code> config). The
-<code>estimate</code> skill:</p>
+<p>Once you have a baseline, ask Claude to estimate a ticket — e.g.
+<em>"estimate ABC-7777"</em>, <em>"how many points is this ticket?"</em>
+with a Jira link, or just <em>"estimate 7777"</em> (the project key is
+taken from your <code>sync</code> config). The <code>estimate</code>
+skill:</p>
 <ul>
 <li>Fetches the ticket via the Atlassian MCP.</li>
 <li>Compares it to your history — narrowing by issue type / components /
 labels, then ranking by similarity — and suggests story points in your
-team’s scale, with a rationale and the most comparable past
+team's scale, with a rationale and the most comparable past
 tickets.</li>
 <li>Prompts for the value <strong>your team settles on</strong>. If you
-give one it’s recorded as <code>final</code>; if you skip, the
+give one it's recorded as <code>final</code>; if you skip, the
 suggestion is recorded as <code>suggested</code>.</li>
 <li>Adds the ticket to <code>history.csv</code> (prompting before
 overwriting an existing row), so the dataset grows as you estimate.</li>
@@ -213,15 +210,15 @@ settles on is always recorded as-is. To change them, edit
 <h3 id="estimate-provenance">Estimate provenance</h3>
 <p>Each row records <em>where its estimate came from</em> in the
 <code>estimate_basis</code> column: <code>actual</code> (resolved ticket
-from <code>sync</code>), <code>final</code> (your team’s agreed value),
-or <code>suggested</code> (the skill’s own suggestion). Estimation
+from <code>sync</code>), <code>final</code> (your team's agreed value),
+or <code>suggested</code> (the skill's own suggestion). Estimation
 trusts <code>actual</code> over <code>final</code> over
 <code>suggested</code>, so the tool never treats its own guesses as
 ground truth. When an estimated ticket is later resolved, re-running
 <code>sync</code> replaces its row with the real outcome.</p>
 <h2 id="add-specific-tickets">Add specific tickets</h2>
 <p>Already ran <code>/sync</code> but missing a few tickets? Ask Claude
-to <em>“add ABC-7777 to history”</em> (or several keys / bare numbers).
+to <em>"add ABC-7777 to history"</em> (or several keys / bare numbers).
 The <code>add</code> skill fetches each ticket from Jira and appends it
 as a new record — capturing real <code>story_points</code>,
 <code>time_spent</code>, and resolution (so resolved tickets are
@@ -230,21 +227,21 @@ recorded as <code>actual</code>, open-but-estimated ones as
 story points, prompts before overriding an existing record, and reports
 anything skipped. Field-level edits are handled by the edit skill.</p>
 <h2 id="find-a-stored-record">Find a stored record</h2>
-<p>Ask Claude to look up records by key — e.g. <em>“find ABC-7777 in
-history”</em>, <em>“show the record for 7777”</em> (bare numbers expand
-via your <code>sync</code> project key), or <em>“look up ABC-1,
-ABC-2”</em>. The <code>find</code> skill prints each matched record’s
+<p>Ask Claude to look up records by key — e.g. <em>"find ABC-7777 in
+history"</em>, <em>"show the record for 7777"</em> (bare numbers expand
+via your <code>sync</code> project key), or <em>"look up ABC-1,
+ABC-2"</em>. The <code>find</code> skill prints each matched record's
 fields and its <strong>row number</strong> in <code>history.csv</code>
-(for manual reference), and lists any keys it couldn’t find.</p>
+(for manual reference), and lists any keys it couldn't find.</p>
 <h2 id="edit-or-delete-records">Edit or delete records</h2>
-<p>Need to correct or remove a stored record? Ask Claude to <em>“fix the
-story points on ABC-7777”</em>, <em>“edit ABC-1”</em>, or <em>“delete
-ABC-2, ABC-3 from history”</em> (bare numbers expand via your
+<p>Need to correct or remove a stored record? Ask Claude to <em>"fix the
+story points on ABC-7777"</em>, <em>"edit ABC-1"</em>, or <em>"delete
+ABC-2, ABC-3 from history"</em> (bare numbers expand via your
 <code>sync</code> project key). The <code>edit</code> skill:</p>
 <ul>
-<li>Looks up the requested keys and reports any it can’t find.</li>
+<li>Looks up the requested keys and reports any it can't find.</li>
 <li>For an <strong>edit</strong>, changes only the fields you name
-(validating the new values first) and never alters the record’s
+(validating the new values first) and never alters the record's
 <code>key</code>.</li>
 <li>For a <strong>delete</strong>, removes the matched records after you
 confirm.</li>
@@ -252,49 +249,50 @@ confirm.</li>
 <code>estimate</code> (or <code>add</code>) for that.</li>
 </ul>
 <h2 id="prune-broken-records">Prune broken records</h2>
-<p>Run <code>/estimator:prune</code> to tidy the dataset. It takes no
-arguments and scans all of <code>history.csv</code>:</p>
+<p>Run <code>/jira-estimator:prune</code> to tidy the dataset. It takes
+no arguments and scans all of <code>history.csv</code>:</p>
 <ul>
 <li><strong>Deletes</strong> genuinely broken rows — a missing key,
 summary, or story points — but only after listing them and asking you to
 confirm.</li>
-<li><strong>Flags</strong> fixable issues (e.g. a blank/invalid
+<li><strong>Flags</strong> fixable issues (e.g. a blank/invalid
 <code>estimate_basis</code> or missing issue type) so you can repair
 them with the <code>edit</code> skill; flagged rows are never
 deleted.</li>
 </ul>
 <h2 id="load-existing-history-import">Load existing history
 (import)</h2>
-<p>Already have a history CSV — from <code>/estimator:export</code>,
-another machine, or a teammate? Ask Claude to <em>“import my history
-from <code>&lt;path&gt;</code>”</em>. The <code>import</code> skill
-reads the file and either <strong>merges</strong> it into your dataset
-(dedup by key, imported wins) or <strong>replaces</strong> it (with
-explicit confirmation). It maps columns by their header tokens —
-tolerant of reordered columns and legacy 12-column files — derives your
-<code>project_keys</code>, and reports what changed. It’s the
-counterpart to <code>export</code>, and lets you start from an existing
-dataset without running <code>/sync</code>.</p>
+<p>Already have a history CSV — from
+<code>/jira-estimator:export</code>, another machine, or a teammate? Ask
+Claude to <em>"import my history from <code>&lt;path&gt;</code>"</em>.
+The <code>import</code> skill reads the file and either
+<strong>merges</strong> it into your dataset (dedup by key, imported
+wins) or <strong>replaces</strong> it (with explicit confirmation). It
+maps columns by their header tokens — tolerant of reordered columns and
+legacy 12-column files — derives your <code>project_keys</code>, and
+reports what changed. It's the counterpart to <code>export</code>, and
+lets you start from an existing dataset without running
+<code>/sync</code>.</p>
 <h2 id="where-data-is-stored">Where data is stored</h2>
 <p>The dataset lives in a per-user folder in your home directory:</p>
-<pre><code>~/.estimator/               (a normal home dotfolder, like ~/.aws)
+<pre><code>~/.jira-estimator/               (a normal home dotfolder, like ~/.aws)
 ├── history.csv              the ticket dataset (13 columns; &quot;;&quot;-delimited)
 └── config.json              run metadata (JQL, field ids, updated watermark,
                              min_fetch_story_points, last_exported,
                              estimation_prefs: scale + min/max limits, …)</code></pre>
 <p>This is a single global directory per user — built once and reused
 from any project.</p>
-<h2 id="cleanup-uninstall">Cleanup / uninstall</h2>
+<h2 id="cleanup--uninstall">Cleanup / uninstall</h2>
 <ul>
-<li><strong>Data lives in <code>~/.estimator</code></strong> (a normal
-folder in your home). Uninstalling the plugin does <strong>not</strong>
-remove it.</li>
+<li><strong>Data lives in <code>~/.jira-estimator</code></strong> (a
+normal folder in your home). Uninstalling the plugin does
+<strong>not</strong> remove it.</li>
 <li><strong>Remove it deliberately:</strong> run
-<code>/estimator:reset</code> — it lists the stored files
+<code>/jira-estimator:reset</code> — it lists the stored files
 (<code>history.csv</code>, <code>config.json</code>, and any leftover
 temp file), deletes them after you confirm, and removes the
-<code>~/.estimator</code> folder if it ends up empty. Or just
-<code>rm -rf ~/.estimator</code>.</li>
+<code>~/.jira-estimator</code> folder if it ends up empty. Or just
+<code>rm -rf ~/.jira-estimator</code>.</li>
 <li><strong>Back up / migrate:</strong> the <code>export</code> skill
 copies the dataset to a path you choose — a folder
 (<code>history.csv</code>, and <code>config.json</code> too if you opt
@@ -303,7 +301,8 @@ in) or a <code>*.csv</code> file (history only). Restore later with the
 </ul>
 <h2 id="requirements">Requirements</h2>
 <ul>
-<li>The Atlassian (Jira) MCP connected in Claude Code.</li>
+<li>An Atlassian (Jira) account. The plugin's Atlassian MCP server needs
+a one-time sign-in through <code>/mcp</code>.</li>
 <li>For CSV assembly the plugin uses, in order of preference, Python 3,
 then Node.js; if neither is available it falls back to building the CSV
 directly. No third-party packages are required.</li>
