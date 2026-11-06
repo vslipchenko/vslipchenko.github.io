@@ -6,4 +6,5 @@ Personal GitHub Pages site. It holds a few standalone static pages, each in its 
 |---|---|---|
 | **estimator** | [/estimator/](https://vslipchenko.github.io/estimator/) | Docs page for the *estimator* Claude Code plugin |
 | **sessions** | [/sessions/](https://vslipchenko.github.io/sessions/) | Docs page for the *sessions* Claude Code plugin |
-| **Archaizmolog** | [/archaizmolog/](https://vslipchenko.github.io/archaizmolog/) | A collection of original prose and poetry, in Russian |
+
+Older pages, such as *Archaizmolog*, live in [vslipchenko/archive](https://github.com/vslipchenko/archive).
